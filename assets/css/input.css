@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   Custom Base Styles & Variables
+   ======================================== */
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F4F7FE;
+  color: #071D2C;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+/* ========================================
+   Premium Glass & Gradient Effects
+   ======================================== */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #239BA8 0%, #014581 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hover-glow {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 10px 25px -5px rgba(35, 155, 168, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+/* Hero container entrance animation */
+.hero-container {
+  animation: heroFadeIn 0.8s ease-out both;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================
+   Text Slider / Carousel
+   ======================================== */
+
+/* Slides are positioned relatively and visibility is managed dynamically via JS classes */
+
+/* The slider container needs relative + min-height so it doesn't collapse */
+#hero-slider {
+  position: relative;
+  min-height: 220px;
+}
+
+@media (min-width: 640px) {
+  #hero-slider {
+    min-height: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero-slider {
+    min-height: 280px;
+  }
+}
+
+/* ========================================
+   RTL-Aware Play Video Tab Corner
+   rounded-ts = top-start corner
+   ======================================== */
+[dir="ltr"] .rounded-ts-2xl {
+  border-top-left-radius: 1rem;
+}
+
+[dir="rtl"] .rounded-ts-2xl {
+  border-top-right-radius: 1rem;
+}
+
+/* ========================================
+   Navigation Slide Control Buttons
+   ======================================== */
+.slide-control-btn {
+  position: relative;
+}
+
+.slide-control-btn::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 6px;
+  opacity: 0;
+  background: rgba(35, 155, 168, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.slide-control-btn:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   Custom Scrollbar (Webkit)
+   ======================================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F7FE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #239BA8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #12A19A;
+}
+
+/* ========================================
+   Responsive Carousel Text Size Adaptation
+   ======================================== */
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: #FFFFFF;
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 51.1923px;
+    line-height: 62px;
+  }
+}
+
+.hero-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: #FFFFFF;
+}
+
+@media (min-width: 1024px) {
+  .hero-subtitle {
+    font-size: 33px;
+    line-height: 45px;
+  }
+}
+
+.hero-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+
+@media (min-width: 1024px) {
+  .hero-desc {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,498 @@
+/* ========================================
+   Products Section CSS Styles
+   ======================================== */
+.swiper-container-products {
+  width: 100%;
+  padding-top: 3.5rem;
+  padding-bottom: 5.5rem;
+  overflow: visible !important;
+}
+
+.swiper-slide-product {
+  width: 280px;
+  height: auto;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.95;
+  transform: scale(0.88) translateY(35px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 5px 15px -3px rgba(0, 0, 0, 0.04);
+  background: linear-gradient(179.98deg, #FFFFFF 0.02%, #E4EEF7 99.98%);
+}
+
+.swiper-slide-product.swiper-slide-active {
+  opacity: 1 !important;
+  transform: scale(1.03) translateY(-15px) !important;
+  z-index: 20;
+  box-shadow: 0 35px 70px -15px rgba(15, 118, 110, 0.25), 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+}
+
+.products-section .swiper-pagination {
+  bottom: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.products-section .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #cbd5e1;
+  opacity: 1;
+  margin: 0 !important;
+  transition: all 0.3s ease;
+}
+
+.products-section .swiper-pagination-bullet-active {
+  background: #0d9488;
+  width: 10px;
+}
+
+/* ========================================
+   Gallery Custom CSS
+   ======================================== */
+.gallery-item {
+  position: relative;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  flex: 1;
+  opacity: 0.5;
+  transition: flex 0.75s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.75s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+  opacity: 0.7;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.3);
+}
+
+.gallery-item.active {
+  flex: 5;
+  opacity: 1;
+  box-shadow: none;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.gallery-item.active img {
+  transform: scale(1.06);
+}
+
+.gallery-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(10, 17, 32, 0.96) 0%,
+      rgba(10, 17, 32, 0.45) 45%,
+      transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item.active .gallery-slide-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gallery-slide-info {
+  transform: translateY(12px);
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item.active .gallery-slide-info {
+  transform: translateY(0);
+}
+
+.gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  user-select: none;
+}
+
+.gallery-nav-btn:hover {
+  background: #14b8a6;
+}
+
+.gallery-nav-btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.gallery-prev {
+  left: 8px;
+}
+
+.gallery-next {
+  right: 8px;
+}
+
+.gallery-play-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 6;
+}
+
+.gallery-item.active .gallery-play-wrapper {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gallery-play-btn {
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gallery-play-btn:hover {
+  background: rgba(20, 184, 166, 0.55);
+  transform: scale(1.08);
+}
+
+.gallery-play-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 639px) {
+  .gallery-item.active {
+    flex: 3;
+  }
+}
+
+/* ========================================
+   News Section Custom Styles
+   ======================================== */
+.news-swiper {
+  padding-top: 20px;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.news-swiper .swiper-slide {
+  max-width: 344px;
+  width: 100%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(30px) scale(0.95);
+  opacity: 0.6;
+}
+
+.news-swiper .swiper-slide-active {
+  transform: translateY(0) scale(1) !important;
+  opacity: 1 !important;
+  z-index: 20;
+}
+
+.news-swiper .swiper-slide-active article {
+  background: #FFFFFF;
+  box-shadow: 0px 20px 40px rgba(159, 189, 218, 0.7);
+  border-radius: 30px;
+}
+
+.news-swiper-container .swiper-pagination {
+  bottom: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.news-swiper-container .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #cbd5e1;
+  opacity: 1;
+  margin: 0 !important;
+  transition: all 0.4s ease;
+  border-radius: 50%;
+}
+
+.news-swiper-container .swiper-pagination-bullet-active {
+  background: #14b8a6;
+  width: 24px;
+  border-radius: 9999px;
+}
+
+.news-nav-btn {
+  width: 48px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d9488;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  z-index: 30;
+}
+
+.news-nav-btn:hover {
+  background: #f0fdfa;
+  color: #0f766e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.news-nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
+   Testimonials Swiper Pagination
+   ======================================== */
+.comment-pagination .swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  transition: all 0.4s ease !important;
+  margin: 0 4px !important;
+  display: inline-block;
+}
+
+.comment-pagination .swiper-pagination-bullet-active {
+  width: 28px !important;
+  background-color: #ffffff !important;
+  border-radius: 9999px !important;
+}
+
+/* ========================================
+   Features Marquee
+   ======================================== */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: scroll-x 20s linear infinite;
+  will-change: transform;
+}
+
+html[dir="rtl"] .animate-marquee {
+  animation-direction: reverse;
+}
+
+/* ========================================
+   Products Subpage Filter Buttons
+   ======================================== */
+.filter-btn {
+  background-color: #ffffff;
+  color: #475569 !important; /* text-slate-605 */
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+  color: #0d9488 !important; /* text-teal-600 */
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #239BA8 0%, #014581 100%) !important; /* Brand Gradient */
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 10px 20px -5px rgba(35, 155, 168, 0.25);
+}
+
+.filter-btn.active:hover {
+  background: linear-gradient(135deg, #1c7e88 0%, #013768 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Products-specific active filter button color (Blue/Green theme) */
+.products-filter-btn.active {
+  background: linear-gradient(135deg, #014581 0%, #007A3D 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 20px -5px rgba(1, 69, 129, 0.35);
+}
+.products-filter-btn.active:hover {
+  background: linear-gradient(135deg, #013768 0%, #006432 100%) !important;
+}
+
+/* News-specific active filter button color (Teal/Cyan theme with dark text) */
+.news-filter-btn.active {
+  background: linear-gradient(135deg, #239BA8 0%, #79F5FF 100%) !important;
+  color: #041424 !important;
+  box-shadow: 0 10px 20px -5px rgba(35, 155, 168, 0.35);
+}
+.news-filter-btn.active:hover {
+  background: linear-gradient(135deg, #1c7e88 0%, #60e4ee 100%) !important;
+  color: #041424 !important;
+}
+
+/* Language Dropdown Custom Styles */
+.lang-dropdown-container {
+  position: relative;
+}
+
+.lang-dropdown-menu {
+  display: block !important;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+}
+
+.lang-dropdown-menu.show {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  pointer-events: auto !important;
+}
+
+/* ========================================
+   RTL Arabic Typography Styling
+   ======================================== */
+html[dir="rtl"] {
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+html[dir="rtl"] .font-heading {
+  font-family: 'Cairo', sans-serif !important;
+  line-height: 1.35 !important;
+}
+
+html[dir="rtl"] p,
+html[dir="rtl"] span,
+html[dir="rtl"] a,
+html[dir="rtl"] input,
+html[dir="rtl"] select,
+html[dir="rtl"] textarea,
+html[dir="rtl"] label,
+html[dir="rtl"] button {
+  line-height: 1.6;
+}
+
+/* ========================================
+   GSAP Initial States (FOUC Prevention)
+   ======================================== */
+.gsap-reveal, .gsap-fade-up, .gsap-zoom-in, .gsap-stagger-item, .infra-stagger-item, .why-stagger-item {
+  visibility: hidden;
+}
+
+/* ========================================
+   Tailwind Layout Repair Utilities (Grid Spans)
+   ======================================== */
+@media (min-width: 1024px) {
+  .lg\:col-span-1 { grid-column: span 1 / span 1 !important; }
+  .lg\:col-span-2 { grid-column: span 2 / span 2 !important; }
+  .lg\:col-span-3 { grid-column: span 3 / span 3 !important; }
+  .lg\:col-span-4 { grid-column: span 4 / span 4 !important; }
+  .lg\:col-span-5 { grid-column: span 5 / span 5 !important; }
+  .lg\:col-span-6 { grid-column: span 6 / span 6 !important; }
+  .lg\:col-span-7 { grid-column: span 7 / span 7 !important; }
+  .lg\:col-span-8 { grid-column: span 8 / span 8 !important; }
+  .lg\:col-span-9 { grid-column: span 9 / span 9 !important; }
+  .lg\:col-span-10 { grid-column: span 10 / span 10 !important; }
+  .lg\:col-span-11 { grid-column: span 11 / span 11 !important; }
+  .lg\:col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+@media (min-width: 768px) {
+  .md\:col-span-1 { grid-column: span 1 / span 1 !important; }
+  .md\:col-span-2 { grid-column: span 2 / span 2 !important; }
+  .md\:col-span-3 { grid-column: span 3 / span 3 !important; }
+  .md\:col-span-4 { grid-column: span 4 / span 4 !important; }
+  .md\:col-span-5 { grid-column: span 5 / span 5 !important; }
+  .md\:col-span-6 { grid-column: span 6 / span 6 !important; }
+  .md\:col-span-7 { grid-column: span 7 / span 7 !important; }
+  .md\:col-span-8 { grid-column: span 8 / span 8 !important; }
+  .md\:col-span-9 { grid-column: span 9 / span 9 !important; }
+  .md\:col-span-10 { grid-column: span 10 / span 10 !important; }
+  .md\:col-span-11 { grid-column: span 11 / span 11 !important; }
+  .md\:col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+@media (min-width: 640px) {
+  .sm\:col-span-1 { grid-column: span 1 / span 1 !important; }
+  .sm\:col-span-2 { grid-column: span 2 / span 2 !important; }
+  .sm\:col-span-3 { grid-column: span 3 / span 3 !important; }
+  .sm\:col-span-4 { grid-column: span 4 / span 4 !important; }
+  .sm\:col-span-5 { grid-column: span 5 / span 5 !important; }
+  .sm\:col-span-6 { grid-column: span 6 / span 6 !important; }
+  .sm\:col-span-7 { grid-column: span 7 / span 7 !important; }
+  .sm\:col-span-8 { grid-column: span 8 / span 8 !important; }
+  .sm\:col-span-9 { grid-column: span 9 / span 9 !important; }
+  .sm\:col-span-10 { grid-column: span 10 / span 10 !important; }
+  .sm\:col-span-11 { grid-column: span 11 / span 11 !important; }
+  .sm\:col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+.col-span-1 { grid-column: span 1 / span 1 !important; }
+.col-span-2 { grid-column: span 2 / span 2 !important; }
+.col-span-3 { grid-column: span 3 / span 3 !important; }
+.col-span-4 { grid-column: span 4 / span 4 !important; }
+.col-span-5 { grid-column: span 5 / span 5 !important; }
+.col-span-6 { grid-column: span 6 / span 6 !important; }
+.col-span-7 { grid-column: span 7 / span 7 !important; }
+.col-span-8 { grid-column: span 8 / span 8 !important; }
+.col-span-9 { grid-column: span 9 / span 9 !important; }
+.col-span-10 { grid-column: span 10 / span 10 !important; }
+.col-span-11 { grid-column: span 11 / span 11 !important; }
+.col-span-12 { grid-column: span 12 / span 12 !important; }
+
+/* Fallback Gradients for Purged Tailwind Classes */
+.hero-overlay-gradient {
+  background: linear-gradient(to top right, rgba(4, 20, 36, 0.95), rgba(5, 41, 59, 0.8), rgba(10, 61, 63, 0.55)) !important;
+}
+
+.cta-banner-gradient {
+  background: linear-gradient(135deg, #014581 0%, #239BA8 100%) !important;
+}
