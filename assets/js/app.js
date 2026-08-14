@@ -326,8 +326,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Click event for items
         items.forEach((item, index) => {
             item.addEventListener('click', (e) => {
-                e.preventDefault();
-                updateGallery(index);
+                if (!item.classList.contains('active')) {
+                    e.preventDefault();
+                    updateGallery(index);
+                }
             });
         });
 

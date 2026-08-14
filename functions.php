@@ -25,6 +25,8 @@ $alsalam_includes = array(
     'includes/page-metaboxes.php',
     'includes/polylang-strings.php',
     'includes/inbox-system.php',
+    'includes/post-types.php',
+    'includes/cpt-metaboxes.php',
 );
 
 foreach ($alsalam_includes as $file) {

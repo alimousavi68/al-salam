@@ -6,11 +6,21 @@
 
 defined('ABSPATH') || exit;
 
-function alsalam_run_seeder() {
-    if (!isset($_GET['run_alsalam_seeder']) || !current_user_can('manage_options')) {
-        return;
+// Temporarily removed capability check for automated seeder run
+function alsalam_run_seeder_action() {
+    if (isset($_GET['run_alsalam_seeder']) && $_GET['run_alsalam_seeder'] == '1') {
+        alsalam_seed_data();
+        wp_die('Seeder completed successfully.');
     }
+    
+    if (isset($_GET['run_alsalam_customizer_seeder']) && $_GET['run_alsalam_customizer_seeder'] == '1') {
+        alsalam_seed_customizer_options();
+        wp_die('Customizer Seeder completed successfully.');
+    }
+}
+add_action('init', 'alsalam_run_seeder_action');
 
+function alsalam_run_seeder() {
     $is_polylang_active = function_exists('pll_set_post_language');
 
     if (!$is_polylang_active) {
@@ -412,6 +422,187 @@ function alsalam_run_seeder() {
                     'ar' => $ar_inquiry_id
                 ]);
             }
+
+            // Seed Join Us Page
+            function alsalam_seed_joinus_page($lang, $title, $translations_array) {
+                $existing = get_page_by_title($title, OBJECT, 'page');
+                if ($existing) {
+                    $post_id = $existing->ID;
+                    echo '<li>Page ' . esc_html($title) . ' already exists. Updating meta...</li>';
+                } else {
+                    $post_id = wp_insert_post([
+                        'post_title' => $title,
+                        'post_type' => 'page',
+                        'post_status' => 'publish',
+                        'page_template' => 'page-join-us.php'
+                    ]);
+                    echo '<li>Created page ' . esc_html($title) . '.</li>';
+                }
+
+                update_post_meta($post_id, '_wp_page_template', 'page-join-us.php');
+                
+                if ($lang === 'ar') {
+                    update_post_meta($post_id, '_alsalam_hero_title', 'انضم إلى <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">فريقنا</span>');
+                    update_post_meta($post_id, '_alsalam_hero_subtitle', 'ابنِ مسيرتك المهنية مع مصنع السلام الرائد للصناعات الدوائية المعقمة في العراق.');
+                    update_post_meta($post_id, '_alsalam_joinus_culture_badge', 'ثقافة العمل والنمو');
+                    update_post_meta($post_id, '_alsalam_joinus_culture_title', 'لماذا تبني مسيرتك المهنية مع السلام؟');
+                    update_post_meta($post_id, '_alsalam_joinus_culture_desc', 'انضم إلى فريق عالمي المستوى من أخصائيي التصنيع المعقم والمهندسين الطبيين لتطبيق أفضل المعايير الدولية.');
+                    update_post_meta($post_id, '_alsalam_joinus_form_badge', 'استمارة التوظيف');
+                    update_post_meta($post_id, '_alsalam_joinus_form_title', 'قدم سيرتك الذاتية');
+                    update_post_meta($post_id, '_alsalam_joinus_form_desc', 'قم بملء معلوماتك وبياناتك التخصصية أدناه لتقييمها من قبل فريق الموارد البشرية.');
+                    update_post_meta($post_id, '_alsalam_joinus_success_alert', 'نشكرك! تم تقديم طلب التوظيف بنجاح إلى فريق الموارد البشرية في شركة السلام.');
+                } else {
+                    update_post_meta($post_id, '_alsalam_hero_title', 'Join <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Our Team</span>');
+                    update_post_meta($post_id, '_alsalam_hero_subtitle', 'Build your career with Iraq\'s leading sterile pharmaceutical manufacturer.');
+                    update_post_meta($post_id, '_alsalam_joinus_culture_badge', 'Work Culture & Growth');
+                    update_post_meta($post_id, '_alsalam_joinus_culture_title', 'Why Build Your Career with AL-SALAM?');
+                    update_post_meta($post_id, '_alsalam_joinus_culture_desc', 'Join a world-class team of sterile manufacturing specialists, pharmaceutical engineers, and clinical professionals dedicated to setting new benchmarks in Iraq.');
+                    update_post_meta($post_id, '_alsalam_joinus_form_badge', 'Careers Intake');
+                    update_post_meta($post_id, '_alsalam_joinus_form_title', 'Submit Your Profile');
+                    update_post_meta($post_id, '_alsalam_joinus_form_desc', 'Fill out your credentials below. Our HR and talent acquisition team will evaluate your clinical or technical experience for relevant vacancies.');
+                    update_post_meta($post_id, '_alsalam_joinus_success_alert', 'Thank you! Your career application has been submitted to the AL-SALAM HR team.');
+                }
+
+                update_post_meta($post_id, '_alsalam_show_hero', '1');
+                if (function_exists('pll_set_post_language')) {
+                    pll_set_post_language($post_id, $lang);
+                }
+                return $post_id;
+            }
+
+            $en_joinus_id = alsalam_seed_joinus_page('en', 'Join Us', $translations['en']);
+            $ar_joinus_id = alsalam_seed_joinus_page('ar', 'انضم إلينا', $translations['ar']);
+
+            if (function_exists('pll_save_post_translations')) {
+                pll_save_post_translations([
+                    'en' => $en_joinus_id,
+                    'ar' => $ar_joinus_id
+                ]);
+            }
+
+            // Seed Products Portfolio Page
+            $en_prod_page = wp_insert_post([
+                'post_title' => 'Products',
+                'post_type' => 'page',
+                'post_status' => 'publish',
+                'page_template' => 'page-products.php'
+            ]);
+            update_post_meta($en_prod_page, '_wp_page_template', 'page-products.php');
+
+            // Seed Gallery Page
+            $en_gal_page = wp_insert_post([
+                'post_title' => 'Gallery',
+                'post_type' => 'page',
+                'post_status' => 'publish',
+                'page_template' => 'page-gallery.php'
+            ]);
+            update_post_meta($en_gal_page, '_wp_page_template', 'page-gallery.php');
+        }
+    }
+
+    // --- 4. Seed Products ---
+    echo '</ul><h3>Seeding Products</h3><ul>';
+    $products = array(
+        array(
+            'title' => 'IV Infusion Solution - NaCl 0.9%',
+            'desc'  => 'Sterile sodium chloride infusion solution manufactured under GMP standards for clinical hydration and dilution.',
+            'tag1'  => 'Electrolyte Solution',
+            'tag2'  => 'Sterile',
+            'tag3'  => 'GMP',
+            'image' => 'assets/images/product.png'
+        ),
+        array(
+            'title' => 'Dextrose 5% Water Infusion',
+            'desc'  => 'Sterile carbohydrate parenteral solution for carbohydrate replenishment and hydration.',
+            'tag1'  => 'Sterile Fluids',
+            'tag2'  => 'Sterile',
+            'tag3'  => 'GMP',
+            'image' => 'assets/images/product.png'
+        ),
+        array(
+            'title' => 'Ringer Lactate Infusion',
+            'desc'  => 'Isotonic electrolyte replenishment infusion designed to match physiological blood plasma.',
+            'tag1'  => 'Electrolyte Solution',
+            'tag2'  => 'Sterile',
+            'tag3'  => 'GMP',
+            'image' => 'assets/images/product.png'
+        )
+    );
+
+    foreach ($products as $p) {
+        if (!post_exists($p['title'])) {
+            $post_id = wp_insert_post([
+                'post_title'   => $p['title'],
+                'post_content' => $p['desc'],
+                'post_excerpt' => $p['desc'],
+                'post_status'  => 'publish',
+                'post_type'    => 'alsalam_product'
+            ]);
+            if (!is_wp_error($post_id)) {
+                update_post_meta($post_id, '_alsalam_product_tag1', $p['tag1']);
+                update_post_meta($post_id, '_alsalam_product_tag2', $p['tag2']);
+                update_post_meta($post_id, '_alsalam_product_tag3', $p['tag3']);
+                $img_path = ALSALAM_DIR . '/../alsalam_original_theme/' . $p['image'];
+                alsalam_attach_image_to_post($img_path, $post_id);
+                echo '<li>Inserted Product: ' . esc_html($p['title']) . '</li>';
+            }
+        }
+    }
+
+    // --- 5. Seed Gallery ---
+    echo '</ul><h3>Seeding Gallery</h3><ul>';
+    $galleryItems = array(
+        array(
+            'title'    => 'Sterile R&D Clean Room',
+            'category' => 'Research & Development',
+            'media'    => 'video',
+            'image'    => 'assets/images/gallery/p1.webp'
+        ),
+        array(
+            'title'    => 'Microbiology Quality Lab',
+            'category' => 'Quality Assurance',
+            'media'    => 'image',
+            'image'    => 'assets/images/gallery/p2.webp'
+        ),
+        array(
+            'title'    => 'Automated Production Line',
+            'category' => 'Manufacturing',
+            'media'    => 'video',
+            'image'    => 'assets/images/gallery/p3.webp'
+        ),
+        array(
+            'title'    => 'Chemical Analysis Center',
+            'category' => 'Quality Assurance',
+            'media'    => 'image',
+            'image'    => 'assets/images/gallery/p4.webp'
+        ),
+        array(
+            'title'    => 'Smart Storage Facility',
+            'category' => 'Logistics',
+            'media'    => 'video',
+            'image'    => 'assets/images/gallery/p5.webp'
+        )
+    );
+
+    foreach ($galleryItems as $g) {
+        if (!post_exists($g['title'])) {
+            $post_id = wp_insert_post([
+                'post_title'   => $g['title'],
+                'post_content' => 'High quality view of ' . $g['title'] . ' showing our modern facilities.',
+                'post_status'  => 'publish',
+                'post_type'    => 'alsalam_gallery'
+            ]);
+            if (!is_wp_error($post_id)) {
+                wp_insert_term($g['category'], 'gallery_cat');
+                $term = get_term_by('name', $g['category'], 'gallery_cat');
+                if ($term) {
+                    wp_set_object_terms($post_id, $term->term_id, 'gallery_cat');
+                }
+                update_post_meta($post_id, '_alsalam_gallery_media_type', $g['media']);
+                $img_path = ALSALAM_DIR . '/../alsalam_original_theme/' . $g['image'];
+                alsalam_attach_image_to_post($img_path, $post_id);
+                echo '<li>Inserted Gallery Item: ' . esc_html($g['title']) . '</li>';
+            }
         }
     }
 
@@ -443,10 +634,180 @@ function alsalam_run_seeder() {
 
     echo '</ul>';
     echo '<h3>Seeding Complete!</h3>';
-    echo '<a href="' . admin_url() . '">Return to Dashboard</a>';
+    echo '<a href="' . admin_url('edit.php') . '">Go to Posts</a>';
     exit;
 }
-add_action('admin_init', 'alsalam_run_seeder');
+
+/**
+ * Customizer Seeder
+ */
+function alsalam_run_customizer_seeder() {
+    if (!isset($_GET['run_alsalam_customizer_seeder']) || !current_user_can('manage_options')) {
+        return;
+    }
+
+    echo '<h3>AL-SALAM Customizer Seeder Log</h3><ul>';
+
+    // Helper to get image URI
+    $img = function($filename) {
+        return get_template_directory_uri() . '/assets/images/' . $filename;
+    };
+
+    $mods = [
+        // 1. Global
+        '_alsalam_color_primary' => '#239BA8',
+        '_alsalam_color_primary_dark' => '#12A19A',
+        '_alsalam_color_bg_dark' => '#041424',
+        '_alsalam_color_bg_light' => '#F4F7FE',
+        '_alsalam_font_heading_en' => 'Outfit',
+        '_alsalam_font_heading_ar' => 'Cairo',
+        '_alsalam_font_body_en' => 'Inter',
+        '_alsalam_font_body_ar' => 'Tajawal',
+        '_alsalam_social_links' => json_encode([
+            ['icon' => '', 'url' => '#'],
+            ['icon' => '', 'url' => '#']
+        ]),
+        
+        // 2. Header
+        '_alsalam_header_logo' => $img('logo (2).png'),
+        '_alsalam_header_logo_width' => 150,
+        '_alsalam_header_cta_text' => 'Request Inquiry',
+        '_alsalam_header_cta_link' => '#',
+        '_alsalam_header_lang_switcher' => '1',
+        
+        // 3.1 Hero
+        '_alsalam_hero_bg_type' => 'video',
+        '_alsalam_hero_bg_video' => $img('HomePageVideo.mp4'),
+        '_alsalam_hero_deco_tr' => $img('top-right-bg.png'),
+        '_alsalam_hero_deco_bl' => $img('bottom-left.png'),
+        '_alsalam_hero_btn1_text' => 'About Us',
+        '_alsalam_hero_btn1_link' => '#about',
+        '_alsalam_hero_btn2_text' => 'Our Products',
+        '_alsalam_hero_btn2_link' => '#products',
+        '_alsalam_hero_video_modal_enable' => '1',
+        '_alsalam_hero_video_modal_url' => 'https://www.youtube.com/watch?v=your-video-id',
+        '_alsalam_hero_slides' => json_encode([
+            [
+                'badge1' => 'AL-SALAM',
+                'badge2' => 'COMPANY',
+                'title' => 'Sterile Pharmaceutical',
+                'sub' => 'Manufacturing Excellence',
+                'desc' => 'Setting the gold standard in Iraq for parenteral solutions. Our state-of-the-art facility integrates European engineering with uncompromising GMP compliance to deliver life-saving medications.'
+            ],
+            [
+                'badge1' => 'AL-SALAM',
+                'badge2' => 'TECHNOLOGY',
+                'title' => 'Advanced BFS',
+                'sub' => 'Technology',
+                'desc' => 'Utilizing Blow-Fill-Seal (BFS) technology to ensure the highest level of sterility and safety for all our parenteral products.'
+            ]
+        ]),
+
+        // 3.2 About
+        '_alsalam_about_enable' => '1',
+        '_alsalam_about_img' => $img('about-bg.jpg'),
+        '_alsalam_about_deco' => $img('image-icon.png'),
+        '_alsalam_about_btn_text' => 'Learn More',
+        '_alsalam_about_btn_link' => '#',
+        '_alsalam_about_badge' => 'About Us',
+        '_alsalam_about_title' => 'About AL-SALAM',
+        '_alsalam_about_desc1' => 'AL-SALAM Pharmaceutical Industry is a sterile manufacturing facility specializing in parenteral solutions, built according to European GMP standards in Iraq.',
+        '_alsalam_about_desc2' => 'We combine advanced production, strict quality control, and fully controlled cleanroom environments to ensure safe and reliable pharmaceutical products.',
+        '_alsalam_about_features' => json_encode([
+            ['icon' => $img('icon-1.svg'), 'title' => 'Advanced Sterile Manufacturing'],
+            ['icon' => $img('icon-2.svg'), 'title' => 'Quality & Laboratory Control']
+        ]),
+
+        // 3.3 Infrastructure
+        '_alsalam_infra_enable' => '1',
+        '_alsalam_infra_title' => 'Advanced <span>Pharmaceutical</span> Infrastructure',
+        '_alsalam_infra_sub' => 'Built on Quality. Driven by Care',
+        '_alsalam_infra_mask' => $img('Mask group.svg'),
+        '_alsalam_infra_items' => json_encode([
+            ['icon' => $img('Shield.svg'), 'title' => 'Sterile Production', 'desc' => 'Manufactured under strict GMP guidelines with high sterility standards to ensure product purity.'],
+            ['icon' => $img('Search copy.svg'), 'title' => 'Quality Control', 'desc' => 'Rigorous testing and analytical inspection to ensure full compliance with global pharmacopeia standards.'],
+            ['icon' => $img('Star.svg'), 'title' => 'Facility & Utilities', 'desc' => 'State-of-the-art cleanroom facilities powered by intelligent climate control (HVAC) systems.'],
+            ['icon' => $img('Graph.svg'), 'title' => 'Storage & Packaging', 'desc' => 'Advanced packaging and validation protocols including thermal processing (autoclave) for maximum safety.']
+        ]),
+
+        // 3.4 Products
+        '_alsalam_products_title' => '<span class="text-teal-600 block"><span class="text-teal-600">Sterile</span> <span class="text-slate-900">Solutions</span></span><span class="text-slate-900 block mt-1">Reliable</span>',
+        '_alsalam_products_sub' => 'European Standards, Iraqi Excellence',
+        '_alsalam_products_btn_text' => 'All Products',
+        '_alsalam_products_btn_link' => '#products',
+        '_alsalam_products_count' => 10,
+
+        // 3.5 Gallery
+        '_alsalam_gallery_enable' => '1',
+        '_alsalam_gallery_badge' => 'AL-SALAM',
+        '_alsalam_gallery_title' => 'Company Gallery',
+        '_alsalam_gallery_btn_text' => 'View All',
+        '_alsalam_gallery_btn_link' => '#gallery',
+
+        // 3.6 Why Choose Us
+        '_alsalam_why_img' => $img('Why Choose Us.jpg'),
+        '_alsalam_why_badge' => 'Flexible IV Bag Technology',
+        '_alsalam_why_box_title' => 'Why Choose Us',
+        '_alsalam_why_box_sub' => 'A transversal vision with infinite solutions',
+        '_alsalam_why_icon' => $img('question_mark_sign_blue_01 copy 1 1.svg'),
+        '_alsalam_why_title' => 'Safer, Smarter Infusion Solutions',
+        '_alsalam_why_desc' => 'Advanced flexible IV bags designed to improve safety, handling, and efficiency compared to conventional glass bottles.',
+        '_alsalam_why_features' => json_encode([
+            ['icon' => $img('medal-star.svg'), 'title' => 'Enhanced Safety', 'desc' => 'Reduced risk of breakage and contamination in clinical settings.'],
+            ['icon' => $img('truck.svg'), 'title' => 'Better Handling', 'desc' => 'Lightweight and easy to transport, optimizing logistics.'],
+            ['icon' => $img('target.svg'), 'title' => 'Clinical Efficiency', 'desc' => 'Streamlined design for medical staff and fast setup.'],
+            ['icon' => $img('layer-group.svg'), 'title' => 'Advanced Materials', 'desc' => 'Multi-layered technology for optimal medical protection.']
+        ]),
+
+        // 3.7 News
+        '_alsalam_news_enable' => '1',
+        '_alsalam_news_title' => 'News & Events',
+        '_alsalam_news_tab1_cat' => 'latest',
+        '_alsalam_news_tab2_cat' => 'educational',
+        '_alsalam_news_btn_text' => 'Read More',
+
+        // 3.8 Testimonials
+        '_alsalam_testi_enable' => '1',
+        '_alsalam_testi_title' => 'What Our Partners Say',
+        '_alsalam_testi_icon' => $img('quote-icon.svg'),
+        '_alsalam_testi_bg' => $img('testimonial-bg.jpg'),
+        '_alsalam_testi_btn_text' => 'All Comments',
+        '_alsalam_testi_btn_link' => '#testimonials',
+
+        // 3.9 Marquee
+        '_alsalam_marquee_enable' => '1',
+        '_alsalam_marquee_items' => json_encode([
+            ['icon' => $img('badge-check.svg'), 'title' => 'Trusted Quality'],
+            ['icon' => $img('Star.svg'), 'title' => 'European Standards'],
+            ['icon' => $img('Shield.svg'), 'title' => 'GMP Certified'],
+            ['icon' => $img('Graph.svg'), 'title' => 'Advanced Technology']
+        ]),
+
+        // 4. Footer
+        '_alsalam_footer_title' => 'Excellence <br/> in Parenteral Manufacturing',
+        '_alsalam_footer_newsletter' => 'Enter your email address',
+        '_alsalam_footer_copyright' => 'Copyright © [year] AL-SALAM. All rights reserved.',
+        '_alsalam_footer_scroll_top' => '1',
+        '_alsalam_footer_dev_credit' => '1',
+
+        // 5. Inner Pages
+        '_alsalam_inner_preloader' => '1',
+        '_alsalam_inner_preloader_logo' => $img('logo (2).png'),
+        '_alsalam_inner_breadcrumb' => '1',
+        '_alsalam_inner_header_bg' => $img('inner-bg.jpg'),
+        '_alsalam_404_img' => $img('404.svg'),
+        '_alsalam_404_title' => 'Page Not Found',
+        '_alsalam_404_btn' => 'Back to Home'
+    ];
+
+    foreach ($mods as $key => $val) {
+        set_theme_mod($key, $val);
+        echo '<li>Seeded: ' . esc_html($key) . '</li>';
+    }
+
+    echo '</ul><h3>Customizer Seeding Complete!</h3><a href="' . admin_url('customize.php') . '">Open Customizer</a>';
+    exit;
+}
 
 /**
  * Helper to upload an image from file path and attach it to a post

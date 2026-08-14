@@ -22,11 +22,11 @@ defined('ABSPATH') || exit;
         <!-- Col 1: Branding & Newsletter -->
         <div class="lg:col-span-4 flex flex-col">
             <h2 class="text-3xl font-extrabold mb-8 leading-tight">
-                <?php echo wp_kses_post(alsalam_str('footer_tagline', '<span class="text-teal-500">Excellence</span> <br/>in Parenteral Manufacturing')); ?>
+                <?php echo wp_kses_post(get_theme_mod('_alsalam_footer_title', 'Excellence <br/> in Parenteral Manufacturing')); ?>
             </h2>
 
             <div class="relative flex items-center bg-white rounded-full p-1.5 shadow-sm mb-8">
-                <input type="email" placeholder="<?php echo esc_attr(alsalam_str('footer_email_placeholder', 'Enter your email...')); ?>" class="flex-1 bg-transparent border-none outline-none ps-4 text-sm text-slate-600 placeholder-slate-400">
+                <input type="email" placeholder="<?php echo esc_attr(get_theme_mod('_alsalam_footer_newsletter', 'Enter your email address')); ?>" class="flex-1 bg-transparent border-none outline-none ps-4 text-sm text-slate-600 placeholder-slate-400">
                 <button type="submit" class="w-10 h-10 rounded-full bg-teal-500 hover:bg-teal-600 text-white flex items-center justify-center transition-colors shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -35,18 +35,22 @@ defined('ABSPATH') || exit;
             </div>
 
             <div class="flex items-center gap-3">
-                <a href="#" aria-label="Telegram" class="w-11 h-11 rounded-full flex items-center justify-center text-white bg-teal-500 transition-transform hover:-translate-y-1 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                </a>
-                <a href="#" aria-label="LinkedIn" class="w-11 h-11 rounded-full flex items-center justify-center text-white bg-slate-900 transition-transform hover:-translate-y-1 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-full flex items-center justify-center text-white bg-teal-500 transition-transform hover:-translate-y-1 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                </a>
-                <a href="#" aria-label="WhatsApp" class="w-11 h-11 rounded-full flex items-center justify-center text-white bg-slate-900 transition-transform hover:-translate-y-1 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </a>
+                <?php
+                $socials = json_decode(get_theme_mod('_alsalam_social_links', '[]'), true);
+                if (is_array($socials) && !empty($socials)) {
+                    foreach ($socials as $social) {
+                        if (!empty($social['icon']) && !empty($social['url'])) {
+                            echo '<a href="' . esc_url($social['url']) . '" class="w-11 h-11 rounded-full flex items-center justify-center text-white bg-teal-500 hover:bg-teal-600 transition-transform hover:-translate-y-1 shadow-sm">';
+                            if (strpos($social['icon'], '<svg') !== false) {
+                                echo $social['icon'];
+                            } else {
+                                echo '<img src="' . esc_url($social['icon']) . '" class="w-5 h-5 invert" alt="" />';
+                            }
+                            echo '</a>';
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
 
@@ -133,30 +137,46 @@ defined('ABSPATH') || exit;
     <!-- Divider & Policy Links -->
     <div class="relative z-10 max-w-7xl mx-auto px-4">
         <div class="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-600 mb-4">
-            <a href="#" class="hover:text-teal-600 transition-colors"><?php echo esc_html(alsalam_str('footer_terms', 'Terms & Conditions')); ?></a>
-            <span class="text-slate-300">|</span>
-            <a href="#" class="hover:text-teal-600 transition-colors"><?php echo esc_html(alsalam_str('footer_rules', 'Rules & Regulations')); ?></a>
-            <span class="text-slate-300">|</span>
-            <a href="#" class="hover:text-teal-600 transition-colors"><?php echo esc_html(alsalam_str('footer_privacy', 'Privacy Policy')); ?></a>
+            <?php
+            $policy_menu_id = get_theme_mod('_alsalam_footer_policy_menu');
+            if ($policy_menu_id) {
+                wp_nav_menu(array(
+                    'menu' => $policy_menu_id,
+                    'container' => false,
+                    'menu_class' => 'flex flex-wrap items-center gap-4',
+                    'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+                    'fallback_cb' => false,
+                ));
+            }
+            ?>
         </div>
         <hr class="border-slate-300/50 mb-6" />
     </div>
 
     <!-- Copyright Pill & Back to Top -->
     <div class="relative z-10 bg-white rounded-[2rem] sm:rounded-full p-3 sm:p-2 px-6 flex flex-col sm:flex-row justify-between items-center shadow-sm max-w-7xl mx-4 lg:mx-auto gap-4 sm:gap-0">
+        <?php if (get_theme_mod('_alsalam_footer_dev_credit', '1') === '1') : ?>
         <div class="flex items-center gap-1 select-none text-xs text-slate-500">
-            <span><?php echo esc_html(alsalam_str('designed_by', 'Designed & Developed by')); ?></span>
+            <span><?php esc_html_e('Designed & Developed by', 'alsalam'); ?></span>
             <a href="https://ihasht.ir/" target="_blank" class="text-[#e21b2c] hover:text-[#e21b2c] font-extrabold text-[12px] font-title transition-all duration-300 hover:-translate-y-0.5">Hasht Behesht</a>
         </div>
+        <?php else : ?>
+        <div></div>
+        <?php endif; ?>
         <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-start">
             <p class="text-xs md:text-sm text-slate-600 font-medium">
-                &copy; <?php echo date('Y'); ?> <?php echo esc_html(alsalam_str('brand_name', 'AL-SALAM')); ?>. <?php echo esc_html(alsalam_str('footer_copyright', 'All Rights Reserved.')); ?>
+                <?php 
+                $copyright = get_theme_mod('_alsalam_footer_copyright', 'Copyright © [year] AL-SALAM. All rights reserved.');
+                echo wp_kses_post(str_replace('[year]', date('Y'), $copyright)); 
+                ?>
             </p>
-            <button id="scrollToTopBtn" class="w-10 h-10 rounded-full bg-slate-900 hover:bg-teal-500 hover:-translate-y-1 hover:shadow-lg text-white flex items-center justify-center shrink-0 cursor-pointer transition-all duration-300 group" aria-label="<?php echo esc_attr(alsalam_str('back_to_top', 'Back to Top')); ?>">
+            <?php if (get_theme_mod('_alsalam_footer_scroll_top', '1') === '1') : ?>
+            <button id="scrollToTopBtn" class="w-10 h-10 rounded-full bg-slate-900 hover:bg-teal-500 hover:-translate-y-1 hover:shadow-lg text-white flex items-center justify-center shrink-0 cursor-pointer transition-all duration-300 group" aria-label="<?php esc_attr_e('Back to Top', 'alsalam'); ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
                 </svg>
             </button>
+            <?php endif; ?>
         </div>
     </div>
 </footer>

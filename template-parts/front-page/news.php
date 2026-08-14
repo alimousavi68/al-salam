@@ -8,6 +8,7 @@
 defined('ABSPATH') || exit;
 
 // Retrieve Latest Posts
+if (get_theme_mod('_alsalam_news_enable', '1') !== '1') return;
 $latest_args = array(
     'post_type'      => 'post',
     'post_status'    => 'publish',
@@ -67,15 +68,15 @@ if ($educational_query->have_posts()) {
 
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 gsap-fade-up">
     <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
-      <?php esc_html_e('News & Events', 'alsalam'); ?>
+      <?php echo wp_kses_post(get_theme_mod('_alsalam_news_title', __('News & Events', 'alsalam'))); ?>
     </h2>
 
     <div class="flex items-center bg-white rounded-full p-1 shadow-sm border border-slate-100" id="news-tab-wrapper">
       <button onclick="switchNewsTab('latest')" id="tab-latest" class="px-6 py-2 bg-teal-500 text-white font-medium rounded-full cursor-pointer shadow-md transition-all duration-300">
-        <?php esc_html_e('Latest', 'alsalam'); ?>
+        <?php echo esc_html(get_theme_mod('_alsalam_news_tab1_label', __('Latest', 'alsalam'))); ?>
       </button>
       <button onclick="switchNewsTab('educational')" id="tab-educational" class="px-6 py-2 text-teal-600 font-medium rounded-full cursor-pointer transition-all duration-300 hover:text-teal-700">
-        <?php esc_html_e('Educational', 'alsalam'); ?>
+        <?php echo esc_html(get_theme_mod('_alsalam_news_tab2_label', __('Educational', 'alsalam'))); ?>
       </button>
     </div>
   </div>

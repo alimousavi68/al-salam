@@ -114,6 +114,8 @@ function alsalam_page_settings_html($post) {
         echo '<div class="alsalam-tab" data-target="tab-contact"><span class="dashicons dashicons-phone" style="margin-right:5px; margin-top:2px;"></span> Contact Details</div>';
     } elseif ($template === 'page-inquiry.php') {
         echo '<div class="alsalam-tab" data-target="tab-inquiry">Inquiry Form</div>';
+    } elseif ($template === 'page-join-us.php') {
+        echo '<div class="alsalam-tab" data-target="tab-joinus"><span class="dashicons dashicons-groups" style="margin-right:5px; margin-top:2px;"></span> Careers & Culture</div>';
     }
     echo '</div>'; // End tabs
 
@@ -152,6 +154,28 @@ function alsalam_page_settings_html($post) {
         echo '<div class="alsalam-section-title"><span class="dashicons dashicons-thumbs-up"></span> Form Configuration</div>';
         echo '<div class="alsalam-form-row" style="background:#fff; border:1px solid #e2e8f0; padding:15px; border-radius:6px;">';
         alsalam_render_meta_textarea('Success Message Alert', '_alsalam_inquiry_success_alert', $meta('_alsalam_inquiry_success_alert', 'Thank you! Your commercial inquiry has been registered. Our procurement team will review your business credentials.'));
+        echo '</div>';
+
+        echo '</div>';
+    }
+
+    // --- TAB: JOIN US ---
+    if ($template === 'page-join-us.php') {
+        echo '<div id="tab-joinus" class="alsalam-tab-content">';
+        
+        echo '<div class="alsalam-section-title"><span class="dashicons dashicons-heart"></span> Culture & Values Section</div>';
+        echo '<div class="alsalam-form-row" style="background:#fff; border:1px solid #e2e8f0; padding:15px; border-radius:6px;">';
+        alsalam_render_meta_input('Culture Badge', '_alsalam_joinus_culture_badge', $meta('_alsalam_joinus_culture_badge', 'Work Culture & Growth'));
+        alsalam_render_meta_input('Culture Title', '_alsalam_joinus_culture_title', $meta('_alsalam_joinus_culture_title', 'Why Build Your Career with AL-SALAM?'));
+        alsalam_render_meta_textarea('Culture Description', '_alsalam_joinus_culture_desc', $meta('_alsalam_joinus_culture_desc', 'Join a world-class team of sterile manufacturing specialists, pharmaceutical engineers, and clinical professionals dedicated to setting new benchmarks in Iraq.'));
+        echo '</div>';
+
+        echo '<div class="alsalam-section-title"><span class="dashicons dashicons-[#10b981]"></span> Application Form Section</div>';
+        echo '<div class="alsalam-form-row" style="background:#fff; border:1px solid #e2e8f0; padding:15px; border-radius:6px;">';
+        alsalam_render_meta_input('Form Badge', '_alsalam_joinus_form_badge', $meta('_alsalam_joinus_form_badge', 'Careers Intake'));
+        alsalam_render_meta_input('Form Title', '_alsalam_joinus_form_title', $meta('_alsalam_joinus_form_title', 'Submit Your Profile'));
+        alsalam_render_meta_textarea('Form Description', '_alsalam_joinus_form_desc', $meta('_alsalam_joinus_form_desc', 'Fill out your credentials below. Our HR and talent acquisition team will evaluate your clinical or technical experience for relevant vacancies.'));
+        alsalam_render_meta_textarea('Success Message Alert', '_alsalam_joinus_success_alert', $meta('_alsalam_joinus_success_alert', 'Thank you! Your career application has been submitted to the AL-SALAM HR team.'));
         echo '</div>';
 
         echo '</div>';
@@ -331,7 +355,12 @@ function alsalam_save_page_meta($post_id) {
         // Inquiry Page Scalar Fields
         '_alsalam_inquiry_step1_badge', '_alsalam_inquiry_step1_title', '_alsalam_inquiry_step1_desc',
         '_alsalam_inquiry_step2_badge', '_alsalam_inquiry_step2_title', '_alsalam_inquiry_step2_desc',
-        '_alsalam_inquiry_success_alert'
+        '_alsalam_inquiry_success_alert',
+
+        // Join Us Page Scalar Fields
+        '_alsalam_joinus_culture_badge', '_alsalam_joinus_culture_title', '_alsalam_joinus_culture_desc',
+        '_alsalam_joinus_form_badge', '_alsalam_joinus_form_title', '_alsalam_joinus_form_desc',
+        '_alsalam_joinus_success_alert'
     ];
 
     foreach ($fields as $field) {

@@ -199,3 +199,46 @@ function alsalam_handle_inquiry_submission() {
         wp_send_json_error(['message' => __('Could not save submission.', 'alsalam')]);
     }
 }
+
+// --- Join Us Form AJAX ---
+add_action('wp_ajax_alsalam_submit_joinus', 'alsalam_handle_joinus_submission');
+add_action('wp_ajax_nopriv_alsalam_submit_joinus', 'alsalam_handle_joinus_submission');
+
+function alsalam_handle_joinus_submission() {
+    check_ajax_referer('alsalam_joinus_submit', 'nonce');
+
+    $name       = sanitize_text_field($_POST['name'] ?? '');
+    $email      = sanitize_email($_POST['email'] ?? '');
+    $phone      = sanitize_text_field($_POST['phone'] ?? '');
+    $department = sanitize_text_field($_POST['department'] ?? '');
+    $experience = sanitize_text_field($_POST['experience'] ?? '');
+    $cv_url     = sanitize_url($_POST['cv_url'] ?? '');
+    $notes      = sanitize_textarea_field($_POST['notes'] ?? '');
+
+    if (empty($name) || empty($email) || empty($phone) || empty($department)) {
+        wp_send_json_error(['message' => __('Please fill out all required fields.', 'alsalam')]);
+    }
+
+    $post_id = wp_insert_post([
+        'post_title'   => "Job Application: {$name} ({$department})",
+        'post_content' => $notes,
+        'post_status'  => 'publish',
+        'post_type'    => 'alsalam_message'
+    ]);
+
+    if (!is_wp_error($post_id)) {
+        wp_set_object_terms($post_id, 'Join Us / Careers', 'message_type');
+        update_post_meta($post_id, '_alsalam_sender_name', $name);
+        update_post_meta($post_id, '_alsalam_sender_email', $email);
+        update_post_meta($post_id, '_alsalam_sender_phone', $phone);
+        update_post_meta($post_id, '_alsalam_msg_department', $department);
+        update_post_meta($post_id, '_alsalam_msg_experience', $experience);
+        if ($cv_url) {
+            update_post_meta($post_id, '_alsalam_msg_cv_url', $cv_url);
+        }
+
+        wp_send_json_success(['message' => __('Thank you! Your career application has been submitted to the AL-SALAM HR team.', 'alsalam')]);
+    } else {
+        wp_send_json_error(['message' => __('Could not submit application.', 'alsalam')]);
+    }
+}
