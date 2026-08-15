@@ -57,80 +57,50 @@ defined('ABSPATH') || exit;
         <!-- Cols 2 to 5: Links -->
         <div class="lg:col-span-2 flex flex-col lg:col-start-6">
             <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(alsalam_str('footer_quick_access', 'Quick Access')); ?></h3>
-            <ul class="flex flex-col gap-4">
-                <li>
-                    <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('home', 'Home')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo esc_url(home_url('/about')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('about_us', 'About Us')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo esc_url(home_url('/#infrastructure')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('our_infrastructure', 'Our Infrastructure')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo esc_url(home_url('/contact')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('contact_us', 'Contact')); ?></span>
-                    </a>
-                </li>
-            </ul>
+            <?php
+            $quick_menu_id = get_theme_mod('_alsalam_footer_quick_menu');
+            if ($quick_menu_id) {
+                wp_nav_menu(array(
+                    'menu' => $quick_menu_id,
+                    'container' => false,
+                    'menu_class' => 'flex flex-col gap-4',
+                    'walker' => new Alsalam_Footer_Nav_Walker(),
+                    'fallback_cb' => false,
+                ));
+            }
+            ?>
         </div>
 
         <div class="lg:col-span-2 flex flex-col">
             <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(alsalam_str('footer_services', 'Services')); ?></h3>
-            <ul class="flex flex-col gap-4">
-                <li>
-                    <a href="#" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('footer_service_1', 'Parenteral Mfg')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('footer_service_2', 'Quality Control')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('footer_service_3', 'R&D')); ?></span>
-                    </a>
-                </li>
-            </ul>
+            <?php
+            $services_menu_id = get_theme_mod('_alsalam_footer_services_menu');
+            if ($services_menu_id) {
+                wp_nav_menu(array(
+                    'menu' => $services_menu_id,
+                    'container' => false,
+                    'menu_class' => 'flex flex-col gap-4',
+                    'walker' => new Alsalam_Footer_Nav_Walker(),
+                    'fallback_cb' => false,
+                ));
+            }
+            ?>
         </div>
         
         <div class="lg:col-span-2 flex flex-col">
             <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(alsalam_str('footer_resources', 'Resources')); ?></h3>
-            <ul class="flex flex-col gap-4">
-                <li>
-                    <a href="<?php echo esc_url(home_url('/news')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('news_events', 'News & Events')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo esc_url(home_url('/gallery')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('gallery', 'gallery')); ?></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo esc_url(home_url('/#join-us')); ?>" class="flex items-center gap-3 group">
-                        <span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>
-                        <span class="text-slate-700 hover:text-teal-600 text-sm font-medium transition-colors"><?php echo esc_html(alsalam_str('footer_careers', 'Careers')); ?></span>
-                    </a>
-                </li>
-            </ul>
+            <?php
+            $resources_menu_id = get_theme_mod('_alsalam_footer_resources_menu');
+            if ($resources_menu_id) {
+                wp_nav_menu(array(
+                    'menu' => $resources_menu_id,
+                    'container' => false,
+                    'menu_class' => 'flex flex-col gap-4',
+                    'walker' => new Alsalam_Footer_Nav_Walker(),
+                    'fallback_cb' => false,
+                ));
+            }
+            ?>
         </div>
     </div>
 

@@ -113,7 +113,7 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_header_cta_text', ['default' => 'Request Inquiry', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_header_cta_text', ['label' => __('CTA Button Text', 'alsalam'), 'section' => 'sec_header_action', 'type' => 'text']);
 
-    $wp_customize->add_setting('_alsalam_header_cta_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_header_cta_link', ['default' => '/inquiry/', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_header_cta_link', ['label' => __('CTA Button Link', 'alsalam'), 'section' => 'sec_header_action', 'type' => 'url']);
 
     $wp_customize->add_setting('_alsalam_header_lang_switcher', ['default' => '1', 'sanitize_callback' => 'absint']);
@@ -145,13 +145,13 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_hero_btn1_text', ['default' => 'About Us', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_hero_btn1_text', ['label' => __('Button 1 Text', 'alsalam'), 'section' => 'sec_home_hero', 'type' => 'text']);
     
-    $wp_customize->add_setting('_alsalam_hero_btn1_link', ['default' => '#about', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_hero_btn1_link', ['default' => '/about/', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_hero_btn1_link', ['label' => __('Button 1 Link', 'alsalam'), 'section' => 'sec_home_hero', 'type' => 'url']);
 
     $wp_customize->add_setting('_alsalam_hero_btn2_text', ['default' => 'Our Products', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_hero_btn2_text', ['label' => __('Button 2 Text', 'alsalam'), 'section' => 'sec_home_hero', 'type' => 'text']);
     
-    $wp_customize->add_setting('_alsalam_hero_btn2_link', ['default' => '#products', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_hero_btn2_link', ['default' => '/products/', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_hero_btn2_link', ['label' => __('Button 2 Link', 'alsalam'), 'section' => 'sec_home_hero', 'type' => 'url']);
 
     $wp_customize->add_setting('_alsalam_hero_video_modal_enable', ['default' => '1', 'sanitize_callback' => 'absint']);
@@ -187,10 +187,10 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_about_btn_text', ['default' => 'Learn More', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_about_btn_text', ['label' => __('Floating Button Text', 'alsalam'), 'section' => 'sec_home_about', 'type' => 'text']);
     
-    $wp_customize->add_setting('_alsalam_about_btn_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_about_btn_link', ['default' => '/about/', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_about_btn_link', ['label' => __('Floating Button Link', 'alsalam'), 'section' => 'sec_home_about', 'type' => 'url']);
 
-    $wp_customize->add_setting('_alsalam_about_badge', ['default' => 'About Us', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_setting('_alsalam_about_badge', ['default' => 'Corporate Profile', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_about_badge', ['label' => __('Badge', 'alsalam'), 'section' => 'sec_home_about', 'type' => 'text']);
 
     $wp_customize->add_setting('_alsalam_about_title', ['default' => 'About AL-SALAM', 'sanitize_callback' => 'wp_kses_post']);
@@ -216,16 +216,23 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_infra_enable', ['default' => '1', 'sanitize_callback' => 'absint']);
     $wp_customize->add_control(new Alsalam_Toggle_Control($wp_customize, '_alsalam_infra_enable', ['label' => __('Enable Infrastructure', 'alsalam'), 'section' => 'sec_home_infra']));
 
-    $wp_customize->add_setting('_alsalam_infra_title', ['default' => 'Infrastructure', 'sanitize_callback' => 'wp_kses_post']);
+    $wp_customize->add_setting('_alsalam_infra_title', ['default' => 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure', 'sanitize_callback' => 'wp_kses_post']);
     $wp_customize->add_control('_alsalam_infra_title', ['label' => __('Title (use <span> for primary color)', 'alsalam'), 'section' => 'sec_home_infra', 'type' => 'text']);
 
-    $wp_customize->add_setting('_alsalam_infra_sub', ['default' => 'Built on Quality. Driven by Care.', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_setting('_alsalam_infra_sub', ['default' => 'Built on Quality. Driven by Care', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_infra_sub', ['label' => __('Subtitle', 'alsalam'), 'section' => 'sec_home_infra', 'type' => 'text']);
 
     $wp_customize->add_setting('_alsalam_infra_mask', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, '_alsalam_infra_mask', ['label' => __('Background Mask Image', 'alsalam'), 'section' => 'sec_home_infra']));
 
-    $wp_customize->add_setting('_alsalam_infra_items', ['default' => '[]', 'sanitize_callback' => 'wp_kses_post']);
+    $default_infra_items = json_encode([
+        ['icon' => alsalam_img('Shield.svg'), 'title' => 'Sterile Production', 'desc' => 'Manufactured under strict GMP guidelines with high sterility standards to ensure product purity.'],
+        ['icon' => alsalam_img('Search copy.svg'), 'title' => 'Quality Control', 'desc' => 'Rigorous testing and analytical inspection to ensure full compliance with global pharmacopeia standards.'],
+        ['icon' => alsalam_img('Star.svg'), 'title' => 'Facility & Utilities', 'desc' => 'State-of-the-art cleanroom facilities powered by intelligent climate control (HVAC) systems.'],
+        ['icon' => alsalam_img('Graph.svg'), 'title' => 'Storage & Packaging', 'desc' => 'Advanced packaging and validation protocols including thermal processing for maximum safety.']
+    ]);
+    
+    $wp_customize->add_setting('_alsalam_infra_items', ['default' => $default_infra_items, 'sanitize_callback' => 'wp_kses_post']);
     $wp_customize->add_control(new Alsalam_Repeater_Control($wp_customize, '_alsalam_infra_items', [
         'label' => __('Infrastructure Items (Max 4)', 'alsalam'), 'section' => 'sec_home_infra',
         'fields' => [
@@ -247,7 +254,7 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_products_btn_text', ['default' => 'All Products', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_products_btn_text', ['label' => __('CTA Button Text', 'alsalam'), 'section' => 'sec_home_products', 'type' => 'text']);
     
-    $wp_customize->add_setting('_alsalam_products_btn_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_products_btn_link', ['default' => '/products/', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_products_btn_link', ['label' => __('CTA Button Link', 'alsalam'), 'section' => 'sec_home_products', 'type' => 'url']);
 
     $wp_customize->add_setting('_alsalam_products_count', ['default' => 10, 'sanitize_callback' => 'absint']);
@@ -270,7 +277,7 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_gallery_btn_text', ['default' => 'View All', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_gallery_btn_text', ['label' => __('Button Text', 'alsalam'), 'section' => 'sec_home_gallery', 'type' => 'text']);
     
-    $wp_customize->add_setting('_alsalam_gallery_btn_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_gallery_btn_link', ['default' => '/gallery/', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_gallery_btn_link', ['label' => __('Button Link', 'alsalam'), 'section' => 'sec_home_gallery', 'type' => 'url']);
 
     // 3.6 Why Choose Us
@@ -291,7 +298,7 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_why_icon', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, '_alsalam_why_icon', ['label' => __('Floating 3D Icon', 'alsalam'), 'section' => 'sec_home_why']));
 
-    $wp_customize->add_setting('_alsalam_why_title', ['default' => 'Why Choose Us', 'sanitize_callback' => 'wp_kses_post']);
+    $wp_customize->add_setting('_alsalam_why_title', ['default' => 'Safer, Smarter <span class="text-teal-500">Infusion Solutions</span>', 'sanitize_callback' => 'wp_kses_post']);
     $wp_customize->add_control('_alsalam_why_title', ['label' => __('Main Title (Right)', 'alsalam'), 'section' => 'sec_home_why', 'type' => 'text']);
     
     $wp_customize->add_setting('_alsalam_why_desc', ['default' => '', 'sanitize_callback' => 'wp_kses_post']);
@@ -340,14 +347,27 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_testi_icon', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, '_alsalam_testi_icon', ['label' => __('Title Icon', 'alsalam'), 'section' => 'sec_home_testimonials']));
 
-    $wp_customize->add_setting('_alsalam_testi_bg', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, '_alsalam_testi_bg', ['label' => __('Background Image', 'alsalam'), 'section' => 'sec_home_testimonials']));
+    $wp_customize->add_setting('_alsalam_testi_image', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, '_alsalam_testi_image', ['label' => __('Background Image', 'alsalam'), 'section' => 'sec_home_testimonials']));
 
     $wp_customize->add_setting('_alsalam_testi_btn_text', ['default' => 'All Comments', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('_alsalam_testi_btn_text', ['label' => __('Floating Button Text', 'alsalam'), 'section' => 'sec_home_testimonials', 'type' => 'text']);
 
-    $wp_customize->add_setting('_alsalam_testi_btn_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_setting('_alsalam_testi_btn_link', ['default' => '/about/#testimonials', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control('_alsalam_testi_btn_link', ['label' => __('Floating Button Link', 'alsalam'), 'section' => 'sec_home_testimonials', 'type' => 'url']);
+
+    $wp_customize->add_setting('_alsalam_testi_reviews', ['default' => '[]', 'sanitize_callback' => 'wp_kses_post']);
+    $wp_customize->add_control(new Alsalam_Repeater_Control($wp_customize, '_alsalam_testi_reviews', [
+        'label' => __('Testimonials (Max 5)', 'alsalam'), 'section' => 'sec_home_testimonials', 'limit' => 5,
+        'fields' => [
+            'name'    => ['type' => 'text', 'label' => __('Name', 'alsalam')],
+            'role'    => ['type' => 'text', 'label' => __('Role / Title', 'alsalam')],
+            'rating'  => ['type' => 'text', 'label' => __('Rating (1 to 5)', 'alsalam')],
+            'date'    => ['type' => 'text', 'label' => __('Date', 'alsalam')],
+            'comment' => ['type' => 'textarea', 'label' => __('Comment', 'alsalam')],
+            'avatar'  => ['type' => 'image', 'label' => __('Avatar Image', 'alsalam')]
+        ]
+    ]));
 
     // 3.9 Features Marquee
     $wp_customize->add_section('sec_home_marquee', ['title' => __('3.9 Features Marquee', 'alsalam'), 'panel' => 'panel_homepage']);
@@ -377,11 +397,20 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_footer_copyright', ['default' => 'Copyright © [year] AL-SALAM. All rights reserved.', 'sanitize_callback' => 'wp_kses_post']);
     $wp_customize->add_control('_alsalam_footer_copyright', ['label' => __('Copyright Text', 'alsalam'), 'section' => 'sec_footer_bottom', 'type' => 'text']);
 
-    // Polices links from menus
+    // Polices & Columns links from menus
     $menus = wp_get_nav_menus();
     $menu_choices = ['' => '-- Select Menu --'];
     foreach ($menus as $menu) { $menu_choices[$menu->term_id] = $menu->name; }
     
+    $wp_customize->add_setting('_alsalam_footer_quick_menu', ['default' => '', 'sanitize_callback' => 'absint']);
+    $wp_customize->add_control('_alsalam_footer_quick_menu', ['label' => __('Quick Access Menu', 'alsalam'), 'section' => 'sec_footer_bottom', 'type' => 'select', 'choices' => $menu_choices]);
+
+    $wp_customize->add_setting('_alsalam_footer_services_menu', ['default' => '', 'sanitize_callback' => 'absint']);
+    $wp_customize->add_control('_alsalam_footer_services_menu', ['label' => __('Services Menu', 'alsalam'), 'section' => 'sec_footer_bottom', 'type' => 'select', 'choices' => $menu_choices]);
+
+    $wp_customize->add_setting('_alsalam_footer_resources_menu', ['default' => '', 'sanitize_callback' => 'absint']);
+    $wp_customize->add_control('_alsalam_footer_resources_menu', ['label' => __('Resources Menu', 'alsalam'), 'section' => 'sec_footer_bottom', 'type' => 'select', 'choices' => $menu_choices]);
+
     $wp_customize->add_setting('_alsalam_footer_policy_menu', ['default' => '', 'sanitize_callback' => 'absint']);
     $wp_customize->add_control('_alsalam_footer_policy_menu', ['label' => __('Policies Menu', 'alsalam'), 'section' => 'sec_footer_bottom', 'type' => 'select', 'choices' => $menu_choices]);
 

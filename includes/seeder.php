@@ -672,18 +672,18 @@ function alsalam_run_customizer_seeder() {
         '_alsalam_header_logo' => $img('logo (2).png'),
         '_alsalam_header_logo_width' => 150,
         '_alsalam_header_cta_text' => 'Request Inquiry',
-        '_alsalam_header_cta_link' => '#',
+        '_alsalam_header_cta_link' => '/inquiry/',
         '_alsalam_header_lang_switcher' => '1',
         
         // 3.1 Hero
         '_alsalam_hero_bg_type' => 'video',
-        '_alsalam_hero_bg_video' => $img('HomePageVideo.mp4'),
+        '_alsalam_hero_bg_video' => get_template_directory_uri() . '/assets/video/HomePageVideo.mp4',
         '_alsalam_hero_deco_tr' => $img('top-right-bg.png'),
         '_alsalam_hero_deco_bl' => $img('bottom-left.png'),
         '_alsalam_hero_btn1_text' => 'About Us',
-        '_alsalam_hero_btn1_link' => '#about',
+        '_alsalam_hero_btn1_link' => '/about/',
         '_alsalam_hero_btn2_text' => 'Our Products',
-        '_alsalam_hero_btn2_link' => '#products',
+        '_alsalam_hero_btn2_link' => '/products/',
         '_alsalam_hero_video_modal_enable' => '1',
         '_alsalam_hero_video_modal_url' => 'https://www.youtube.com/watch?v=your-video-id',
         '_alsalam_hero_slides' => json_encode([
@@ -691,15 +691,22 @@ function alsalam_run_customizer_seeder() {
                 'badge1' => 'AL-SALAM',
                 'badge2' => 'COMPANY',
                 'title' => 'Sterile Pharmaceutical',
-                'sub' => 'Manufacturing Excellence',
-                'desc' => 'Setting the gold standard in Iraq for parenteral solutions. Our state-of-the-art facility integrates European engineering with uncompromising GMP compliance to deliver life-saving medications.'
+                'sub' => 'Manufacturing Built on European GMP Standards',
+                'desc' => 'Delivering high-quality parenteral solutions conforming to global regulatory frameworks with state-of-the-art sterile processing facilities. All lines operate with automated aseptic safety protocols.'
             ],
             [
                 'badge1' => 'AL-SALAM',
                 'badge2' => 'TECHNOLOGY',
-                'title' => 'Advanced BFS',
-                'sub' => 'Technology',
-                'desc' => 'Utilizing Blow-Fill-Seal (BFS) technology to ensure the highest level of sterility and safety for all our parenteral products.'
+                'title' => 'Advanced Aseptic Lines',
+                'sub' => 'High-Tech Bio-Processing Operations',
+                'desc' => 'Utilizing advanced barrier systems (RABS) and blow-fill-seal methodologies to eliminate intervention vectors, ensuring the absolute highest safety indexes in parenteral formulation.'
+            ],
+            [
+                'badge1' => 'AL-SALAM',
+                'badge2' => 'HEALTHCARE',
+                'title' => 'Global Core Logistics',
+                'sub' => 'Reliable Essential Critical-Care Distribution',
+                'desc' => 'Supplying life-saving intravenous solutions and vial parenterals globally. Our robust supply channels secure critical hospital networks with seamless therapeutic solutions continuous-uptime assurance.'
             ]
         ]),
 
@@ -708,8 +715,8 @@ function alsalam_run_customizer_seeder() {
         '_alsalam_about_img' => $img('about-bg.jpg'),
         '_alsalam_about_deco' => $img('image-icon.png'),
         '_alsalam_about_btn_text' => 'Learn More',
-        '_alsalam_about_btn_link' => '#',
-        '_alsalam_about_badge' => 'About Us',
+        '_alsalam_about_btn_link' => '/about/',
+        '_alsalam_about_badge' => 'Corporate Profile',
         '_alsalam_about_title' => 'About AL-SALAM',
         '_alsalam_about_desc1' => 'AL-SALAM Pharmaceutical Industry is a sterile manufacturing facility specializing in parenteral solutions, built according to European GMP standards in Iraq.',
         '_alsalam_about_desc2' => 'We combine advanced production, strict quality control, and fully controlled cleanroom environments to ensure safe and reliable pharmaceutical products.',
@@ -720,21 +727,21 @@ function alsalam_run_customizer_seeder() {
 
         // 3.3 Infrastructure
         '_alsalam_infra_enable' => '1',
-        '_alsalam_infra_title' => 'Advanced <span>Pharmaceutical</span> Infrastructure',
+        '_alsalam_infra_title' => 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure',
         '_alsalam_infra_sub' => 'Built on Quality. Driven by Care',
         '_alsalam_infra_mask' => $img('Mask group.svg'),
         '_alsalam_infra_items' => json_encode([
             ['icon' => $img('Shield.svg'), 'title' => 'Sterile Production', 'desc' => 'Manufactured under strict GMP guidelines with high sterility standards to ensure product purity.'],
             ['icon' => $img('Search copy.svg'), 'title' => 'Quality Control', 'desc' => 'Rigorous testing and analytical inspection to ensure full compliance with global pharmacopeia standards.'],
             ['icon' => $img('Star.svg'), 'title' => 'Facility & Utilities', 'desc' => 'State-of-the-art cleanroom facilities powered by intelligent climate control (HVAC) systems.'],
-            ['icon' => $img('Graph.svg'), 'title' => 'Storage & Packaging', 'desc' => 'Advanced packaging and validation protocols including thermal processing (autoclave) for maximum safety.']
+            ['icon' => $img('Graph.svg'), 'title' => 'Storage & Packaging', 'desc' => 'Advanced packaging and validation protocols including thermal processing for maximum safety.']
         ]),
 
         // 3.4 Products
         '_alsalam_products_title' => '<span class="text-teal-600 block"><span class="text-teal-600">Sterile</span> <span class="text-slate-900">Solutions</span></span><span class="text-slate-900 block mt-1">Reliable</span>',
         '_alsalam_products_sub' => 'European Standards, Iraqi Excellence',
         '_alsalam_products_btn_text' => 'All Products',
-        '_alsalam_products_btn_link' => '#products',
+        '_alsalam_products_btn_link' => '/products/',
         '_alsalam_products_count' => 10,
 
         // 3.5 Gallery
@@ -742,7 +749,7 @@ function alsalam_run_customizer_seeder() {
         '_alsalam_gallery_badge' => 'AL-SALAM',
         '_alsalam_gallery_title' => 'Company Gallery',
         '_alsalam_gallery_btn_text' => 'View All',
-        '_alsalam_gallery_btn_link' => '#gallery',
+        '_alsalam_gallery_btn_link' => '/gallery/',
 
         // 3.6 Why Choose Us
         '_alsalam_why_img' => $img('Why Choose Us.jpg'),
@@ -750,7 +757,7 @@ function alsalam_run_customizer_seeder() {
         '_alsalam_why_box_title' => 'Why Choose Us',
         '_alsalam_why_box_sub' => 'A transversal vision with infinite solutions',
         '_alsalam_why_icon' => $img('question_mark_sign_blue_01 copy 1 1.svg'),
-        '_alsalam_why_title' => 'Safer, Smarter Infusion Solutions',
+        '_alsalam_why_title' => 'Safer, Smarter <span class="text-teal-500">Infusion Solutions</span>',
         '_alsalam_why_desc' => 'Advanced flexible IV bags designed to improve safety, handling, and efficiency compared to conventional glass bottles.',
         '_alsalam_why_features' => json_encode([
             ['icon' => $img('medal-star.svg'), 'title' => 'Enhanced Safety', 'desc' => 'Reduced risk of breakage and contamination in clinical settings.'],
@@ -770,9 +777,35 @@ function alsalam_run_customizer_seeder() {
         '_alsalam_testi_enable' => '1',
         '_alsalam_testi_title' => 'What Our Partners Say',
         '_alsalam_testi_icon' => $img('quote-icon.svg'),
-        '_alsalam_testi_bg' => $img('testimonial-bg.jpg'),
+        '_alsalam_testi_image' => $img('testimonial-bg.jpg'),
         '_alsalam_testi_btn_text' => 'All Comments',
-        '_alsalam_testi_btn_link' => '#testimonials',
+        '_alsalam_testi_btn_link' => '/about/#testimonials',
+        '_alsalam_testi_reviews' => json_encode([
+            [
+                'name' => 'Dr. Ahmed Yassin',
+                'role' => 'Clinical Director',
+                'rating' => '5.0',
+                'date' => '2024/02/12',
+                'comment' => 'The professionalism and quality of sterile solutions provided by AL-SALAM have completely elevated our hospital operations. Their supply consistency is unmatched.',
+                'avatar' => $img('avatar-man.jpg')
+            ],
+            [
+                'name' => 'Pharmacist Sarah Rafiq',
+                'role' => 'Procurement Manager',
+                'rating' => '4.8',
+                'date' => '2024/01/20',
+                'comment' => 'Fantastic experience with their flexible IV bag line. Light, durable, and highly compliant with global pharmacopoeial standards. Highly recommended.',
+                'avatar' => $img('avatar-man.jpg')
+            ],
+            [
+                'name' => 'Dr. Mustafa Jawad',
+                'role' => 'Critical Care Specialist',
+                'rating' => '5.0',
+                'date' => '2023/11/05',
+                'comment' => 'A truly reliable partner for critical care fluids in Iraq. Their compliance with European GMP standards is clear in every batch they deliver.',
+                'avatar' => $img('avatar-man.jpg')
+            ]
+        ]),
 
         // 3.9 Marquee
         '_alsalam_marquee_enable' => '1',
@@ -783,8 +816,14 @@ function alsalam_run_customizer_seeder() {
             ['icon' => $img('Graph.svg'), 'title' => 'Advanced Technology']
         ]),
 
-        // 4. Footer
-        '_alsalam_footer_title' => 'Excellence <br/> in Parenteral Manufacturing',
+        // Footer Settings
+        '_alsalam_social_links' => wp_json_encode(array(
+            array('icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>', 'url' => '#'),
+            array('icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>', 'url' => '#'),
+            array('icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>', 'url' => '#'),
+            array('icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>', 'url' => '#'),
+        )),
+        '_alsalam_footer_title' => '<span class="text-teal-500">Excellence</span> <br/> in Parenteral Manufacturing',
         '_alsalam_footer_newsletter' => 'Enter your email address',
         '_alsalam_footer_copyright' => 'Copyright © [year] AL-SALAM. All rights reserved.',
         '_alsalam_footer_scroll_top' => '1',

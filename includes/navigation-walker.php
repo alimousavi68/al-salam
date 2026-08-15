@@ -59,3 +59,32 @@ class Alsalam_Nav_Walker extends Walker_Nav_Menu {
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 }
+
+class Alsalam_Footer_Nav_Walker extends Walker_Nav_Menu {
+    public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $classes[] = 'menu-item-' . $item->ID;
+        
+        $output .= '<li class="relative group">';
+        
+        $attributes  = '';
+        $attributes .= !empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+        $attributes .= !empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
+        $attributes .= !empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
+        $attributes .= !empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
+        $attributes .= ' class="flex items-center gap-3 group"';
+        
+        $title = apply_filters('the_title', $item->title, $item->ID);
+        
+        $item_output = $args->before;
+        $item_output .= '<a'. $attributes .'>';
+        $item_output .= '<span class="w-2.5 h-1.5 rounded-full bg-teal-500 shrink-0 transition-all group-hover:w-4"></span>';
+        $item_output .= '<span class="text-slate-700 group-hover:text-teal-600 text-sm font-medium transition-colors">';
+        $item_output .= $args->link_before . $title . $args->link_after;
+        $item_output .= '</span>';
+        $item_output .= '</a>';
+        $item_output .= $args->after;
+        
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+    }
+}

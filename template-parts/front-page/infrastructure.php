@@ -1,18 +1,49 @@
 <?php
 /**
  * Infrastructure Section Template Part
- *
- * @package alsalam
  */
 
 defined('ABSPATH') || exit;
+
+if (get_theme_mod('_alsalam_infra_enable', '1') !== '1') return; 
+
+$title = get_theme_mod('_alsalam_infra_title', 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure');
+$badge = get_theme_mod('_alsalam_infra_sub', 'AL-SALAM');
+
+$items_json = get_theme_mod('_alsalam_infra_items');
+$items = json_decode($items_json, true);
+
+if (!is_array($items) || empty($items)) {
+    $items = [
+        [
+            'icon' => 'Shield.svg', 
+            'title' => 'Sterile Production', 
+            'desc' => 'Manufactured under strict GMP guidelines with high sterility standards to ensure product purity.'
+        ],
+        [
+            'icon' => 'Search copy.svg', 
+            'title' => 'Quality Control', 
+            'desc' => 'Rigorous testing and analytical inspection to ensure full compliance with global pharmacopeia standards.'
+        ],
+        [
+            'icon' => 'Star.svg', 
+            'title' => 'Facility & Utilities', 
+            'desc' => 'State-of-the-art cleanroom facilities powered by intelligent climate control (HVAC) systems.'
+        ],
+        [
+            'icon' => 'Graph.svg', 
+            'title' => 'Storage & Packaging', 
+            'desc' => 'Advanced packaging and validation protocols including thermal processing for maximum safety.'
+        ]
+    ];
+}
+$total_items = count($items);
 ?>
-<?php if (get_theme_mod('_alsalam_infra_enable', '1') !== '1') return; ?>
 <section id="infrastructure" class="py-20 px-4 max-w-7xl mx-auto">
     
     <header class="flex flex-col items-center text-center mb-12 gsap-fade-up">
         <h2 class="text-slate-900 text-4xl font-extrabold tracking-tight">
-            <?php echo wp_kses_post(get_theme_mod('_alsalam_infra_title', __('Robust <span>Pharmaceutical</span> Infrastructure', 'alsalam'))); ?>
+            <?php echo wp_kses_post($title); ?>
         </h2>
         <div class="flex items-center gap-2 mt-4">
             <span class="inline-flex items-center justify-center text-teal-500 w-7 h-8" aria-hidden="true">
@@ -22,7 +53,7 @@ defined('ABSPATH') || exit;
                 ?>
             </span>
             <span class="text-slate-800 text-lg font-medium">
-                <?php echo esc_html(get_theme_mod('_alsalam_infra_sub', __('Built on Quality. Driven by Care.', 'alsalam'))); ?>
+                <?php echo esc_html($badge); ?>
             </span>
         </div>
     </header>
@@ -36,29 +67,24 @@ defined('ABSPATH') || exit;
         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 relative z-10" role="list">
             
             <?php 
-            $items_json = get_theme_mod('_alsalam_infra_items');
-            $items = json_decode($items_json, true);
-            
-            // Fallback if empty or not decoded properly
-            if (!is_array($items) || empty($items)) {
-                $items = [
-                    ['icon' => alsalam_img('Shield.svg'), 'title' => 'Sterile Production', 'desc' => 'Manufactured under strict GMP guidelines with high sterility standards to ensure product purity.'],
-                    ['icon' => alsalam_img('Search copy.svg'), 'title' => 'Quality Control', 'desc' => 'Rigorous testing and analytical inspection to ensure full compliance with global pharmacopeia standards.'],
-                    ['icon' => alsalam_img('Star.svg'), 'title' => 'Facility & Utilities', 'desc' => 'State-of-the-art cleanroom facilities powered by intelligent climate control (HVAC) systems.'],
-                    ['icon' => alsalam_img('Graph.svg'), 'title' => 'Storage & Packaging', 'desc' => 'Advanced packaging and validation protocols including thermal processing for maximum safety.']
-                ];
-            }
-
-            $total_items = count($items);
             foreach ($items as $index => $item) :
                 if (empty($item['title'])) continue;
+                $icon_file = isset($item['icon']) ? basename($item['icon']) : '';
+                $icon_path = ALSALAM_DIR . '/assets/images/' . $icon_file;
             ?>
             <li class="infra-stagger-item flex flex-col items-center text-center relative group">
                 <div class="w-24 h-24 rounded-[30px] bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" aria-hidden="true">
                     <span class="w-16 h-16 flex items-center justify-center text-white">
-                        <?php if (!empty($item['icon'])) : ?>
-                        <img src="<?php echo esc_url($item['icon']); ?>" class="w-full h-full object-contain invert" alt="" />
-                        <?php endif; ?>
+                        <?php 
+                        if (!empty($icon_file) && file_exists($icon_path)) {
+                            // If it's an SVG file, include it inline so it renders in white
+                            if (strpos($icon_file, '.svg') !== false) {
+                                include $icon_path;
+                            } else {
+                                echo '<img src="' . esc_url(alsalam_img($icon_file)) . '" class="w-full h-full object-contain invert" alt="" />';
+                            }
+                        }
+                        ?>
                     </span>
                 </div>
                 <h3 class="text-white text-xl font-bold mb-3"><?php echo esc_html($item['title']); ?></h3>

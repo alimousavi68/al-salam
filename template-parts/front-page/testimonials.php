@@ -29,24 +29,7 @@ defined('ABSPATH') || exit;
                             $reviews = json_decode($reviews_json, true);
                             
                             if (!is_array($reviews) || empty($reviews)) {
-                                $reviews = array(
-                                    array(
-                                        'name'    => 'Dr. Ahmed Yassin',
-                                        'role'    => 'Clinical Director',
-                                        'rating'  => '5.0',
-                                        'date'    => '2024/02/12',
-                                        'comment' => 'The professionalism and quality of sterile solutions provided by AL-SALAM have completely elevated our hospital operations.',
-                                        'avatar'  => alsalam_img('avatar-man.jpg')
-                                    ),
-                                    array(
-                                        'name'    => 'Pharmacist Sarah Rafiq',
-                                        'role'    => 'Procurement Manager',
-                                        'rating'  => '4.8',
-                                        'date'    => '2024/01/20',
-                                        'comment' => 'Fantastic experience with their flexible IV bag line. Light, durable, and highly compliant.',
-                                        'avatar'  => alsalam_img('avatar-man.jpg')
-                                    )
-                                );
+                                $reviews = array();
                             }
 
                             foreach ($reviews as $review): 

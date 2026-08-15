@@ -15,7 +15,10 @@ if (!function_exists('alsalam_setup')) :
 
         register_nav_menus(array(
             'primary' => esc_html__('Primary Menu', 'alsalam'),
-            'footer'  => esc_html__('Footer Menu', 'alsalam'),
+            'footer'  => esc_html__('Footer Policy Menu', 'alsalam'),
+            'footer_quick_access' => esc_html__('Footer Quick Access', 'alsalam'),
+            'footer_services' => esc_html__('Footer Services', 'alsalam'),
+            'footer_resources' => esc_html__('Footer Resources', 'alsalam')
         ));
 
         add_theme_support('html5', array(
