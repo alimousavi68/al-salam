@@ -42,11 +42,11 @@ while (have_posts()) : the_post();
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('home', 'Home')); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Home', 'alsalam')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <a href="<?php echo esc_url(get_post_type_archive_link('post') ?: home_url('/news')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('news_events', 'News & Events')); ?></a>
+        <a href="<?php echo esc_url(get_post_type_archive_link('post') ?: home_url('/news')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('News & Events', 'alsalam')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <span class="text-white/85"><?php echo esc_html(alsalam_str('', 'Article Details')); ?></span>
+        <span class="text-white/85"><?php echo esc_html(__('Article Details', 'alsalam')); ?></span>
       </nav>
       
       <!-- Title -->
@@ -110,7 +110,7 @@ while (have_posts()) : the_post();
       
       <header class="flex flex-col items-center text-center mb-16">
         <h2 class="text-[#071D2C] text-2xl sm:text-3xl font-extrabold tracking-tight font-heading">
-          <?php echo wp_kses_post(alsalam_str('single_related_news_title', 'Related <span class="text-teal-500">News</span> &amp; Updates')); ?>
+          <?php echo wp_kses_post(__('Related <span class="text-teal-500">News</span> &amp; Updates', 'alsalam')); ?>
         </h2>
         <div class="w-12 h-1 bg-primary mt-3 rounded-full"></div>
       </header>

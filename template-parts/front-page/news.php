@@ -117,15 +117,15 @@ if ($educational_query->have_posts()) {
 
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 gsap-fade-up">
     <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
-      <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_news_title', 'News & Events'))); ?>
+      <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_news_title', 'News & Events'))); ?>
     </h2>
 
     <div class="flex items-center bg-white rounded-full p-1 shadow-sm border border-slate-100" id="news-tab-wrapper">
       <button onclick="switchNewsTab('latest')" id="tab-latest" class="px-6 py-2 bg-teal-500 text-white font-medium rounded-full cursor-pointer shadow-md transition-all duration-300">
-        <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_news_tab1_label', 'Latest'))); ?>
+        <?php echo esc_html(pll__(get_theme_mod('_alsalam_news_tab1_label', 'Latest'))); ?>
       </button>
       <button onclick="switchNewsTab('educational')" id="tab-educational" class="px-6 py-2 text-teal-600 font-medium rounded-full cursor-pointer transition-all duration-300 hover:text-teal-700">
-        <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_news_tab2_label', 'Educational'))); ?>
+        <?php echo esc_html(pll__(get_theme_mod('_alsalam_news_tab2_label', 'Educational'))); ?>
       </button>
     </div>
   </div>
@@ -160,10 +160,10 @@ if ($educational_query->have_posts()) {
             </div>
 
             <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight tracking-tight font-heading">
-              <?php echo esc_html(alsalam_str('', $item['title'])); ?>
+              <?php echo esc_html($item['title']); ?>
             </h3>
             <p class="text-sm text-slate-500 mb-6 line-clamp-2 leading-relaxed">
-              <?php echo esc_html(alsalam_str('', $item['desc'])); ?>
+              <?php echo esc_html($item['desc']); ?>
             </p>
 
             <a href="<?php echo esc_url($item['link']); ?>" class="flex items-center justify-between w-full bg-teal-500 text-white px-5 py-3 rounded-full mt-auto hover:bg-teal-600 transition-colors duration-300 font-semibold group shadow-md shadow-teal-500/10">
@@ -171,7 +171,7 @@ if ($educational_query->have_posts()) {
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="font-medium text-sm"><?php echo esc_html(alsalam_str('read_more', 'Read More')); ?></span>
+                <span class="font-medium text-sm"><?php echo esc_html(__('Read More', 'alsalam')); ?></span>
               </div>
               
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

@@ -6,9 +6,9 @@
 $enable = get_theme_mod('_alsalam_products_enable', '1');
 if ($enable !== '1') return;
 
-$title = alsalam_str('prod_sec_title', get_theme_mod('_alsalam_products_title', 'Reliable Sterile Solutions'));
-$subtitle = alsalam_str('prod_sec_subtitle', get_theme_mod('_alsalam_products_sub', 'European Standards, Iraqi Excellence'));
-$btn_text = alsalam_str('all_products', get_theme_mod('_alsalam_products_btn_text', 'All Products'));
+$title = pll__(get_theme_mod('_alsalam_products_title', 'Reliable Sterile Solutions'));
+$subtitle = pll__(get_theme_mod('_alsalam_products_sub', 'European Standards, Iraqi Excellence'));
+$btn_text = pll__(get_theme_mod('_alsalam_products_btn_text', 'All Products'));
 $btn_link = get_theme_mod('_alsalam_products_btn_link', '#products');
 $post_count = get_theme_mod('_alsalam_products_count', 10);
 
@@ -61,9 +61,9 @@ $products_query = new WP_Query($args);
           <?php 
           if ($products_query->have_posts()):
               while ($products_query->have_posts()): $products_query->the_post();
-                  $tag1 = alsalam_str('', get_post_meta(get_the_ID(), '_alsalam_product_tag1', true) ?: 'BFS Bottle');
-                  $tag2 = alsalam_str('', get_post_meta(get_the_ID(), '_alsalam_product_tag2', true) ?: '500ml');
-                  $tag3 = alsalam_str('', get_post_meta(get_the_ID(), '_alsalam_product_tag3', true) ?: 'GMP Certified');
+                  $tag1 = get_post_meta(get_the_ID(, '_alsalam_product_tag1', true) ?: 'BFS Bottle');
+                  $tag2 = get_post_meta(get_the_ID(, '_alsalam_product_tag2', true) ?: '500ml');
+                  $tag3 = get_post_meta(get_the_ID(, '_alsalam_product_tag3', true) ?: 'GMP Certified');
                   $image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : alsalam_img('product.png');
                   $excerpt = get_the_excerpt();
                   if (empty($excerpt)) $excerpt = wp_trim_words(get_the_content(), 12, '...');
@@ -77,9 +77,9 @@ $products_query = new WP_Query($args);
               </div>
               
               <!-- Product Info -->
-              <h3 class="text-xl font-bold text-slate-850 mb-2 font-heading tracking-tight leading-tight"><?php echo esc_html(alsalam_str('', get_the_title())); ?></h3>
+              <h3 class="text-xl font-bold text-slate-850 mb-2 font-heading tracking-tight leading-tight"><?php echo esc_html(get_the_title()); ?></h3>
               <p class="text-slate-500 text-xs px-2 leading-relaxed mb-6">
-                <?php echo esc_html(alsalam_str('', $excerpt)); ?>
+                <?php echo esc_html($excerpt); ?>
               </p>
               
               <!-- Features / Tags Layout -->
@@ -106,7 +106,7 @@ $products_query = new WP_Query($args);
             
             <!-- Action Button: View Details -->
             <a href="<?php the_permalink(); ?>" class="w-full h-[34px] bg-[#31858A] hover:bg-[#286f73] text-white ps-5 pe-0 rounded-full flex items-center justify-between transition-all duration-300 font-semibold group shadow-md shadow-teal-700/10">
-              <span class="text-sm"><?php echo esc_html(alsalam_str('view_details', 'View Details')); ?></span>
+              <span class="text-sm"><?php echo esc_html(__('View Details', 'alsalam')); ?></span>
               <div class="w-[34px] h-[34px] rounded-full bg-transparent flex items-center justify-center ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform duration-300">
                 <img src="<?php echo esc_url(alsalam_img('arrow-right.svg')); ?>" class="w-[17px] h-[17px] filter invert brightness-0 rtl:rotate-180" alt="Arrow" loading="lazy" />
               </div>

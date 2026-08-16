@@ -46,7 +46,7 @@ $total_items = count($items);
     
     <header class="flex flex-col items-center text-center mb-12 gsap-fade-up">
         <h2 class="text-slate-900 text-4xl font-extrabold tracking-tight">
-            <?php echo wp_kses_post(alsalam_str('', $title)); ?>
+            <?php echo wp_kses_post($title); ?>
         </h2>
         <div class="flex items-center gap-2 mt-4">
             <span class="inline-flex items-center justify-center text-teal-500 w-7 h-8" aria-hidden="true">
@@ -56,7 +56,7 @@ $total_items = count($items);
                 ?>
             </span>
             <span class="text-slate-800 text-lg font-medium">
-                <?php echo esc_html(alsalam_str('', $badge)); ?>
+                <?php echo esc_html($badge); ?>
             </span>
         </div>
     </header>
@@ -90,9 +90,9 @@ $total_items = count($items);
                         ?>
                     </span>
                 </div>
-                <h3 class="text-white text-xl font-bold mb-3"><?php echo esc_html(alsalam_str('', $item['title'])); ?></h3>
+                <h3 class="text-white text-xl font-bold mb-3"><?php echo esc_html($item['title']); ?></h3>
                 <p class="text-white/80 text-sm leading-relaxed max-w-xs">
-                    <?php echo wp_kses_post(alsalam_str('', $item['desc'])); ?>
+                    <?php echo wp_kses_post($item['desc']); ?>
                 </p>
 
                 <?php if ($index < $total_items - 1) : ?>

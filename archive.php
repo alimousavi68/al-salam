@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
 get_header();
 
 $cat_title = single_term_title('', false);
-$hero_title_format = alsalam_str('archive_category_title', 'Category: <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">%s</span>');
+$hero_title_format = __('Category: <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">%s</span>', 'alsalam');
 $hero_title = sprintf($hero_title_format, esc_html($cat_title));
 
 $hero_subtitle = get_the_archive_description() ?: __('Explore articles and updates registered under this category.', 'alsalam');
@@ -45,21 +45,21 @@ $current_cat   = get_queried_object_id();
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('home', 'Home')); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Home', 'alsalam')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <a href="<?php echo esc_url(home_url('/news')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('news_events', 'News & Events')); ?></a>
+        <a href="<?php echo esc_url(home_url('/news')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('News & Events', 'alsalam')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <span class="text-white/85"><?php echo esc_html(alsalam_str('', $cat_title)); ?></span>
+        <span class="text-white/85"><?php echo esc_html($cat_title); ?></span>
       </nav>
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-tight mb-4">
-        <?php echo wp_kses_post(alsalam_str('', $hero_title)); ?>
+        <?php echo wp_kses_post($hero_title); ?>
       </h1>
       
       <!-- Subtitle -->
       <p class="max-w-2xl mx-auto text-base sm:text-lg text-white/70 font-normal leading-relaxed">
-        <?php echo wp_kses_post(alsalam_str('', $hero_subtitle)); ?>
+        <?php echo wp_kses_post($hero_subtitle); ?>
       </p>
     </div>
   </section>
@@ -74,14 +74,14 @@ $current_cat   = get_queried_object_id();
           href="<?php echo esc_url(get_post_type_archive_link('post') ?: home_url('/news')); ?>" 
           class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200"
         >
-          <?php echo esc_html(alsalam_str('all_updates', 'All Updates')); ?>
+          <?php echo esc_html(__('All Updates', 'alsalam')); ?>
         </a>
         <?php foreach ($categories as $cat): ?>
           <a 
             href="<?php echo esc_url(get_category_link($cat->term_id)); ?>" 
             class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 <?php echo ($current_cat === $cat->term_id) ? 'bg-primary text-white shadow-md shadow-primary/20' : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'; ?>"
           >
-            <?php echo esc_html(alsalam_str('', $cat->name)); ?>
+            <?php echo esc_html($cat->name); ?>
           </a>
         <?php endforeach; ?>
       </div>
@@ -123,7 +123,7 @@ $current_cat   = get_queried_object_id();
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span class="font-medium text-sm"><?php echo esc_html(alsalam_str('read_more', 'Read More')); ?></span>
+              <span class="font-medium text-sm"><?php echo esc_html(__('Read More', 'alsalam')); ?></span>
             </div>
             
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -145,7 +145,7 @@ $current_cat   = get_queried_object_id();
         ?>
       </div>
       <?php else: ?>
-        <p class="text-center text-slate-500 font-semibold py-12"><?php echo esc_html(alsalam_str('', 'No articles found in this category.')); ?></p>
+        <p class="text-center text-slate-500 font-semibold py-12"><?php echo esc_html(__('No articles found in this category.', 'alsalam')); ?></p>
       <?php endif; ?>
 
     </div>

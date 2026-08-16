@@ -47,7 +47,7 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-40">
         <!-- Breadcrumbs -->
         <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-          <a href="<?php echo home_url('/'); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo alsalam_str('home'); ?></a>
+          <a href="<?php echo home_url('/'); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo __('Missing Text', 'alsalam'); ?></a>
           <span class="text-white/30 font-light">/</span>
           <span class="text-white/85"><?php echo get_the_title(); ?></span>
         </nav>
@@ -58,7 +58,7 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
           <?php if ($hero_title): ?>
             <?php echo wp_kses_post($hero_title); ?>
           <?php else: ?>
-            <?php echo wp_kses_post(alsalam_str('about_hero_title', 'About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">AL-SALAM</span>')); ?>
+            <?php echo wp_kses_post(__('About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">AL-SALAM</span>', 'alsalam')); ?>
           <?php endif; ?>
         </h1>
         
@@ -109,8 +109,8 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
                   </svg>
                 </div>
                 <div>
-                  <p class="text-[11px] font-bold text-white/50 uppercase tracking-wider"><?php echo esc_html(alsalam_str('about_badge_standards', 'Standards')); ?></p>
-                  <p class="text-sm font-bold font-heading text-primary-light"><?php echo esc_html(alsalam_str('about_badge_eugmp', 'EU-GMP Certified')); ?></p>
+                  <p class="text-[11px] font-bold text-white/50 uppercase tracking-wider"><?php echo esc_html(__('Standards', 'alsalam')); ?></p>
+                  <p class="text-sm font-bold font-heading text-primary-light"><?php echo esc_html(__('EU-GMP Certified', 'alsalam')); ?></p>
                 </div>
               </div>
 

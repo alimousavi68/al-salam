@@ -46,7 +46,7 @@ defined('ABSPATH') || exit;
                     }
                     
                     $title = !empty($pill['title']) ? $pill['title'] : (!empty($pill['text']) ? $pill['text'] : '');
-                    echo '<span class="text-white font-medium text-sm md:text-base whitespace-nowrap">' . esc_html(alsalam_str('', $title)) . '</span>';
+                    echo '<span class="text-white font-medium text-sm md:text-base whitespace-nowrap">' . esc_html($title) . '</span>';
                     echo '</article>';
                 }
                 echo '</div>';

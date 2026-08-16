@@ -66,18 +66,18 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
                 <?php foreach ($heroSlides as $index => $slide): ?>
                   <article class="hero-slide duration-700 ease-out transition-all transform opacity-0 translate-y-4 hidden" data-slide-index="<?php echo esc_attr($index); ?>">
                     <header class="inline-flex items-center gap-2 border border-white/20 rounded-full p-1 pe-4 bg-white/5 backdrop-blur-sm self-start mb-6" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: 18px;">
-                      <span class="bg-[#041424] text-primary-light px-3 py-0.5 rounded-full text-xs font-bold"><?php echo esc_html(alsalam_str('', $slide['badge1'] ?? 'AL-SALAM')); ?></span>
-                      <span class="text-white/90"><?php echo esc_html(alsalam_str('', $slide['badge2'] ?? '')); ?></span>
+                      <span class="bg-[#041424] text-primary-light px-3 py-0.5 rounded-full text-xs font-bold"><?php echo esc_html($slide['badge1'] ?? 'AL-SALAM'); ?></span>
+                      <span class="text-white/90"><?php echo esc_html($slide['badge2'] ?? ''); ?></span>
                     </header>
                     
                     <h2 class="hero-title tracking-tight mb-4">
-                      <?php echo esc_html(alsalam_str('', $slide['title'] ?? '')); ?>
+                      <?php echo esc_html($slide['title'] ?? ''); ?>
                     </h2>
                     <h3 class="hero-subtitle mb-5 leading-normal">
-                      <?php echo esc_html(alsalam_str('', $slide['sub'] ?? '')); ?>
+                      <?php echo esc_html($slide['sub'] ?? ''); ?>
                     </h3>
                     <p class="hero-desc mb-8 max-w-xl">
-                      <?php echo esc_html(alsalam_str('', $slide['desc'] ?? '')); ?>
+                      <?php echo esc_html($slide['desc'] ?? ''); ?>
                     </p>
                   </article>
                 <?php endforeach; ?>
@@ -86,12 +86,12 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
               <!-- CTA Buttons Group -->
               <div class="flex flex-wrap items-center gap-4 mt-2">
                 <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn1_link', '#about')); ?>" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; line-height: 20px; color: #041424;" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 active:bg-slate-200 px-6 py-2.5 rounded-full shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white">
-                  <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_hero_btn1_text', 'About Us'))); ?>
+                  <?php echo esc_html(pll__(get_theme_mod('_alsalam_hero_btn1_text', 'About Us'))); ?>
                 </a>
                 
                 <div class="flex items-center gap-2.5 group cursor-pointer focus-within:ring-2 focus-within:ring-primary-light rounded-full">
                   <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn2_link', '#products')); ?>" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; line-height: 20px;" class="inline-flex items-center justify-center border border-white/30 text-white px-5 py-2.5 rounded-full group-hover:bg-white/10 group-hover:border-white transition-all duration-200 focus:outline-none">
-                    <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_hero_btn2_text', 'Our Products'))); ?>
+                    <?php echo esc_html(pll__(get_theme_mod('_alsalam_hero_btn2_text', 'Our Products'))); ?>
                   </a>
                   <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn2_link', '#products')); ?>" 
                      class="flex items-center justify-center w-10 h-10 rounded-full border border-white/30 text-white bg-transparent group-hover:border-primary-light group-hover:bg-primary/10 group-hover:text-primary-light transition-all duration-200 transform group-hover:scale-105 group-hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary-light"
