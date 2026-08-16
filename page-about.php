@@ -57,10 +57,8 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-tight mb-4">
           <?php if ($hero_title): ?>
             <?php echo wp_kses_post($hero_title); ?>
-          <?php elseif ($lang === 'ar'): ?>
-            نبذة عن <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">السلام</span>
           <?php else: ?>
-            About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">AL-SALAM</span>
+            <?php echo wp_kses_post(alsalam_str('about_hero_title', 'About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">AL-SALAM</span>')); ?>
           <?php endif; ?>
         </h1>
         
@@ -111,8 +109,8 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
                   </svg>
                 </div>
                 <div>
-                  <p class="text-[11px] font-bold text-white/50 uppercase tracking-wider"><?php echo ($lang === 'ar' ? 'المعايير' : 'Standards'); ?></p>
-                  <p class="text-sm font-bold font-heading text-primary-light"><?php echo ($lang === 'ar' ? 'معتمد من EU-GMP' : 'EU-GMP Certified'); ?></p>
+                  <p class="text-[11px] font-bold text-white/50 uppercase tracking-wider"><?php echo esc_html(alsalam_str('about_badge_standards', 'Standards')); ?></p>
+                  <p class="text-sm font-bold font-heading text-primary-light"><?php echo esc_html(alsalam_str('about_badge_eugmp', 'EU-GMP Certified')); ?></p>
                 </div>
               </div>
 

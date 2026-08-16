@@ -46,7 +46,7 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php esc_html_e('Home', 'alsalam'); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('home', 'Home')); ?></a>
         <span class="text-white/30 font-light">/</span>
         <span class="text-white/85"><?php the_title(); ?></span>
       </nav>
@@ -54,12 +54,12 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
       <!-- Title -->
       <?php $hero_title = $meta('_alsalam_hero_title') ?: 'Join <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Our Team</span>'; ?>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-tight mb-4">
-        <?php echo wp_kses_post($hero_title); ?>
+        <?php echo wp_kses_post(alsalam_str('', $hero_title)); ?>
       </h1>
       
       <!-- Subtitle -->
       <p class="max-w-2xl mx-auto text-base sm:text-lg text-white/70 font-normal leading-relaxed">
-        <?php echo wp_kses_post($meta('_alsalam_hero_subtitle', 'Build your career with Iraq\'s leading sterile pharmaceutical manufacturer. We offer opportunities across R&D, clinical QA, engineering, and commercial operations.')); ?>
+        <?php echo wp_kses_post(alsalam_str('', $meta('_alsalam_hero_subtitle', 'Build your career with Iraq\'s leading sterile pharmaceutical manufacturer. We offer opportunities across R&D, clinical QA, engineering, and commercial operations.'))); ?>
       </p>
     </div>
   </section>
@@ -71,13 +71,13 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
       
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="inline-block rounded-full bg-[#E5F0F6] px-4 py-1.5 text-xs font-bold tracking-wider text-primary-dark uppercase font-sans mb-3">
-          <?php echo esc_html($meta('_alsalam_joinus_culture_badge', 'Work Culture & Growth')); ?>
+          <?php echo esc_html(alsalam_str('', $meta('_alsalam_joinus_culture_badge', 'Work Culture & Growth'))); ?>
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-[#071D2C] tracking-tight font-heading leading-tight mb-4">
-          <?php echo wp_kses_post($meta('_alsalam_joinus_culture_title', 'Why Build Your Career with AL-SALAM?')); ?>
+          <?php echo wp_kses_post(alsalam_str('', $meta('_alsalam_joinus_culture_title', 'Why Build Your Career with AL-SALAM?'))); ?>
         </h2>
         <p class="text-text-secondary text-sm leading-relaxed">
-          <?php echo wp_kses_post($meta('_alsalam_joinus_culture_desc', 'Join a world-class team of sterile manufacturing specialists, pharmaceutical engineers, and clinical professionals dedicated to setting new benchmarks in Iraq.')); ?>
+          <?php echo wp_kses_post(alsalam_str('', $meta('_alsalam_joinus_culture_desc', 'Join a world-class team of sterile manufacturing specialists, pharmaceutical engineers, and clinical professionals dedicated to setting new benchmarks in Iraq.'))); ?>
         </p>
       </div>
 
@@ -92,10 +92,10 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
               </svg>
             </div>
             <h3 class="text-lg font-bold font-heading text-[#071D2C] mb-2">
-              <?php esc_html_e('European GMP Standards', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'European GMP Standards')); ?>
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
-              <?php esc_html_e('Work alongside international pharmaceutical standards in state-of-the-art Class A/B cleanroom facilities.', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Work alongside international pharmaceutical standards in state-of-the-art Class A/B cleanroom facilities.')); ?>
             </p>
           </div>
         </div>
@@ -109,10 +109,10 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
               </svg>
             </div>
             <h3 class="text-lg font-bold font-heading text-[#071D2C] mb-2">
-              <?php esc_html_e('Clinical Development', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Clinical Development')); ?>
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
-              <?php esc_html_e('Structured career progression tracks, continuous aseptic technology workshops, and leadership mentorship.', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Structured career progression tracks, continuous aseptic technology workshops, and leadership mentorship.')); ?>
             </p>
           </div>
         </div>
@@ -126,10 +126,10 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
               </svg>
             </div>
             <h3 class="text-lg font-bold font-heading text-[#071D2C] mb-2">
-              <?php esc_html_e('Cutting-Edge Tech', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Cutting-Edge Tech')); ?>
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
-              <?php esc_html_e('Operate fully automated Blow-Fill-Seal (BFS) lines and computerized parametric quality assurance systems.', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Operate fully automated Blow-Fill-Seal (BFS) lines and computerized parametric quality assurance systems.')); ?>
             </p>
           </div>
         </div>
@@ -143,10 +143,10 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
               </svg>
             </div>
             <h3 class="text-lg font-bold font-heading text-[#071D2C] mb-2">
-              <?php esc_html_e('Life-Saving Purpose', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Life-Saving Purpose')); ?>
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
-              <?php esc_html_e('Be part of a mission supplying essential Parenteral therapies to critical hospital networks across the nation.', 'alsalam'); ?>
+              <?php echo esc_html(alsalam_str('', 'Be part of a mission supplying essential Parenteral therapies to critical hospital networks across the nation.')); ?>
             </p>
           </div>
         </div>
@@ -163,10 +163,10 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
       <div class="bg-white rounded-[30px] shadow-xl border border-slate-100 p-8 sm:p-12">
         <div class="border-b border-slate-100 pb-6 mb-8 text-center sm:text-start">
           <span class="inline-block rounded-full bg-[#E5F0F6] px-4 py-1.5 text-xs font-bold tracking-wider text-primary-dark uppercase font-sans mb-3">
-            <?php echo esc_html($meta('_alsalam_joinus_form_badge', 'Careers Intake')); ?>
+            <?php echo esc_html(alsalam_str('', $meta('_alsalam_joinus_form_badge', 'Careers Intake'))); ?>
           </span>
-          <h3 class="text-2xl font-extrabold font-heading text-[#071D2C]"><?php echo esc_html($meta('_alsalam_joinus_form_title', 'Submit Your Profile')); ?></h3>
-          <p class="text-text-secondary text-sm mt-1"><?php echo esc_html($meta('_alsalam_joinus_form_desc', 'Fill out your credentials below. Our HR and talent acquisition team will evaluate your clinical or technical experience for relevant vacancies.')); ?></p>
+          <h3 class="text-2xl font-extrabold font-heading text-[#071D2C]"><?php echo esc_html(alsalam_str('', $meta('_alsalam_joinus_form_title', 'Submit Your Profile'))); ?></h3>
+          <p class="text-text-secondary text-sm mt-1"><?php echo esc_html(alsalam_str('', $meta('_alsalam_joinus_form_desc', 'Fill out your credentials below. Our HR and talent acquisition team will evaluate your clinical or technical experience for relevant vacancies.'))); ?></p>
         </div>
 
         <form id="joinus-form" action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>" method="POST" class="space-y-6">
@@ -176,13 +176,13 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Full Name -->
             <div class="flex flex-col gap-2">
-              <label for="name" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('Full Name *', 'alsalam'); ?></label>
-              <input type="text" id="name" name="name" required placeholder="<?php esc_attr_e('e.g. Dr. Sarah Hassan', 'alsalam'); ?>" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
+              <label for="name" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'Full Name *')); ?></label>
+              <input type="text" id="name" name="name" required placeholder="<?php echo esc_attr(alsalam_str('', 'e.g. Dr. Sarah Hassan')); ?>" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
             </div>
 
             <!-- Email Address -->
             <div class="flex flex-col gap-2">
-              <label for="email" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('Email Address *', 'alsalam'); ?></label>
+              <label for="email" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'Email Address *')); ?></label>
               <input type="email" id="email" name="email" required placeholder="sarah@example.com" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
             </div>
           </div>
@@ -190,21 +190,21 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Phone Number -->
             <div class="flex flex-col gap-2">
-              <label for="phone" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('Phone Number *', 'alsalam'); ?></label>
+              <label for="phone" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'Phone Number *')); ?></label>
               <input type="tel" id="phone" name="phone" required placeholder="+964 770 000 0000" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
             </div>
 
             <!-- Target Department -->
             <div class="flex flex-col gap-2">
-              <label for="department" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('Specialized Field / Role *', 'alsalam'); ?></label>
+              <label for="department" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'Specialized Field / Role *')); ?></label>
               <select id="department" name="department" required class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary focus:outline-none focus:border-primary focus:bg-white transition-all duration-200 appearance-none cursor-pointer">
-                <option value="" disabled selected><?php esc_html_e('Select your specialization...', 'alsalam'); ?></option>
-                <option value="Sterile Production / BFS"><?php esc_html_e('Sterile Production & BFS Operations', 'alsalam'); ?></option>
-                <option value="Quality Assurance & QC"><?php esc_html_e('Quality Assurance & Microbiological QC', 'alsalam'); ?></option>
-                <option value="HVAC & Cleanroom Engineering"><?php esc_html_e('HVAC & Utility Engineering', 'alsalam'); ?></option>
-                <option value="Regulatory & Pharmacovigilance"><?php esc_html_e('Regulatory Affairs & Dossiers', 'alsalam'); ?></option>
-                <option value="Supply Chain & Logistics"><?php esc_html_e('Pharmaceutical Supply Chain & Logistics', 'alsalam'); ?></option>
-                <option value="Commercial & Medical Rep"><?php esc_html_e('Commercial Sales & Medical Representative', 'alsalam'); ?></option>
+                <option value="" disabled selected><?php echo esc_html(alsalam_str('', 'Select your specialization...')); ?></option>
+                <option value="Sterile Production / BFS"><?php echo esc_html(alsalam_str('', 'Sterile Production & BFS Operations')); ?></option>
+                <option value="Quality Assurance & QC"><?php echo esc_html(alsalam_str('', 'Quality Assurance & Microbiological QC')); ?></option>
+                <option value="HVAC & Cleanroom Engineering"><?php echo esc_html(alsalam_str('', 'HVAC & Utility Engineering')); ?></option>
+                <option value="Regulatory & Pharmacovigilance"><?php echo esc_html(alsalam_str('', 'Regulatory Affairs & Dossiers')); ?></option>
+                <option value="Supply Chain & Logistics"><?php echo esc_html(alsalam_str('', 'Pharmaceutical Supply Chain & Logistics')); ?></option>
+                <option value="Commercial & Medical Rep"><?php echo esc_html(alsalam_str('', 'Commercial Sales & Medical Representative')); ?></option>
               </select>
             </div>
           </div>
@@ -212,21 +212,21 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Experience Level -->
             <div class="flex flex-col gap-2">
-              <label for="experience" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('Years of Experience', 'alsalam'); ?></label>
-              <input type="text" id="experience" name="experience" placeholder="<?php esc_attr_e('e.g. 5 Years in Cleanroom Operations', 'alsalam'); ?>" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
+              <label for="experience" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'Years of Experience')); ?></label>
+              <input type="text" id="experience" name="experience" placeholder="<?php echo esc_attr(alsalam_str('', 'e.g. 5 Years in Cleanroom Operations')); ?>" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
             </div>
 
             <!-- CV / LinkedIn URL -->
             <div class="flex flex-col gap-2">
-              <label for="cv_url" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('CV / LinkedIn Profile URL', 'alsalam'); ?></label>
+              <label for="cv_url" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'CV / LinkedIn Profile URL')); ?></label>
               <input type="url" id="cv_url" name="cv_url" placeholder="https://linkedin.com/in/yourprofile" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200">
             </div>
           </div>
 
           <!-- Cover Note / Credentials Summary -->
           <div class="flex flex-col gap-2">
-            <label for="notes" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php esc_html_e('Qualifications & Cover Note', 'alsalam'); ?></label>
-            <textarea id="notes" name="notes" rows="4" placeholder="<?php esc_attr_e('Summarize your medical/technical background, key qualifications, or link to your online portfolio/CV...', 'alsalam'); ?>" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200 resize-none"></textarea>
+            <label for="notes" class="text-xs font-bold text-[#071D2C] uppercase tracking-wider"><?php echo esc_html(alsalam_str('', 'Qualifications & Cover Note')); ?></label>
+            <textarea id="notes" name="notes" rows="4" placeholder="<?php echo esc_attr(alsalam_str('', 'Summarize your medical/technical background, key qualifications, or link to your online portfolio/CV...')); ?>" class="w-full bg-[#F4F7FE] border border-slate-200/80 rounded-2xl px-5 py-3.5 text-sm text-text-primary placeholder-slate-400 focus:outline-none focus:border-primary focus:bg-white transition-all duration-200 resize-none"></textarea>
           </div>
 
           <!-- Submit Button -->
@@ -235,7 +235,7 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 shrink-0">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
               </svg>
-              <span><?php esc_html_e('Submit Application', 'alsalam'); ?></span>
+              <span><?php echo esc_html(alsalam_str('', 'Submit Application')); ?></span>
             </button>
           </div>
 

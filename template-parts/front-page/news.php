@@ -7,25 +7,74 @@
 
 defined('ABSPATH') || exit;
 
-// Retrieve Latest Posts
 if (get_theme_mod('_alsalam_news_enable', '1') !== '1') return;
+
+// Detect current language
+$current_lang = function_exists('pll_current_language') ? pll_current_language() : '';
+
+// Dynamically resolve Educational Category ID for ANY active language
+$edu_term_id = 0;
+if ($current_lang) {
+    $terms = get_terms(array(
+        'taxonomy'   => 'category',
+        'hide_empty' => false,
+    ));
+    foreach ($terms as $term) {
+        if (strpos(strtolower($term->slug), 'educational') !== false) {
+            if (function_exists('pll_get_term_language')) {
+                if (pll_get_term_language($term->term_id) === $current_lang) {
+                    $edu_term_id = $term->term_id;
+                    break;
+                }
+            } else {
+                $edu_term_id = $term->term_id;
+                break;
+            }
+        }
+    }
+}
+
+// Retrieve Latest Posts (exclude educational category dynamically for current language)
 $latest_args = array(
     'post_type'      => 'post',
     'post_status'    => 'publish',
     'posts_per_page' => 6,
     'orderby'        => 'date',
-    'order'          => 'DESC'
+    'order'          => 'DESC',
 );
+
+if ($edu_term_id) {
+    $latest_args['category__not_in'] = array($edu_term_id);
+}
+
 $latest_query = new WP_Query($latest_args);
 
-// Retrieve Educational Posts
+// Retrieve Educational Posts (dynamically for current language)
 $educational_args = array(
     'post_type'      => 'post',
     'post_status'    => 'publish',
     'posts_per_page' => 6,
-    'category_name'  => 'educational-en,educational-ar' // Fetch from educational slug depending on language
+    'orderby'        => 'date',
+    'order'          => 'DESC',
 );
+
+if ($edu_term_id) {
+    $educational_args['cat'] = $edu_term_id;
+}
+
 $educational_query = new WP_Query($educational_args);
+
+// Fallback: If both queries return empty for any reason, fetch recent posts of current language
+if (!$latest_query->have_posts() && !$educational_query->have_posts()) {
+    $fallback_args = array(
+        'post_type'      => 'post',
+        'post_status'    => 'publish',
+        'posts_per_page' => 6,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+    $latest_query = new WP_Query($fallback_args);
+}
 
 // Combine posts into a structured array for Swiper
 $swiper_slides = array();
@@ -35,7 +84,7 @@ if ($latest_query->have_posts()) {
         $latest_query->the_post();
         $swiper_slides[] = array(
             'title'    => get_the_title(),
-            'date'     => get_the_date('Y/m/d'),
+            'date'     => alsalam_date('Y/m/d'),
             'image'    => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : alsalam_img('news1.jpg'),
             'desc'     => get_the_excerpt(),
             'category' => 'latest',
@@ -50,7 +99,7 @@ if ($educational_query->have_posts()) {
         $educational_query->the_post();
         $swiper_slides[] = array(
             'title'    => get_the_title(),
-            'date'     => get_the_date('Y/m/d'),
+            'date'     => alsalam_date('Y/m/d'),
             'image'    => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : alsalam_img('news2.jpg'),
             'desc'     => get_the_excerpt(),
             'category' => 'educational',
@@ -68,15 +117,15 @@ if ($educational_query->have_posts()) {
 
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 gsap-fade-up">
     <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
-      <?php echo wp_kses_post(get_theme_mod('_alsalam_news_title', __('News & Events', 'alsalam'))); ?>
+      <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_news_title', 'News & Events'))); ?>
     </h2>
 
     <div class="flex items-center bg-white rounded-full p-1 shadow-sm border border-slate-100" id="news-tab-wrapper">
       <button onclick="switchNewsTab('latest')" id="tab-latest" class="px-6 py-2 bg-teal-500 text-white font-medium rounded-full cursor-pointer shadow-md transition-all duration-300">
-        <?php echo esc_html(get_theme_mod('_alsalam_news_tab1_label', __('Latest', 'alsalam'))); ?>
+        <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_news_tab1_label', 'Latest'))); ?>
       </button>
       <button onclick="switchNewsTab('educational')" id="tab-educational" class="px-6 py-2 text-teal-600 font-medium rounded-full cursor-pointer transition-all duration-300 hover:text-teal-700">
-        <?php echo esc_html(get_theme_mod('_alsalam_news_tab2_label', __('Educational', 'alsalam'))); ?>
+        <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_news_tab2_label', 'Educational'))); ?>
       </button>
     </div>
   </div>
@@ -111,10 +160,10 @@ if ($educational_query->have_posts()) {
             </div>
 
             <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight tracking-tight font-heading">
-              <?php echo esc_html($item['title']); ?>
+              <?php echo esc_html(alsalam_str('', $item['title'])); ?>
             </h3>
             <p class="text-sm text-slate-500 mb-6 line-clamp-2 leading-relaxed">
-              <?php echo esc_html($item['desc']); ?>
+              <?php echo esc_html(alsalam_str('', $item['desc'])); ?>
             </p>
 
             <a href="<?php echo esc_url($item['link']); ?>" class="flex items-center justify-between w-full bg-teal-500 text-white px-5 py-3 rounded-full mt-auto hover:bg-teal-600 transition-colors duration-300 font-semibold group shadow-md shadow-teal-500/10">
@@ -122,7 +171,7 @@ if ($educational_query->have_posts()) {
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="font-medium text-sm"><?php esc_html_e('Read More', 'alsalam'); ?></span>
+                <span class="font-medium text-sm"><?php echo esc_html(alsalam_str('read_more', 'Read More')); ?></span>
               </div>
               
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

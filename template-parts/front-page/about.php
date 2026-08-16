@@ -40,7 +40,7 @@ defined('ABSPATH') || exit;
                         class="absolute bottom-[25px] end-[-54px] flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-primary active:scale-95 text-white font-medium rounded-full shadow-2xl transition-all duration-300 group/btn focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-20 font-sans min-w-[223px] min-h-[65px]"
                         aria-label="<?php esc_attr_e('Learn More', 'alsalam'); ?>"
                     >
-                        <span class="text-base font-semibold tracking-wide"><?php echo esc_html(get_theme_mod('_alsalam_about_btn_text', __('Learn More', 'alsalam'))); ?></span>
+                        <span class="text-base font-semibold tracking-wide"><?php echo esc_html(alsalam_str('learn_more', get_theme_mod('_alsalam_about_btn_text', 'Learn More'))); ?></span>
                         <svg 
                             class="w-4 h-4 transition-transform duration-300 ltr:group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 rtl:rotate-180" 
                             fill="none" 
@@ -59,16 +59,16 @@ defined('ABSPATH') || exit;
             <div class="flex flex-col text-start">
                 <div class="self-start mb-4 gsap-fade-up">
                     <span class="inline-block rounded-full bg-[#E5F0F6] px-4 py-1.5 text-sm font-semibold tracking-wide text-slate-800 font-sans">
-                        <?php echo esc_html(get_theme_mod('_alsalam_about_badge', __('About Us', 'alsalam'))); ?>
+                        <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_about_badge', 'Corporate Profile'))); ?>
                     </span>
                 </div>
 
                 <h2 class="text-3xl sm:text-4xl lg:text-4.5xl font-bold text-[#071D2C] tracking-tight mb-6 leading-tight font-heading gsap-fade-up">
-                    <?php echo wp_kses_post(get_theme_mod('_alsalam_about_title', __('About AL-SALAM', 'alsalam'))); ?>
+                    <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_about_title', 'About AL-SALAM'))); ?>
                 </h2>
 
                 <p class="text-[#3A3A3A] text-base sm:text-[17px] leading-relaxed mb-8 font-normal font-sans gsap-fade-up">
-                    <?php echo wp_kses_post(get_theme_mod('_alsalam_about_desc1', __('AL-SALAM Pharmaceutical Industry is a sterile manufacturing facility...', 'alsalam'))); ?>
+                    <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_about_desc1', 'AL-SALAM Pharmaceutical Industry is a sterile manufacturing facility...'))); ?>
                 </p>
 
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 gsap-fade-up" role="list">
@@ -85,7 +85,7 @@ defined('ABSPATH') || exit;
                             <?php endif; ?>
                         </div>
                         <span class="text-[#071D2C] font-bold text-base leading-snug tracking-tight font-heading">
-                            <?php echo esc_html($feature['title']); ?>
+                            <?php echo esc_html(alsalam_str('', $feature['title'])); ?>
                         </span>
                     </li>
                     <?php 
@@ -95,7 +95,7 @@ defined('ABSPATH') || exit;
                 </ul>
 
                 <p class="text-[#3A3A3A] text-base sm:text-[17px] leading-relaxed font-normal font-sans gsap-fade-up">
-                    <?php echo wp_kses_post(get_theme_mod('_alsalam_about_desc2', __('We combine advanced production, strict quality control...', 'alsalam'))); ?>
+                    <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_about_desc2', 'We combine advanced production, strict quality control...'))); ?>
                 </p>
             </div>
             

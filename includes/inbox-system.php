@@ -242,3 +242,117 @@ function alsalam_handle_joinus_submission() {
         wp_send_json_error(['message' => __('Could not submit application.', 'alsalam')]);
     }
 }
+
+// --- Newsletter AJAX ---
+add_action('wp_ajax_alsalam_submit_newsletter', 'alsalam_handle_newsletter_submission');
+add_action('wp_ajax_nopriv_alsalam_submit_newsletter', 'alsalam_handle_newsletter_submission');
+
+function alsalam_handle_newsletter_submission() {
+    check_ajax_referer('alsalam_newsletter_submit', 'newsletter_nonce');
+
+    $email = sanitize_email($_POST['email'] ?? '');
+
+    if (empty($email) || !is_email($email)) {
+        wp_send_json_error(['message' => __('Please provide a valid email address.', 'alsalam')]);
+    }
+
+    // Check if email already exists
+    $existing = get_posts([
+        'post_type' => 'alsalam_message',
+        'meta_key' => '_alsalam_sender_email',
+        'meta_value' => $email,
+        'tax_query' => [
+            [
+                'taxonomy' => 'message_type',
+                'field' => 'name',
+                'terms' => 'Newsletter Subscription'
+            ]
+        ],
+        'posts_per_page' => 1
+    ]);
+
+    if (!empty($existing)) {
+        wp_send_json_error(['message' => __('You are already subscribed!', 'alsalam')]);
+    }
+
+    $post_id = wp_insert_post([
+        'post_title'   => "Subscriber: {$email}",
+        'post_content' => '',
+        'post_status'  => 'publish',
+        'post_type'    => 'alsalam_message'
+    ]);
+
+    if (!is_wp_error($post_id)) {
+        wp_set_object_terms($post_id, 'Newsletter Subscription', 'message_type');
+        update_post_meta($post_id, '_alsalam_sender_email', $email);
+        wp_send_json_success(['message' => __('Thank you for subscribing to our newsletter!', 'alsalam')]);
+    } else {
+        wp_send_json_error(['message' => __('Could not save subscription.', 'alsalam')]);
+    }
+}
+
+// 5. CSV Export for Newsletter
+add_action('admin_menu', 'alsalam_newsletter_export_menu');
+function alsalam_newsletter_export_menu() {
+    add_submenu_page(
+        'edit.php?post_type=alsalam_message',
+        __('Newsletter Emails', 'alsalam'),
+        __('Export Newsletters', 'alsalam'),
+        'manage_options',
+        'alsalam_export_newsletters',
+        'alsalam_export_newsletters_page'
+    );
+}
+
+function alsalam_export_newsletters_page() {
+    ?>
+    <div class="wrap">
+        <h1><?php _e('Export Newsletter Subscribers', 'alsalam'); ?></h1>
+        <p><?php _e('Download a CSV file of all newsletter subscribers.', 'alsalam'); ?></p>
+        <form method="post" action="<?php echo admin_url('admin-post.php'); ?>">
+            <input type="hidden" name="action" value="alsalam_download_newsletter_csv">
+            <?php wp_nonce_field('alsalam_newsletter_export_nonce', 'alsalam_export_nonce'); ?>
+            <?php submit_button(__('Download CSV', 'alsalam')); ?>
+        </form>
+    </div>
+    <?php
+}
+
+add_action('admin_post_alsalam_download_newsletter_csv', 'alsalam_handle_newsletter_export');
+function alsalam_handle_newsletter_export() {
+    if (!current_user_can('manage_options')) {
+        wp_die(__('You do not have sufficient permissions to access this page.'));
+    }
+
+    check_admin_referer('alsalam_newsletter_export_nonce', 'alsalam_export_nonce');
+
+    $args = [
+        'post_type' => 'alsalam_message',
+        'posts_per_page' => -1,
+        'tax_query' => [
+            [
+                'taxonomy' => 'message_type',
+                'field' => 'name',
+                'terms' => 'Newsletter Subscription'
+            ]
+        ]
+    ];
+
+    $subscribers = get_posts($args);
+
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=newsletter_subscribers_' . date('Y-m-d') . '.csv');
+
+    $output = fopen('php://output', 'w');
+    fputcsv($output, array('Email', 'Date Subscribed'));
+
+    foreach ($subscribers as $sub) {
+        $email = get_post_meta($sub->ID, '_alsalam_sender_email', true);
+        $date = get_the_date('Y-m-d H:i:s', $sub->ID);
+        if ($email) {
+            fputcsv($output, array($email, $date));
+        }
+    }
+    fclose($output);
+    exit;
+}

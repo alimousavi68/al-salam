@@ -42,11 +42,11 @@ while (have_posts()) : the_post();
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php esc_html_e('Home', 'alsalam'); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('home', 'Home')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <a href="<?php echo esc_url(get_post_type_archive_link('post') ?: home_url('/news')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php esc_html_e('News & Events', 'alsalam'); ?></a>
+        <a href="<?php echo esc_url(get_post_type_archive_link('post') ?: home_url('/news')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('news_events', 'News & Events')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <span class="text-white/85"><?php esc_html_e('Article Details', 'alsalam'); ?></span>
+        <span class="text-white/85"><?php echo esc_html(alsalam_str('', 'Article Details')); ?></span>
       </nav>
       
       <!-- Title -->
@@ -65,7 +65,7 @@ while (have_posts()) : the_post();
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <?php echo get_the_date('Y/m/d'); ?>
+          <span><?php echo alsalam_date('Y/m/d'); ?></span>
         </span>
       </div>
     </div>
@@ -110,11 +110,7 @@ while (have_posts()) : the_post();
       
       <header class="flex flex-col items-center text-center mb-16">
         <h2 class="text-[#071D2C] text-2xl sm:text-3xl font-extrabold tracking-tight font-heading">
-          <?php if (is_rtl()): ?>
-            أخبار ذات صلة <span class="text-teal-500">وتحديثات</span>
-          <?php else: ?>
-            Related <span class="text-teal-500">News</span> &amp; Updates
-          <?php endif; ?>
+          <?php echo wp_kses_post(alsalam_str('single_related_news_title', 'Related <span class="text-teal-500">News</span> &amp; Updates')); ?>
         </h2>
         <div class="w-12 h-1 bg-primary mt-3 rounded-full"></div>
       </header>

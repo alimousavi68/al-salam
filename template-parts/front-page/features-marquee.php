@@ -13,8 +13,10 @@ defined('ABSPATH') || exit;
         <div class="w-full max-w-7xl px-4 overflow-hidden">
             <div class="flex w-full group">
             <?php
-            $pills_json = get_theme_mod('_alsalam_marquee_items');
-            $pills = json_decode($pills_json, true);
+            $current_lang = function_exists('pll_current_language') ? pll_current_language() : (is_rtl() ? 'ar' : 'en');
+            $suffix       = ($current_lang === 'ar') ? '_ar' : '';
+            $pills_json   = get_theme_mod('_alsalam_marquee_items' . $suffix) ?: get_theme_mod('_alsalam_marquee_items');
+            $pills        = json_decode($pills_json, true);
             
             if (!is_array($pills) || empty($pills)) {
                 $pills = array(
@@ -44,7 +46,7 @@ defined('ABSPATH') || exit;
                     }
                     
                     $title = !empty($pill['title']) ? $pill['title'] : (!empty($pill['text']) ? $pill['text'] : '');
-                    echo '<span class="text-white font-medium text-sm md:text-base whitespace-nowrap">' . esc_html($title) . '</span>';
+                    echo '<span class="text-white font-medium text-sm md:text-base whitespace-nowrap">' . esc_html(alsalam_str('', $title)) . '</span>';
                     echo '</article>';
                 }
                 echo '</div>';

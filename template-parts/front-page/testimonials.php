@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
                 <header class="flex items-center gap-3 mb-8 text-white gsap-fade-up">
                     <img src="<?php echo esc_url(alsalam_img('chats-text.svg')); ?>" alt="Customer Comments" class="w-10 h-10 drop-shadow-sm" loading="lazy">
                     <h2 class="text-3xl font-bold font-heading">
-                        <?php echo wp_kses_post(get_theme_mod('_alsalam_testi_title', __('What Our Partners Say', 'alsalam'))); ?>
+                        <?php echo wp_kses_post(alsalam_str('customer_comments', get_theme_mod('_alsalam_testi_title', 'What Our Partners Say'))); ?>
                     </h2>
                 </header>
 
@@ -25,8 +25,10 @@ defined('ABSPATH') || exit;
                     <div class="swiper comment-swiper w-full pb-6">
                         <div class="swiper-wrapper">
                             <?php 
-                            $reviews_json = get_theme_mod('_alsalam_testi_reviews');
-                            $reviews = json_decode($reviews_json, true);
+                            $current_lang = function_exists('pll_current_language') ? pll_current_language() : (is_rtl() ? 'ar' : 'en');
+                            $suffix       = ($current_lang === 'ar') ? '_ar' : '';
+                            $reviews_json = get_theme_mod('_alsalam_testi_reviews' . $suffix) ?: get_theme_mod('_alsalam_testi_reviews');
+                            $reviews      = json_decode($reviews_json, true);
                             
                             if (!is_array($reviews) || empty($reviews)) {
                                 $reviews = array();
@@ -58,14 +60,14 @@ defined('ABSPATH') || exit;
                                         ?>
                                         <img src="<?php echo esc_url($avatar); ?>" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-white shadow-sm object-cover" loading="lazy">
                                         <div class="ms-4 flex flex-col">
-                                            <span class="font-bold text-slate-900 font-heading"><?php echo esc_html($review['name']); ?></span>
-                                            <span class="text-sm text-slate-500 font-sans"><?php echo esc_html($review['role'] ?? ''); ?></span>
+                                            <span class="font-bold text-slate-900 font-heading"><?php echo esc_html(alsalam_str('', $review['name'])); ?></span>
+                                            <span class="text-sm text-slate-500 font-sans"><?php echo esc_html(alsalam_str('', $review['role'] ?? '')); ?></span>
                                         </div>
-                                        <span class="text-xs text-slate-400 ms-auto font-medium bg-slate-100 px-2 py-1 rounded-md font-sans"><?php echo esc_html($review['date'] ?? ''); ?></span>
+                                        <span class="text-xs text-slate-400 ms-auto font-medium bg-slate-100 px-2 py-1 rounded-md font-sans"><?php echo esc_html(alsalam_str('', $review['date'] ?? '')); ?></span>
                                     </div>
 
                                     <p class="text-slate-600 leading-relaxed mt-4 text-sm lg:text-base line-clamp-3 font-sans">
-                                        "<?php echo esc_html($review['comment'] ?? ''); ?>"
+                                        "<?php echo esc_html(alsalam_str('', $review['comment'] ?? '')); ?>"
                                     </p>
                                 </article>
                             </div>
@@ -90,7 +92,7 @@ defined('ABSPATH') || exit;
 
             <div class="w-full lg:w-1/2 relative h-[400px] lg:h-auto z-20">
                 <a href="<?php echo esc_url(get_theme_mod('_alsalam_testi_btn_link', '#')); ?>" class="peer absolute bottom-12 start-0 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-30 bg-[#239BA8] text-white px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg hover:bg-teal-600 transition-colors cursor-pointer whitespace-nowrap">
-                    <span class="font-medium font-heading"><?php echo esc_html(get_theme_mod('_alsalam_testi_btn_text', __('All Comments', 'alsalam'))); ?></span>
+                    <span class="font-medium font-heading"><?php echo esc_html(alsalam_str('all_comments', get_theme_mod('_alsalam_testi_btn_text', 'All Comments'))); ?></span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>

@@ -22,6 +22,9 @@ defined('ABSPATH') || exit;
             --font-heading-ar: '<?php echo esc_attr(get_theme_mod('_alsalam_font_heading_ar', 'Cairo')); ?>', sans-serif;
             --font-body-en: '<?php echo esc_attr(get_theme_mod('_alsalam_font_body_en', 'Inter')); ?>', sans-serif;
             --font-body-ar: '<?php echo esc_attr(get_theme_mod('_alsalam_font_body_ar', 'Tajawal')); ?>', sans-serif;
+            <?php $is_ar = (function_exists('pll_current_language') && pll_current_language() === 'ar') || is_rtl(); ?>
+            --font-sans: <?php echo $is_ar ? 'var(--font-body-ar)' : 'var(--font-body-en)'; ?>;
+            --font-heading: <?php echo $is_ar ? 'var(--font-heading-ar)' : 'var(--font-heading-en)'; ?>;
         }
     </style>
 </head>
@@ -47,8 +50,20 @@ defined('ABSPATH') || exit;
       <!-- Navigation Links -->
       <nav class="hidden md:flex items-center gap-x-[26px]" aria-label="Main Navigation">
         <?php
+        // Polylang registers menus as 'primary___en' / 'primary___ar'
+        // but also works with 'primary' as fallback through pll_translate_url
+        // Use the language-specific location when Polylang is active
+        $menu_location = 'primary';
+        if (function_exists('pll_current_language')) {
+            $lang = pll_current_language();
+            $lang_location = 'primary___' . $lang;
+            $locations = get_nav_menu_locations();
+            if (!empty($locations[$lang_location])) {
+                $menu_location = $lang_location;
+            }
+        }
         wp_nav_menu(array(
-            'theme_location' => 'primary',
+            'theme_location' => $menu_location,
             'container'      => false,
             'menu_class'     => 'flex items-center gap-x-[26px]',
             'fallback_cb'    => false,
@@ -109,7 +124,7 @@ defined('ABSPATH') || exit;
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 shrink-0">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span><?php echo esc_html(get_theme_mod('_alsalam_header_cta_text', __('Request Inquiry', 'alsalam'))); ?></span>
+        <span><?php echo esc_html(alsalam_str('request_inquiry', get_theme_mod('_alsalam_header_cta_text', 'Request Inquiry'))); ?></span>
       </a>
 
       <!-- Responsive Mobile Toggle -->
@@ -141,7 +156,7 @@ defined('ABSPATH') || exit;
     <nav class="flex flex-col gap-6 text-center my-auto">
        <?php
         wp_nav_menu(array(
-            'theme_location' => 'primary',
+            'theme_location' => $menu_location,
             'container'      => false,
             'menu_class'     => 'flex flex-col gap-6 text-center my-auto',
             'fallback_cb'    => false,
@@ -155,7 +170,7 @@ defined('ABSPATH') || exit;
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 shrink-0">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span><?php echo esc_html(get_theme_mod('_alsalam_header_cta_text', __('Request Inquiry', 'alsalam'))); ?></span>
+        <span><?php echo esc_html(alsalam_str('request_inquiry', get_theme_mod('_alsalam_header_cta_text', 'Request Inquiry'))); ?></span>
       </a>
     </div>
 

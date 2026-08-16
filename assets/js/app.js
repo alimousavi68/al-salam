@@ -84,26 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const langBtn = document.getElementById('lang-switcher-btn');
         const langMenu = document.getElementById('lang-dropdown-menu');
         const langChevron = document.getElementById('lang-chevron');
-        const currentLang = localStorage.getItem('site_lang') || 'en';
 
         if (langBtn && langMenu) {
-            // Set initial state based on localStorage
-            const labelSpan = document.getElementById('current-lang-label');
-            if (labelSpan) {
-                labelSpan.textContent = currentLang.toUpperCase();
-            }
-            const checkEn = document.getElementById('check-en');
-            const checkAr = document.getElementById('check-ar');
-            if (checkEn && checkAr) {
-                if (currentLang === 'ar') {
-                    checkEn.classList.add('hidden');
-                    checkAr.classList.remove('hidden');
-                } else {
-                    checkEn.classList.remove('hidden');
-                    checkAr.classList.add('hidden');
-                }
-            }
-
             // Toggle dropdown using custom show class (avoids JIT dynamic class compilation issues)
             const toggleDropdown = (show) => {
                 const isOpen = langMenu.classList.contains('show');
@@ -130,12 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Handle language buttons selection
+            // Close dropdown when a language is clicked
             const langButtons = document.querySelectorAll('[data-lang-btn]');
             langButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const selectedLang = btn.getAttribute('data-lang-btn');
-                    localStorage.setItem('site_lang', selectedLang);
+                btn.addEventListener('click', () => {
                     toggleDropdown(false);
                 });
             });

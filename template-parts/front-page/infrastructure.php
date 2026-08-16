@@ -7,11 +7,14 @@ defined('ABSPATH') || exit;
 
 if (get_theme_mod('_alsalam_infra_enable', '1') !== '1') return; 
 
+$current_lang = function_exists('pll_current_language') ? pll_current_language() : (is_rtl() ? 'ar' : 'en');
+$suffix       = ($current_lang === 'ar') ? '_ar' : '';
+
 $title = get_theme_mod('_alsalam_infra_title', 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure');
 $badge = get_theme_mod('_alsalam_infra_sub', 'AL-SALAM');
 
-$items_json = get_theme_mod('_alsalam_infra_items');
-$items = json_decode($items_json, true);
+$items_json = get_theme_mod('_alsalam_infra_items' . $suffix) ?: get_theme_mod('_alsalam_infra_items');
+$items      = json_decode($items_json, true);
 
 if (!is_array($items) || empty($items)) {
     $items = [
@@ -43,7 +46,7 @@ $total_items = count($items);
     
     <header class="flex flex-col items-center text-center mb-12 gsap-fade-up">
         <h2 class="text-slate-900 text-4xl font-extrabold tracking-tight">
-            <?php echo wp_kses_post($title); ?>
+            <?php echo wp_kses_post(alsalam_str('', $title)); ?>
         </h2>
         <div class="flex items-center gap-2 mt-4">
             <span class="inline-flex items-center justify-center text-teal-500 w-7 h-8" aria-hidden="true">
@@ -53,7 +56,7 @@ $total_items = count($items);
                 ?>
             </span>
             <span class="text-slate-800 text-lg font-medium">
-                <?php echo esc_html($badge); ?>
+                <?php echo esc_html(alsalam_str('', $badge)); ?>
             </span>
         </div>
     </header>
@@ -62,7 +65,7 @@ $total_items = count($items);
         <div class="absolute top-0 end-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#239BA8] opacity-50 blur-[60px] rounded-full pointer-events-none z-0" aria-hidden="true"></div>
         <div class="absolute bottom-0 start-0 translate-y-1/4 -translate-x-1/4 w-64 h-64 bg-[#239BA8] opacity-50 blur-[60px] rounded-full pointer-events-none z-0" aria-hidden="true"></div>
         
-        <img src="<?php echo esc_url(get_theme_mod('_alsalam_infra_mask', alsalam_img('Mask group.svg'))); ?>" class="infra-bg-parallax absolute inset-0 w-full h-full object-cover pointer-events-none opacity-100 z-0" alt="" aria-hidden="true" loading="lazy" />
+        <img src="<?php echo esc_url(get_theme_mod('_alsalam_infra_mask_fixed', alsalam_img('Mask group.svg'))); ?>" class="infra-bg-parallax absolute inset-0 w-full h-full object-cover pointer-events-none opacity-100 z-0" alt="" aria-hidden="true" loading="lazy" />
 
         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 relative z-10" role="list">
             
@@ -87,9 +90,9 @@ $total_items = count($items);
                         ?>
                     </span>
                 </div>
-                <h3 class="text-white text-xl font-bold mb-3"><?php echo esc_html($item['title']); ?></h3>
+                <h3 class="text-white text-xl font-bold mb-3"><?php echo esc_html(alsalam_str('', $item['title'])); ?></h3>
                 <p class="text-white/80 text-sm leading-relaxed max-w-xs">
-                    <?php echo esc_html($item['desc']); ?>
+                    <?php echo wp_kses_post(alsalam_str('', $item['desc'])); ?>
                 </p>
 
                 <?php if ($index < $total_items - 1) : ?>

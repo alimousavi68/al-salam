@@ -22,17 +22,21 @@ defined('ABSPATH') || exit;
         <!-- Col 1: Branding & Newsletter -->
         <div class="lg:col-span-4 flex flex-col">
             <h2 class="text-3xl font-extrabold mb-8 leading-tight">
-                <?php echo wp_kses_post(get_theme_mod('_alsalam_footer_title', 'Excellence <br/> in Parenteral Manufacturing')); ?>
+                <?php echo wp_kses_post(alsalam_str('footer_tagline', get_theme_mod('_alsalam_footer_title', 'Excellence <br/> in Parenteral Manufacturing'))); ?>
             </h2>
 
-            <div class="relative flex items-center bg-white rounded-full p-1.5 shadow-sm mb-8">
-                <input type="email" placeholder="<?php echo esc_attr(get_theme_mod('_alsalam_footer_newsletter', 'Enter your email address')); ?>" class="flex-1 bg-transparent border-none outline-none ps-4 text-sm text-slate-600 placeholder-slate-400">
-                <button type="submit" class="w-10 h-10 rounded-full bg-teal-500 hover:bg-teal-600 text-white flex items-center justify-center transition-colors shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </button>
-            </div>
+            <form id="alsalam-newsletter-form" class="relative flex flex-col mb-8" method="POST">
+                <div class="relative flex items-center bg-white rounded-full p-1.5 shadow-sm">
+                    <input type="email" name="email" required placeholder="<?php echo esc_attr(alsalam_str('footer_email_placeholder', get_theme_mod('_alsalam_footer_newsletter', 'Enter your email address'))); ?>" class="flex-1 bg-transparent border-none outline-none ps-4 text-sm text-slate-600 placeholder-slate-400">
+                    <?php wp_nonce_field('alsalam_newsletter_submit', 'newsletter_nonce'); ?>
+                    <button type="submit" class="w-10 h-10 rounded-full bg-teal-500 hover:bg-teal-600 text-white flex items-center justify-center transition-colors shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="newsletter-form-msg" class="hidden mt-2 text-sm text-center font-medium w-full"></div>
+            </form>
 
             <div class="flex items-center gap-3">
                 <?php
@@ -55,10 +59,17 @@ defined('ABSPATH') || exit;
         </div>
 
         <!-- Cols 2 to 5: Links -->
+        <?php
+        $current_lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
+        $suffix       = ($current_lang === 'ar') ? '_ar' : '';
+
+        $quick_menu_id     = get_theme_mod('_alsalam_footer_quick_menu' . $suffix) ?: get_theme_mod('_alsalam_footer_quick_menu');
+        $services_menu_id  = get_theme_mod('_alsalam_footer_services_menu' . $suffix) ?: get_theme_mod('_alsalam_footer_services_menu');
+        $resources_menu_id = get_theme_mod('_alsalam_footer_resources_menu' . $suffix) ?: get_theme_mod('_alsalam_footer_resources_menu');
+        ?>
         <div class="lg:col-span-2 flex flex-col lg:col-start-6">
             <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(alsalam_str('footer_quick_access', 'Quick Access')); ?></h3>
             <?php
-            $quick_menu_id = get_theme_mod('_alsalam_footer_quick_menu');
             if ($quick_menu_id) {
                 wp_nav_menu(array(
                     'menu' => $quick_menu_id,
@@ -74,7 +85,6 @@ defined('ABSPATH') || exit;
         <div class="lg:col-span-2 flex flex-col">
             <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(alsalam_str('footer_services', 'Services')); ?></h3>
             <?php
-            $services_menu_id = get_theme_mod('_alsalam_footer_services_menu');
             if ($services_menu_id) {
                 wp_nav_menu(array(
                     'menu' => $services_menu_id,
@@ -90,7 +100,6 @@ defined('ABSPATH') || exit;
         <div class="lg:col-span-2 flex flex-col">
             <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(alsalam_str('footer_resources', 'Resources')); ?></h3>
             <?php
-            $resources_menu_id = get_theme_mod('_alsalam_footer_resources_menu');
             if ($resources_menu_id) {
                 wp_nav_menu(array(
                     'menu' => $resources_menu_id,
@@ -127,7 +136,7 @@ defined('ABSPATH') || exit;
     <div class="relative z-10 bg-white rounded-[2rem] sm:rounded-full p-3 sm:p-2 px-6 flex flex-col sm:flex-row justify-between items-center shadow-sm max-w-7xl mx-4 lg:mx-auto gap-4 sm:gap-0">
         <?php if (get_theme_mod('_alsalam_footer_dev_credit', '1') === '1') : ?>
         <div class="flex items-center gap-1 select-none text-xs text-slate-500">
-            <span><?php esc_html_e('Designed & Developed by', 'alsalam'); ?></span>
+            <span><?php echo esc_html(alsalam_str('', 'Designed & Developed by')); ?></span>
             <a href="https://ihasht.ir/" target="_blank" class="text-[#e21b2c] hover:text-[#e21b2c] font-extrabold text-[12px] font-title transition-all duration-300 hover:-translate-y-0.5">Hasht Behesht</a>
         </div>
         <?php else : ?>
@@ -136,8 +145,8 @@ defined('ABSPATH') || exit;
         <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-start">
             <p class="text-xs md:text-sm text-slate-600 font-medium">
                 <?php 
-                $copyright = get_theme_mod('_alsalam_footer_copyright', 'Copyright © [year] AL-SALAM. All rights reserved.');
-                echo wp_kses_post(str_replace('[year]', date('Y'), $copyright)); 
+                $copyright = alsalam_str('footer_copyright', get_theme_mod('_alsalam_footer_copyright', 'Copyright © [year] AL-SALAM. All rights reserved.'));
+                echo wp_kses_post(str_replace('[year]', alsalam_number(date('Y')), $copyright)); 
                 ?>
             </p>
             <?php if (get_theme_mod('_alsalam_footer_scroll_top', '1') === '1') : ?>
@@ -157,6 +166,53 @@ defined('ABSPATH') || exit;
         if(btn) {
             btn.addEventListener('click', function() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Newsletter Form Handling
+        var newsletterForm = document.getElementById('alsalam-newsletter-form');
+        var newsletterMsg = document.getElementById('newsletter-form-msg');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = new FormData(newsletterForm);
+                formData.append('action', 'alsalam_submit_newsletter');
+                
+                var btn = newsletterForm.querySelector('button[type="submit"]');
+                var originalBtnContent = btn.innerHTML;
+                btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+                btn.disabled = true;
+                
+                newsletterMsg.classList.add('hidden');
+                newsletterMsg.classList.remove('text-red-500', 'text-teal-500');
+                
+                fetch('<?php echo esc_url(admin_url('admin-ajax.php')); ?>', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    newsletterMsg.innerHTML = data.data.message;
+                    newsletterMsg.classList.remove('hidden');
+                    
+                    if (data.success) {
+                        newsletterMsg.classList.add('text-teal-500');
+                        newsletterForm.reset();
+                    } else {
+                        newsletterMsg.classList.add('text-red-500');
+                    }
+                })
+                .catch(error => {
+                    newsletterMsg.innerHTML = '<?php echo esc_js(alsalam_str("", "An unexpected error occurred. Please try again.")); ?>';
+                    newsletterMsg.classList.remove('hidden');
+                    newsletterMsg.classList.add('text-red-500');
+                })
+                .finally(() => {
+                    btn.innerHTML = originalBtnContent;
+                    btn.disabled = false;
+                });
             });
         }
     });

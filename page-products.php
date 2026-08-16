@@ -45,19 +45,19 @@ $product_cats = get_terms([
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php esc_html_e('Home', 'alsalam'); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(alsalam_str('home', 'Home')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <span class="text-white/85"><?php esc_html_e('Our Products', 'alsalam'); ?></span>
+        <span class="text-white/85"><?php echo esc_html(alsalam_str('our_products', 'Our Products')); ?></span>
       </nav>
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-tight mb-4">
-        <?php echo wp_kses_post($hero_title); ?>
+        <?php echo wp_kses_post(alsalam_str('', $hero_title)); ?>
       </h1>
       
       <!-- Subtitle -->
       <p class="max-w-2xl mx-auto text-base sm:text-lg text-white/70 font-normal leading-relaxed">
-        <?php echo esc_html($hero_subtitle); ?>
+        <?php echo esc_html(alsalam_str('', $hero_subtitle)); ?>
       </p>
     </div>
   </section>
@@ -70,27 +70,28 @@ $product_cats = get_terms([
       <!-- Category Filter Pills Bar -->
       <div class="flex flex-wrap justify-center items-center gap-3 mb-16">
         <a href="<?php echo esc_url(get_permalink()); ?>" class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-primary text-white shadow-md shadow-primary/20">
-          <?php esc_html_e('All Products', 'alsalam'); ?>
+          <?php echo esc_html(alsalam_str('all_products', 'All Products')); ?>
         </a>
         <?php if (!empty($product_cats) && !is_wp_error($product_cats)): ?>
           <?php foreach ($product_cats as $cat): ?>
             <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200">
-              <?php echo esc_html($cat->name); ?>
+              <?php echo esc_html(alsalam_str('', $cat->name)); ?>
             </a>
           <?php endforeach; ?>
         <?php else: ?>
-          <span class="px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200"><?php esc_html_e('Electrolyte Solutions', 'alsalam'); ?></span>
-          <span class="px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200"><?php esc_html_e('Sterile Fluids', 'alsalam'); ?></span>
+          <span class="px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200"><?php echo esc_html(alsalam_str('', 'Electrolyte Solutions')); ?></span>
+          <span class="px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-slate-700 border border-slate-200"><?php echo esc_html(alsalam_str('', 'Sterile Fluids')); ?></span>
         <?php endif; ?>
       </div>
 
       <?php
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-      $products_query = new WP_Query([
+      $args = [
           'post_type'      => 'alsalam_product',
           'posts_per_page' => 12,
           'paged'          => $paged
-      ]);
+      ];
+      $products_query = new WP_Query($args);
 
       if ($products_query->have_posts()):
       ?>
@@ -141,7 +142,7 @@ $product_cats = get_terms([
               
               <!-- Action Button -->
               <a href="<?php the_permalink(); ?>" class="w-full h-[40px] bg-[#31858A] hover:bg-[#286f73] text-white ps-5 pe-0 rounded-full flex items-center justify-between transition-all duration-300 font-semibold group shadow-md shadow-teal-700/10">
-                <span class="text-sm"><?php esc_html_e('View Details', 'alsalam'); ?></span>
+                <span class="text-sm"><?php echo esc_html(alsalam_str('view_details', 'View Details')); ?></span>
                 <div class="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-white rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -196,7 +197,7 @@ $product_cats = get_terms([
               </div>
             </div>
             <a href="<?php echo esc_url(home_url('/inquiry?product=' . urlencode($p['title']))); ?>" class="w-full h-[40px] bg-[#31858A] hover:bg-[#286f73] text-white ps-5 pe-0 rounded-full flex items-center justify-between transition-all duration-300 font-semibold group shadow-md shadow-teal-700/10">
-              <span class="text-sm"><?php esc_html_e('Request Inquiry', 'alsalam'); ?></span>
+              <span class="text-sm"><?php echo esc_html(alsalam_str('request_inquiry', 'Request Inquiry')); ?></span>
               <div class="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-white rtl:-scale-x-100">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -218,23 +219,23 @@ $product_cats = get_terms([
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5">
           <h2 class="text-3xl sm:text-4xl font-extrabold text-[#071D2C] tracking-tight leading-tight font-heading mb-6">
-            <?php esc_html_e('Stability & Sterility Assurance', 'alsalam'); ?>
+            <?php echo esc_html(alsalam_str('', 'Stability & Sterility Assurance')); ?>
           </h2>
           <p class="text-slate-600 leading-relaxed mb-6">
-            <?php esc_html_e('Our BFS parenteral formulations undergo 100% automated particulate and pyrogen testing to ensure zero contamination across critical supply chains.', 'alsalam'); ?>
+            <?php echo esc_html(alsalam_str('', 'Our BFS parenteral formulations undergo 100% automated particulate and pyrogen testing to ensure zero contamination across critical supply chains.')); ?>
           </p>
           <ul class="space-y-4">
             <li class="flex items-center gap-3">
               <span class="w-6 h-6 rounded-full bg-teal-500/10 text-teal-600 flex items-center justify-center shrink-0">✓</span>
-              <span class="text-sm text-slate-700 font-medium"><?php esc_html_e('Automated Leak Testing & Pyrogen Controls', 'alsalam'); ?></span>
+              <span class="text-sm text-slate-700 font-medium"><?php echo esc_html(alsalam_str('', 'Automated Leak Testing & Pyrogen Controls')); ?></span>
             </li>
             <li class="flex items-center gap-3">
               <span class="w-6 h-6 rounded-full bg-teal-500/10 text-teal-600 flex items-center justify-center shrink-0">✓</span>
-              <span class="text-sm text-slate-700 font-medium"><?php esc_html_e('European Union GMP Class A Filling Standards', 'alsalam'); ?></span>
+              <span class="text-sm text-slate-700 font-medium"><?php echo esc_html(alsalam_str('', 'European Union GMP Class A Filling Standards')); ?></span>
             </li>
             <li class="flex items-center gap-3">
               <span class="w-6 h-6 rounded-full bg-teal-500/10 text-teal-600 flex items-center justify-center shrink-0">✓</span>
-              <span class="text-sm text-slate-700 font-medium"><?php esc_html_e('High Thermal & Chemical Stability Packaging', 'alsalam'); ?></span>
+              <span class="text-sm text-slate-700 font-medium"><?php echo esc_html(alsalam_str('', 'High Thermal & Chemical Stability Packaging')); ?></span>
             </li>
           </ul>
         </div>
@@ -245,8 +246,8 @@ $product_cats = get_terms([
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h4 class="font-bold text-slate-850 mb-2 font-heading"><?php esc_html_e('Aseptic Validation', 'alsalam'); ?></h4>
-            <p class="text-slate-500 text-xs leading-relaxed"><?php esc_html_e('Every batch undergoes real-time parametric release testing to ensure compliance.', 'alsalam'); ?></p>
+            <h4 class="font-bold text-slate-850 mb-2 font-heading"><?php echo esc_html(alsalam_str('', 'Aseptic Validation')); ?></h4>
+            <p class="text-slate-500 text-xs leading-relaxed"><?php echo esc_html(alsalam_str('', 'Every batch undergoes real-time parametric release testing to ensure compliance.')); ?></p>
           </div>
           <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
             <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6">
@@ -254,8 +255,8 @@ $product_cats = get_terms([
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h4 class="font-bold text-slate-850 mb-2 font-heading"><?php esc_html_e('Regulatory Dossiers', 'alsalam'); ?></h4>
-            <p class="text-slate-500 text-xs leading-relaxed"><?php esc_html_e('Full CTD/eCTD dossier availability for hospital registration and tenders.', 'alsalam'); ?></p>
+            <h4 class="font-bold text-slate-850 mb-2 font-heading"><?php echo esc_html(alsalam_str('', 'Regulatory Dossiers')); ?></h4>
+            <p class="text-slate-500 text-xs leading-relaxed"><?php echo esc_html(alsalam_str('', 'Full CTD/eCTD dossier availability for hospital registration and tenders.')); ?></p>
           </div>
         </div>
       </div>

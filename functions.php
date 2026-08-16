@@ -27,6 +27,7 @@ $alsalam_includes = array(
     'includes/inbox-system.php',
     'includes/post-types.php',
     'includes/cpt-metaboxes.php',
+    'includes/clean-and-seed.php',
 );
 
 foreach ($alsalam_includes as $file) {

@@ -34,15 +34,15 @@ defined('ABSPATH') || exit;
                 <div class="absolute -top-[13%] -start-[12%] z-20 max-w-[85%] flex flex-col items-start gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
                     <span class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-50 to-white border border-teal-100 text-teal-800 rounded-full px-4 py-1.5 text-sm font-bold shadow-md">
                         <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
-                        <?php echo esc_html(get_theme_mod('_alsalam_why_badge_floating', __('Flexible IV Bag Technology', 'alsalam'))); ?>
+                        <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_why_badge_floating', 'Flexible IV Bag Technology'))); ?>
                     </span>
 
                     <div class="p-4">
                         <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 tracking-tight font-heading">
-                            <?php echo esc_html(get_theme_mod('_alsalam_why_badge_title', __('Why Choose Us', 'alsalam'))); ?>
+                            <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_why_badge_title', 'Why Choose Us'))); ?>
                         </h2>
                         <p class="text-slate-500 text-base font-medium leading-relaxed font-sans">
-                            <?php echo esc_html(get_theme_mod('_alsalam_why_badge_desc', __('A transversal vision with infinite solutions', 'alsalam'))); ?>
+                            <?php echo esc_html(alsalam_str('', get_theme_mod('_alsalam_why_badge_desc', 'A transversal vision with infinite solutions'))); ?>
                         </p>
                     </div>
                 </div>
@@ -57,17 +57,19 @@ defined('ABSPATH') || exit;
             <div class="text-start">
                 <header class="mb-4 gsap-fade-up">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight font-heading">
-                        <?php echo wp_kses_post(get_theme_mod('_alsalam_why_title', __('Safer, Smarter Infusion Solutions', 'alsalam'))); ?>
+                        <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_why_title', 'Safer, Smarter Infusion Solutions'))); ?>
                     </h2>
                     <p class="text-lg text-slate-500 font-sans">
-                        <?php echo wp_kses_post(get_theme_mod('_alsalam_why_desc', __('Advanced flexible IV bags designed to improve safety, handling, and efficiency compared to conventional glass bottles.', 'alsalam'))); ?>
+                        <?php echo wp_kses_post(alsalam_str('', get_theme_mod('_alsalam_why_desc', 'Advanced flexible IV bags designed to improve safety, handling, and efficiency compared to conventional glass bottles.'))); ?>
                     </p>
                 </header>
 
                 <ul class="flex flex-col gap-4">
                     <?php 
-                    $features_json = get_theme_mod('_alsalam_why_features');
-                    $features = json_decode($features_json, true);
+                    $current_lang  = function_exists('pll_current_language') ? pll_current_language() : (is_rtl() ? 'ar' : 'en');
+                    $suffix        = ($current_lang === 'ar') ? '_ar' : '';
+                    $features_json = get_theme_mod('_alsalam_why_features' . $suffix) ?: get_theme_mod('_alsalam_why_features');
+                    $features      = json_decode($features_json, true);
                     
                     if (!is_array($features) || empty($features)) {
                         $features = [
@@ -86,8 +88,8 @@ defined('ABSPATH') || exit;
                         <img src="<?php echo esc_url($feature['icon']); ?>" alt="" class="w-8 h-8 shrink-0" loading="lazy">
                         <?php endif; ?>
                         <article class="flex flex-col">
-                            <h3 class="text-slate-800 font-bold text-base font-heading"><?php echo esc_html($feature['title']); ?></h3>
-                            <p class="text-slate-500 text-sm line-clamp-1 font-sans"><?php echo esc_html($feature['desc']); ?></p>
+                            <h3 class="text-slate-800 font-bold text-base font-heading"><?php echo esc_html(alsalam_str('', $feature['title'])); ?></h3>
+                            <p class="text-slate-500 text-sm line-clamp-1 font-sans"><?php echo esc_html(alsalam_str('', $feature['desc'])); ?></p>
                         </article>
                     </li>
                     <?php endforeach; ?>
