@@ -61,9 +61,9 @@ $products_query = new WP_Query($args);
           <?php 
           if ($products_query->have_posts()):
               while ($products_query->have_posts()): $products_query->the_post();
-                  $tag1 = get_post_meta(get_the_ID(, '_alsalam_product_tag1', true) ?: 'BFS Bottle');
-                  $tag2 = get_post_meta(get_the_ID(, '_alsalam_product_tag2', true) ?: '500ml');
-                  $tag3 = get_post_meta(get_the_ID(, '_alsalam_product_tag3', true) ?: 'GMP Certified');
+                  $tag1 = get_post_meta(get_the_ID(), '_alsalam_product_tag1', true) ?: 'BFS Bottle';
+                  $tag2 = get_post_meta(get_the_ID(), '_alsalam_product_tag2', true) ?: '500ml';
+                  $tag3 = get_post_meta(get_the_ID(), '_alsalam_product_tag3', true) ?: 'GMP Certified';
                   $image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : alsalam_img('product.png');
                   $excerpt = get_the_excerpt();
                   if (empty($excerpt)) $excerpt = wp_trim_words(get_the_content(), 12, '...');
