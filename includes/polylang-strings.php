@@ -18,6 +18,10 @@ function alsalam_register_polylang_strings() {
         'Footer Title'    => get_theme_mod('_alsalam_footer_title', 'Excellence <br/> in Parenteral Manufacturing'),
         'Footer Newsletter' => get_theme_mod('_alsalam_footer_newsletter', 'Enter your email address'),
         'Footer Copyright' => get_theme_mod('_alsalam_footer_copyright', 'Copyright © [year] AL-SALAM. All rights reserved.'),
+        'Footer Quick Access' => get_theme_mod('_alsalam_footer_quick_title', 'Quick Access'),
+        'Footer Services'   => get_theme_mod('_alsalam_footer_services_title', 'Services'),
+        'Footer Resources'  => get_theme_mod('_alsalam_footer_resources_title', 'Resources'),
+        'Footer Dev Credit' => get_theme_mod('_alsalam_footer_dev_text', 'Designed & Developed by'),
         
         // Hero Section
         'Hero Button 1'   => get_theme_mod('_alsalam_hero_btn1_text', 'About Us'),
@@ -50,6 +54,26 @@ function alsalam_register_polylang_strings() {
         'News Sub'        => get_theme_mod('_alsalam_news_sub', 'Stay updated'),
         'News Title'      => get_theme_mod('_alsalam_news_title', 'Latest News & Events'),
         'News Btn'        => get_theme_mod('_alsalam_news_btn_text', 'All Updates'),
+        
+        // Single Post/Product/Gallery Globals
+        'Breadcrumb Home'    => get_theme_mod('_alsalam_breadcrumb_home', 'Home'),
+        'Breadcrumb Gallery' => get_theme_mod('_alsalam_breadcrumb_gallery', 'Gallery'),
+        'Breadcrumb Product' => get_theme_mod('_alsalam_breadcrumb_products', 'Products'),
+        'Gallery Location'   => get_theme_mod('_alsalam_gallery_location_label', 'Location:'),
+        'Gallery Photo'      => get_theme_mod('_alsalam_gallery_photo_label', 'Photographer:'),
+        'Product EU Title'   => get_theme_mod('_alsalam_product_eu_title', 'European Standards Approved'),
+        'Product EU Desc'    => get_theme_mod('_alsalam_product_eu_desc', 'Tested & validation-indexed for therapeutic hospital networks.'),
+        'Product Tab 1'      => get_theme_mod('_alsalam_product_clinical_tab', 'Clinical Overview'),
+        'Product Tab 2'      => get_theme_mod('_alsalam_product_formulation_tab', 'Product Formulation & Intent'),
+        'Product Spec'       => get_theme_mod('_alsalam_product_spec_param', 'Specification Parameter'),
+        'Product Metric'     => get_theme_mod('_alsalam_product_metric_details', 'Metric Details'),
+        'Product Pkg'        => get_theme_mod('_alsalam_product_packaging_label', 'Packaging presentation'),
+        'Product Vol'        => get_theme_mod('_alsalam_product_volume_label', 'Volume Availability'),
+        'Product Grade'      => get_theme_mod('_alsalam_product_grade_label', 'Quality Grade'),
+        'Product Shelf'      => get_theme_mod('_alsalam_product_shelf_label', 'Shelf life'),
+        'Product Shelf Val'  => get_theme_mod('_alsalam_product_shelf_val', '36 Months from packaging date'),
+        'Product Inquiry Btn'=> get_theme_mod('_alsalam_product_inquiry_btn', 'Request Commercial Inquiry'),
+        'Product Related'    => get_theme_mod('_alsalam_product_related_title', 'Related <span class="text-teal-500">Parenteral</span> Formulations'),
     ];
 
     foreach ($dynamic_strings as $name => $string) {

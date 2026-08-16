@@ -10,8 +10,8 @@ if (get_theme_mod('_alsalam_infra_enable', '1') !== '1') return;
 $current_lang = function_exists('pll_current_language') ? pll_current_language() : (is_rtl() ? 'ar' : 'en');
 $suffix       = ($current_lang === 'ar') ? '_ar' : '';
 
-$title = get_theme_mod('_alsalam_infra_title', 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure');
-$badge = get_theme_mod('_alsalam_infra_sub', 'AL-SALAM');
+$title = pll__(get_theme_mod('_alsalam_infra_title', 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure'));
+$badge = pll__(get_theme_mod('_alsalam_infra_sub', 'AL-SALAM'));
 
 $items_json = get_theme_mod('_alsalam_infra_items' . $suffix) ?: get_theme_mod('_alsalam_infra_items');
 $items      = json_decode($items_json, true);

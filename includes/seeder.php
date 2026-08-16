@@ -1542,6 +1542,10 @@ function alsalam_attach_image_to_post($file_path, $post_id) {
     $attachment_id = wp_insert_attachment($attachment, $upload['file'], $post_id);
     if (is_wp_error($attachment_id)) return false;
 
+    if (!function_exists('wp_generate_attachment_metadata')) {
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+    }
+
     $meta = wp_generate_attachment_metadata($attachment_id, $upload['file']);
     wp_update_attachment_metadata($attachment_id, $meta);
     set_post_thumbnail($post_id, $attachment_id);

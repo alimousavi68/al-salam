@@ -34,9 +34,9 @@ while (have_posts()) : the_post();
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Home', 'alsalam')); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__(get_theme_mod('_alsalam_breadcrumb_home', 'Home'))); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_gallery') ?: home_url('/gallery')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Gallery', 'alsalam')); ?></a>
+        <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_gallery') ?: home_url('/gallery')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__(get_theme_mod('_alsalam_breadcrumb_gallery', 'Gallery'))); ?></a>
         <span class="text-white/30 font-light">/</span>
         <span class="text-white/85"><?php the_title(); ?></span>
       </nav>
@@ -70,13 +70,13 @@ while (have_posts()) : the_post();
           <?php if ($location): ?>
           <div class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              <span class="font-medium text-slate-700"><?php echo esc_html(__('Location:', 'alsalam')); ?></span> <?php echo esc_html($location); ?>
+              <span class="font-medium text-slate-700"><?php echo esc_html(pll__(get_theme_mod('_alsalam_gallery_location_label', 'Location:'))); ?></span> <?php echo esc_html($location); ?>
           </div>
           <?php endif; ?>
           <?php if ($photographer): ?>
           <div class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              <span class="font-medium text-slate-700"><?php echo esc_html(__('Photographer:', 'alsalam')); ?></span> <?php echo esc_html($photographer); ?>
+              <span class="font-medium text-slate-700"><?php echo esc_html(pll__(get_theme_mod('_alsalam_gallery_photo_label', 'Photographer:'))); ?></span> <?php echo esc_html($photographer); ?>
           </div>
           <?php endif; ?>
       </div>
