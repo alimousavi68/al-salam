@@ -134,14 +134,10 @@ defined('ABSPATH') || exit;
 
     <!-- Copyright Pill & Back to Top -->
     <div class="relative z-10 bg-white rounded-[2rem] sm:rounded-full p-3 sm:p-2 px-6 flex flex-col sm:flex-row justify-between items-center shadow-sm max-w-7xl mx-4 lg:mx-auto gap-4 sm:gap-0">
-        <?php if (get_theme_mod('_alsalam_footer_dev_credit', '1') === '1') : ?>
         <div class="flex items-center gap-1 select-none text-xs text-slate-500">
             <span><?php echo esc_html(pll__('Designed & Developed by')); ?></span>
             <a href="https://ihasht.ir/" target="_blank" class="text-[#e21b2c] hover:text-[#e21b2c] font-extrabold text-[12px] font-title transition-all duration-300 hover:-translate-y-0.5">Hasht Behesht</a>
         </div>
-        <?php else : ?>
-        <div></div>
-        <?php endif; ?>
         <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-start">
             <p class="text-xs md:text-sm text-slate-600 font-medium">
                 <?php 

@@ -138,7 +138,7 @@ while (have_posts()) : the_post();
           <!-- Request CTA Button -->
           <div class="pt-4">
             <a 
-              href="<?php echo esc_url(home_url('/inquiry?product=' . urlencode(get_the_title()))); ?>" 
+              href="<?php echo esc_url(add_query_arg('product', urlencode(get_the_title()), alsalam_page_url('inquiry'))); ?>" 
               class="inline-flex items-center justify-center gap-2.5 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-8 py-4 rounded-full shadow-lg shadow-primary/20 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 shrink-0">
@@ -190,7 +190,7 @@ while (have_posts()) : the_post();
             </div>
             <div class="text-start">
               <span class="text-primary text-[10px] font-bold tracking-wider uppercase mb-1 block">
-                <?php echo esc_html(get_post_meta(get_the_ID(), '_alsalam_product_tag1', true) ?: 'BFS Bottle'); ?>
+                <?php echo esc_html(pll__(get_post_meta(get_the_ID(), '_alsalam_product_tag1', true) ?: 'BFS Bottle')); ?>
               </span>
               <h3 class="text-[#071D2C] text-base font-bold font-heading group-hover:text-primary transition-colors duration-200 truncate">
                 <?php the_title(); ?>

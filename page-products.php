@@ -126,15 +126,15 @@ $product_cats = get_terms([
                 <!-- Features / Tags Layout -->
                 <div class="w-full flex flex-col gap-2.5 mb-6">
                   <div class="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-full border border-slate-100/80 justify-center">
-                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($tag1); ?></span>
+                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html(pll__($tag1)); ?></span>
                   </div>
                   
                   <div class="grid grid-cols-2 gap-2.5">
                     <div class="flex items-center gap-2 px-2.5 py-2 bg-slate-50 rounded-full border border-slate-100/80 justify-center">
-                      <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($tag2); ?></span>
+                      <span class="text-xs font-semibold text-slate-600"><?php echo esc_html(pll__($tag2)); ?></span>
                     </div>
                     <div class="flex items-center gap-2 px-2.5 py-2 bg-slate-50 rounded-full border border-slate-100/80 justify-center">
-                      <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($tag3); ?></span>
+                      <span class="text-xs font-semibold text-slate-600"><?php echo esc_html(pll__($tag3)); ?></span>
                     </div>
                   </div>
                 </div>
@@ -184,19 +184,19 @@ $product_cats = get_terms([
               <p class="text-slate-500 text-xs px-2 leading-relaxed mb-6"><?php echo esc_html($p['desc']); ?></p>
               <div class="w-full flex flex-col gap-2.5 mb-6">
                 <div class="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-full border border-slate-100/80 justify-center">
-                  <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($p['tag1']); ?></span>
+                  <span class="text-xs font-semibold text-slate-600"><?php echo esc_html(pll__($p['tag1'])); ?></span>
                 </div>
                 <div class="grid grid-cols-2 gap-2.5">
                   <div class="flex items-center gap-2 px-2.5 py-2 bg-slate-50 rounded-full border border-slate-100/80 justify-center">
-                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($p['tag2']); ?></span>
+                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html(pll__($p['tag2'])); ?></span>
                   </div>
                   <div class="flex items-center gap-2 px-2.5 py-2 bg-slate-50 rounded-full border border-slate-100/80 justify-center">
-                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($p['tag3']); ?></span>
+                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html(pll__($p['tag3'])); ?></span>
                   </div>
                 </div>
               </div>
             </div>
-            <a href="<?php echo esc_url(home_url('/inquiry?product=' . urlencode($p['title']))); ?>" class="w-full h-[40px] bg-[#31858A] hover:bg-[#286f73] text-white ps-5 pe-0 rounded-full flex items-center justify-between transition-all duration-300 font-semibold group shadow-md shadow-teal-700/10">
+            <a href="<?php echo esc_url(add_query_arg('product', urlencode($p['title']), alsalam_page_url('inquiry'))); ?>" class="w-full h-[40px] bg-[#31858A] hover:bg-[#286f73] text-white ps-5 pe-0 rounded-full flex items-center justify-between transition-all duration-300 font-semibold group shadow-md shadow-teal-700/10">
               <span class="text-sm"><?php echo esc_html(pll__('Request Inquiry')); ?></span>
               <div class="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-white rtl:-scale-x-100">

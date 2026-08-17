@@ -417,8 +417,6 @@ function alsalam_customize_register($wp_customize) {
     $wp_customize->add_setting('_alsalam_footer_scroll_top', ['default' => '1', 'sanitize_callback' => 'absint']);
     $wp_customize->add_control(new Alsalam_Toggle_Control($wp_customize, '_alsalam_footer_scroll_top', ['label' => __('Enable Scroll to Top', 'alsalam'), 'section' => 'sec_footer_bottom']));
 
-    $wp_customize->add_setting('_alsalam_footer_dev_credit', ['default' => '1', 'sanitize_callback' => 'absint']);
-    $wp_customize->add_control(new Alsalam_Toggle_Control($wp_customize, '_alsalam_footer_dev_credit', ['label' => __('Enable Developer Credit', 'alsalam'), 'section' => 'sec_footer_bottom']));
 
     // ==========================================
     // PANEL 5: INNER PAGES & ARCHIVE

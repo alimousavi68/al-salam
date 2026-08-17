@@ -119,7 +119,7 @@ defined('ABSPATH') || exit;
       </div>
       <?php endif; ?>
 
-      <a href="<?php echo esc_url(get_theme_mod('_alsalam_header_cta_link', '#')); ?>" 
+      <a href="<?php echo esc_url(alsalam_get_cta_url()); ?>" 
           class="hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark active:bg-primary text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-primary/20 focus:outline-none focus:ring-2 focus:ring-primary-light focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 shrink-0">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -146,7 +146,7 @@ defined('ABSPATH') || exit;
            style="width: <?php echo esc_attr(get_theme_mod('_alsalam_header_logo_width', 150)); ?>px;"
            class="h-auto object-contain">
       <button id="mobile-menu-close" type="button" class="text-white hover:text-primary-light focus:outline-none transition-colors duration-200" aria-label="Close menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -166,7 +166,7 @@ defined('ABSPATH') || exit;
     
     <!-- Bottom CTA -->
     <div class="flex flex-col gap-4 w-full">
-      <a href="<?php echo esc_url(get_theme_mod('_alsalam_header_cta_link', '#')); ?>" class="flex w-full items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-primary/20 transition-all duration-200">
+      <a href="<?php echo esc_url(alsalam_get_cta_url()); ?>" class="flex w-full items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-primary/20 transition-all duration-200">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 shrink-0">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>

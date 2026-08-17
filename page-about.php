@@ -47,7 +47,7 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-40">
         <!-- Breadcrumbs -->
         <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-          <a href="<?php echo home_url('/'); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo pll__('home'); ?></a>
+          <a href="<?php echo home_url('/'); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__('Home')); ?></a>
           <span class="text-white/30 font-light">/</span>
           <span class="text-white/85"><?php echo get_the_title(); ?></span>
         </nav>
@@ -313,7 +313,7 @@ $show_hero = $meta('_alsalam_show_hero') !== '0';
               <?php echo wp_kses_post($meta('_alsalam_about_cta_desc')); ?>
             </p>
           </div>
-          <a href="<?php echo home_url('/inquiry'); ?>" class="relative z-10 bg-white hover:bg-slate-100 text-[#071D2C] font-semibold text-sm px-8 py-4 rounded-full shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0">
+          <a href="<?php echo esc_url(alsalam_page_url('inquiry')); ?>" class="relative z-10 bg-white hover:bg-slate-100 text-[#071D2C] font-semibold text-sm px-8 py-4 rounded-full shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0">
             <?php echo wp_kses_post($meta('_alsalam_submit_inquiry_btn')); ?>
           </a>
         </div>
