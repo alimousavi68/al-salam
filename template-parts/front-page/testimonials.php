@@ -60,14 +60,14 @@ defined('ABSPATH') || exit;
                                         ?>
                                         <img src="<?php echo esc_url($avatar); ?>" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-white shadow-sm object-cover" loading="lazy">
                                         <div class="ms-4 flex flex-col">
-                                            <span class="font-bold text-slate-900 font-heading"><?php echo esc_html($review['name']); ?></span>
-                                            <span class="text-sm text-slate-500 font-sans"><?php echo esc_html($review['role'] ?? ''); ?></span>
+                                            <span class="font-bold text-slate-900 font-heading"><?php echo esc_html(pll__($review['name'])); ?></span>
+                                            <span class="text-sm text-slate-500 font-sans"><?php echo esc_html(pll__($review['role'] ?? '')); ?></span>
                                         </div>
-                                        <span class="text-xs text-slate-400 ms-auto font-medium bg-slate-100 px-2 py-1 rounded-md font-sans"><?php echo esc_html($review['date'] ?? ''); ?></span>
+                                        <span class="text-xs text-slate-400 ms-auto font-medium bg-slate-100 px-2 py-1 rounded-md font-sans"><?php echo esc_html(pll__($review['date'] ?? '')); ?></span>
                                     </div>
 
                                     <p class="text-slate-600 leading-relaxed mt-4 text-sm lg:text-base line-clamp-3 font-sans">
-                                        "<?php echo esc_html($review['comment'] ?? ''); ?>"
+                                        "<?php echo esc_html(pll__($review['comment'] ?? '')); ?>"
                                     </p>
                                 </article>
                             </div>

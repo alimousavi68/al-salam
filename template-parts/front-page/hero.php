@@ -66,18 +66,18 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
                 <?php foreach ($heroSlides as $index => $slide): ?>
                   <article class="hero-slide duration-700 ease-out transition-all transform opacity-0 translate-y-4 hidden" data-slide-index="<?php echo esc_attr($index); ?>">
                     <header class="inline-flex items-center gap-2 border border-white/20 rounded-full p-1 pe-4 bg-white/5 backdrop-blur-sm self-start mb-6" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: 18px;">
-                      <span class="bg-[#041424] text-primary-light px-3 py-0.5 rounded-full text-xs font-bold"><?php echo esc_html($slide['badge1'] ?? 'AL-SALAM'); ?></span>
-                      <span class="text-white/90"><?php echo esc_html($slide['badge2'] ?? ''); ?></span>
+                      <span class="bg-[#041424] text-primary-light px-3 py-0.5 rounded-full text-xs font-bold"><?php echo esc_html(pll__($slide['badge1'] ?? 'AL-SALAM')); ?></span>
+                      <span class="text-white/90"><?php echo esc_html(pll__($slide['badge2'] ?? '')); ?></span>
                     </header>
                     
                     <h2 class="hero-title tracking-tight mb-4">
-                      <?php echo esc_html($slide['title'] ?? ''); ?>
+                      <?php echo esc_html(pll__($slide['title'] ?? '')); ?>
                     </h2>
                     <h3 class="hero-subtitle mb-5 leading-normal">
-                      <?php echo esc_html($slide['sub'] ?? ''); ?>
+                      <?php echo esc_html(pll__($slide['sub'] ?? '')); ?>
                     </h3>
                     <p class="hero-desc mb-8 max-w-xl">
-                      <?php echo esc_html($slide['desc'] ?? ''); ?>
+                      <?php echo esc_html(pll__($slide['desc'] ?? '')); ?>
                     </p>
                   </article>
                 <?php endforeach; ?>

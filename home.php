@@ -14,7 +14,7 @@ $posts_page_id = get_option('page_for_posts');
 $hero_title    = $posts_page_id ? get_post_meta($posts_page_id, '_alsalam_hero_title', true) : '';
 $hero_subtitle = $posts_page_id ? get_post_meta($posts_page_id, '_alsalam_hero_subtitle', true) : '';
 
-    $hero_title = __('News & <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Events</span>', 'alsalam');
+    $hero_title = pll__('News & <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Events</span>');
 
 if (!$hero_subtitle) {
     $hero_subtitle = __('Discover the latest developments in parenteral sterile manufacturing, clinical facility upgrades, and medical news.', 'alsalam');
@@ -51,19 +51,19 @@ $current_cat = get_queried_object_id();
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Home', 'alsalam')); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__('Home')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <span class="text-white/85"><?php echo esc_html(__('News & Events', 'alsalam')); ?></span>
+        <span class="text-white/85"><?php echo esc_html(pll__('News & Events')); ?></span>
       </nav>
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-tight mb-4">
-        <?php echo wp_kses_post($hero_title); ?>
+        <?php echo wp_kses_post(pll__($hero_title)); ?>
       </h1>
       
       <!-- Subtitle -->
       <p class="max-w-2xl mx-auto text-base sm:text-lg text-white/70 font-normal leading-relaxed">
-        <?php echo esc_html($hero_subtitle); ?>
+        <?php echo esc_html(pll__($hero_subtitle)); ?>
       </p>
     </div>
   </section>
@@ -81,7 +81,7 @@ $current_cat = get_queried_object_id();
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="self-start mb-6">
           <span class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold tracking-wider text-primary uppercase font-sans">
-            <?php echo esc_html(__('Featured Spotlight', 'alsalam')); ?>
+            <?php echo esc_html(pll__('Featured Spotlight')); ?>
           </span>
         </div>
         
@@ -102,7 +102,7 @@ $current_cat = get_queried_object_id();
               $cat_name = !empty($cats) ? $cats[0]->name : __('General', 'alsalam');
               ?>
               <span class="absolute top-6 start-6 bg-[#041424] text-primary-light text-xs font-bold px-4 py-2 rounded-full border border-white/10 uppercase tracking-wider">
-                <?php echo esc_html(__('Featured', 'alsalam')); ?> · <?php echo esc_html($cat_name); ?>
+                <?php echo esc_html(pll__('Featured')); ?> · <?php echo esc_html(pll__($cat_name)); ?>
               </span>
             </div>
             
@@ -124,7 +124,7 @@ $current_cat = get_queried_object_id();
               </p>
               
               <a href="<?php the_permalink(); ?>" class="inline-flex items-center justify-between bg-primary hover:bg-primary-dark text-white px-6 py-3.5 rounded-full font-semibold group shadow-md shadow-primary/20 self-start transition-colors duration-300">
-                <span class="text-sm me-3"><?php echo esc_html(__('Read Featured Article', 'alsalam')); ?></span>
+                <span class="text-sm me-3"><?php echo esc_html(pll__('Read Featured Article')); ?></span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
@@ -146,14 +146,14 @@ $current_cat = get_queried_object_id();
             href="<?php echo esc_url(get_post_type_archive_link('post') ?: home_url('/news')); ?>" 
             class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 <?php echo empty($current_cat) ? 'bg-primary text-white shadow-md shadow-primary/20' : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'; ?>"
           >
-            <?php echo esc_html(__('All Updates', 'alsalam')); ?>
+            <?php echo esc_html(pll__('All Updates')); ?>
           </a>
           <?php foreach ($categories as $cat): ?>
             <a 
               href="<?php echo esc_url(get_category_link($cat->term_id)); ?>" 
               class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 <?php echo ($current_cat === $cat->term_id) ? 'bg-primary text-white shadow-md shadow-primary/20' : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200'; ?>"
             >
-              <?php echo esc_html($cat->name); ?>
+              <?php echo esc_html(pll__($cat->name)); ?>
             </a>
           <?php endforeach; ?>
         </div>
@@ -197,7 +197,7 @@ $current_cat = get_queried_object_id();
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="font-medium text-sm"><?php echo esc_html(__('Read More', 'alsalam')); ?></span>
+                <span class="font-medium text-sm"><?php echo esc_html(pll__('Read More')); ?></span>
               </div>
               
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -224,7 +224,7 @@ $current_cat = get_queried_object_id();
     </section>
   <?php else: ?>
     <section class="py-20 text-center bg-[#F4F7FE]">
-      <p class="text-slate-600 font-semibold"><?php echo esc_html(__('No news or events found.', 'alsalam')); ?></p>
+      <p class="text-slate-600 font-semibold"><?php echo esc_html(pll__('No news or events found.')); ?></p>
     </section>
   <?php endif; ?>
 

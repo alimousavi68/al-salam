@@ -28,7 +28,7 @@ get_header();
                     the_content();
 
                     wp_link_pages(array(
-                        'before' => '<div class="page-links mt-8">' . esc_html__('Pages:', 'alsalam'),
+                        'before' => '<div class="page-links mt-8">' . esc_html(pll__('Pages:')),
                         'after'  => '</div>',
                     ));
                     ?>

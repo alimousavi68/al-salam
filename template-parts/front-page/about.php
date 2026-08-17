@@ -85,7 +85,7 @@ defined('ABSPATH') || exit;
                             <?php endif; ?>
                         </div>
                         <span class="text-[#071D2C] font-bold text-base leading-snug tracking-tight font-heading">
-                            <?php echo esc_html($feature['title']); ?>
+                            <?php echo esc_html(pll__($feature['title'])); ?>
                         </span>
                     </li>
                     <?php 

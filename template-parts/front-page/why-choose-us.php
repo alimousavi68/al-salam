@@ -88,8 +88,8 @@ defined('ABSPATH') || exit;
                         <img src="<?php echo esc_url($feature['icon']); ?>" alt="" class="w-8 h-8 shrink-0" loading="lazy">
                         <?php endif; ?>
                         <article class="flex flex-col">
-                            <h3 class="text-slate-800 font-bold text-base font-heading"><?php echo esc_html($feature['title']); ?></h3>
-                            <p class="text-slate-500 text-sm line-clamp-1 font-sans"><?php echo esc_html($feature['desc']); ?></p>
+                            <h3 class="text-slate-800 font-bold text-base font-heading"><?php echo esc_html(pll__($feature['title'])); ?></h3>
+                            <p class="text-slate-500 text-sm line-clamp-1 font-sans"><?php echo esc_html(pll__($feature['desc'])); ?></p>
                         </article>
                     </li>
                     <?php endforeach; ?>

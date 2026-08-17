@@ -33,9 +33,9 @@ while (have_posts()) : the_post();
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__(get_theme_mod('_alsalam_breadcrumb_home', 'Home'))); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__('Home')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_product') ?: home_url('/products')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__(get_theme_mod('_alsalam_breadcrumb_products', 'Products'))); ?></a>
+        <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_product') ?: home_url('/products')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__('Products')); ?></a>
         <span class="text-white/30 font-light">/</span>
         <span class="text-white/85"><?php the_title(); ?></span>
       </nav>
@@ -48,13 +48,13 @@ while (have_posts()) : the_post();
       <!-- Category tags -->
       <div class="flex flex-wrap justify-center gap-2">
         <span class="inline-block rounded-full bg-primary/30 border border-white/20 px-3 py-1 text-[10px] font-bold tracking-wider text-primary-light uppercase">
-          <?php echo esc_html($tag1); ?>
+          <?php echo esc_html(pll__($tag1)); ?>
         </span>
         <span class="inline-block rounded-full bg-teal-500/20 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-wider text-teal-300 uppercase">
-          <?php echo esc_html($tag2); ?>
+          <?php echo esc_html(pll__($tag2)); ?>
         </span>
         <span class="inline-block rounded-full bg-white/10 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-wider text-white/85 uppercase">
-          <?php echo esc_html($tag3); ?>
+          <?php echo esc_html(pll__($tag3)); ?>
         </span>
       </div>
     </div>
@@ -85,8 +85,8 @@ while (have_posts()) : the_post();
               </svg>
             </div>
             <div>
-              <h4 class="font-bold font-heading text-[#071D2C] text-sm"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_eu_title', 'European Standards Approved'))); ?></h4>
-              <p class="text-xs text-slate-500 mt-0.5"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_eu_desc', 'Tested & validation-indexed for therapeutic hospital networks.'))); ?></p>
+              <h4 class="font-bold font-heading text-[#071D2C] text-sm"><?php echo esc_html(pll__('European Standards Approved')); ?></h4>
+              <p class="text-xs text-slate-500 mt-0.5"><?php echo esc_html(pll__('Tested & validation-indexed for therapeutic hospital networks.')); ?></p>
             </div>
           </div>
         </div>
@@ -95,10 +95,10 @@ while (have_posts()) : the_post();
         <div class="lg:col-span-7 space-y-8 text-start">
           <div>
             <span class="inline-block rounded-full bg-[#E5F0F6] px-4 py-1.5 text-xs font-semibold tracking-wide text-slate-800 font-sans mb-4">
-              <?php echo esc_html(pll__(get_theme_mod('_alsalam_product_clinical_tab', 'Clinical Overview'))); ?>
+              <?php echo esc_html(pll__('Clinical Overview')); ?>
             </span>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-[#071D2C] tracking-tight mb-4 font-heading leading-tight">
-              <?php echo esc_html(pll__(get_theme_mod('_alsalam_product_formulation_tab', 'Product Formulation & Intent'))); ?>
+              <?php echo esc_html(pll__('Product Formulation & Intent')); ?>
             </h2>
             <div class="prose max-w-none text-[#3A3A3A] text-[16px] leading-relaxed mb-6 font-normal">
               <?php the_content(); ?>
@@ -110,26 +110,26 @@ while (have_posts()) : the_post();
             <table class="w-full text-sm">
               <thead>
                 <tr class="bg-slate-50 border-b border-slate-100 text-[#071D2C] font-bold text-xs uppercase tracking-wider">
-                  <th class="px-6 py-4 text-start font-heading"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_spec_param', 'Specification Parameter'))); ?></th>
-                  <th class="px-6 py-4 text-start font-heading"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_metric_details', 'Metric Details'))); ?></th>
+                  <th class="px-6 py-4 text-start font-heading"><?php echo esc_html(pll__('Specification Parameter')); ?></th>
+                  <th class="px-6 py-4 text-start font-heading"><?php echo esc_html(pll__('Metric Details')); ?></th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 text-slate-600">
                 <tr>
-                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_packaging_label', 'Packaging presentation'))); ?></td>
-                  <td class="px-6 py-4"><?php echo esc_html($tag1); ?></td>
+                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__('Packaging presentation')); ?></td>
+                  <td class="px-6 py-4"><?php echo esc_html(pll__($tag1)); ?></td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_volume_label', 'Volume Availability'))); ?></td>
-                  <td class="px-6 py-4"><?php echo esc_html($tag2); ?></td>
+                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__('Volume Availability')); ?></td>
+                  <td class="px-6 py-4"><?php echo esc_html(pll__($tag2)); ?></td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_grade_label', 'Quality Grade'))); ?></td>
-                  <td class="px-6 py-4"><?php echo esc_html($tag3); ?></td>
+                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__('Quality Grade')); ?></td>
+                  <td class="px-6 py-4"><?php echo esc_html(pll__($tag3)); ?></td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_shelf_label', 'Shelf life'))); ?></td>
-                  <td class="px-6 py-4"><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_shelf_val', '36 Months from packaging date'))); ?></td>
+                  <td class="px-6 py-4 font-medium text-[#071D2C]"><?php echo esc_html(pll__('Shelf life')); ?></td>
+                  <td class="px-6 py-4"><?php echo esc_html(pll__('36 Months from packaging date')); ?></td>
                 </tr>
               </tbody>
             </table>
@@ -144,7 +144,7 @@ while (have_posts()) : the_post();
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 shrink-0">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span><?php echo esc_html(pll__(get_theme_mod('_alsalam_product_inquiry_btn', 'Request Commercial Inquiry'))); ?></span>
+              <span><?php echo esc_html(pll__('Request Commercial Inquiry')); ?></span>
             </a>
           </div>
         </div>
@@ -169,7 +169,7 @@ while (have_posts()) : the_post();
       
       <header class="flex flex-col items-center text-center mb-16">
         <h2 class="text-[#071D2C] text-2xl sm:text-3xl font-extrabold tracking-tight font-heading">
-          <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_product_related_title', 'Related <span class="text-teal-500">Parenteral</span> Formulations'))); ?>
+          <?php echo wp_kses_post(pll__('Related <span class="text-teal-500">Parenteral</span> Formulations')); ?>
         </h2>
         <div class="w-12 h-1 bg-primary mt-3 rounded-full"></div>
       </header>

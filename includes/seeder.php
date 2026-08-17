@@ -8,13 +8,23 @@ defined('ABSPATH') || exit;
 
 // Temporarily removed capability check for automated seeder run
 function alsalam_run_seeder_action() {
+    if (isset($_GET['run_alsalam_translations']) && $_GET['run_alsalam_translations'] == '1') {
+        require_once ALSALAM_DIR . '/includes/polylang-seeder.php';
+        $result = alsalam_seed_arabic_translations();
+        if ($result['success']) {
+            wp_die('<h1 style="color:green;">' . esc_html($result['message']) . '</h1><p><a href="' . admin_url('admin.php?page=mlang_strings') . '">Go back to Polylang Settings</a></p>');
+        } else {
+            wp_die('<h1 style="color:red;">Error: ' . esc_html($result['message']) . '</h1>');
+        }
+    }
+
     if (isset($_GET['run_alsalam_seeder']) && $_GET['run_alsalam_seeder'] == '1') {
-        alsalam_seed_data();
+        alsalam_run_seeder();
         wp_die('Seeder completed successfully.');
     }
     
     if (isset($_GET['run_alsalam_customizer_seeder']) && $_GET['run_alsalam_customizer_seeder'] == '1') {
-        alsalam_seed_customizer_options();
+        alsalam_run_customizer_seeder();
         wp_die('Customizer Seeder completed successfully.');
     }
 

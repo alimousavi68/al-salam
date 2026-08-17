@@ -7,7 +7,7 @@
 
 defined('ABSPATH') || exit;
 
-// Polyfills for Polylang functions to prevent fatal errors
+// Polyfills for Polylang functions to prevent fatal errors when Polylang is inactive
 if (!function_exists('pll__')) {
     function pll__($string) {
         return __($string, 'alsalam');
@@ -18,13 +18,6 @@ if (!function_exists('pll_e')) {
         echo esc_html(__($string, 'alsalam'));
     }
 }
-if (!function_exists('pll_register_string')) {
-    function pll_register_string($name, $string, $group = 'AL-SALAM', $multiline = false) {
-        // No-op fallback
-    }
-}
-
-
 /**
  * Get image URI from assets
  */

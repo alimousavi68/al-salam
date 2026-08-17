@@ -160,10 +160,10 @@ if ($educational_query->have_posts()) {
             </div>
 
             <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight tracking-tight font-heading">
-              <?php echo esc_html($item['title']); ?>
+              <?php echo esc_html(pll__($item['title'])); ?>
             </h3>
             <p class="text-sm text-slate-500 mb-6 line-clamp-2 leading-relaxed">
-              <?php echo esc_html($item['desc']); ?>
+              <?php echo esc_html(pll__($item['desc'])); ?>
             </p>
 
             <a href="<?php echo esc_url($item['link']); ?>" class="flex items-center justify-between w-full bg-teal-500 text-white px-5 py-3 rounded-full mt-auto hover:bg-teal-600 transition-colors duration-300 font-semibold group shadow-md shadow-teal-500/10">
@@ -171,7 +171,7 @@ if ($educational_query->have_posts()) {
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="font-medium text-sm"><?php echo esc_html(__('Read More', 'alsalam')); ?></span>
+                <span class="font-medium text-sm"><?php echo esc_html(pll__('Read More')); ?></span>
               </div>
               
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

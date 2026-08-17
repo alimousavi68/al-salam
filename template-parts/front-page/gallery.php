@@ -30,11 +30,11 @@ $gallery_query = new WP_Query($args);
 
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-6 relative z-10 gsap-fade-up">
       <div class="space-y-2">
-        <span class="text-teal-500 text-xl md:text-2xl font-bold tracking-wider block font-heading uppercase"><?php echo esc_html(pll__(get_theme_mod('_alsalam_gallery_badge', 'AL-SALAM'))); ?></span>
-        <h2 class="text-white text-3xl md:text-5xl font-extrabold tracking-tight font-heading"><?php echo esc_html(pll__(get_theme_mod('_alsalam_gallery_title', 'Company Gallery'))); ?></h2>
+        <span class="text-teal-500 text-xl md:text-2xl font-bold tracking-wider block font-heading uppercase"><?php echo esc_html(pll__('AL-SALAM')); ?></span>
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold tracking-tight font-heading"><?php echo esc_html(pll__('Company Gallery')); ?></h2>
       </div>
       <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_gallery') ?: home_url('/gallery')); ?>" class="bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-7 py-3 rounded-full flex items-center gap-2.5 transition-all duration-300 shadow-lg shadow-teal-500/20 group">
-        <span><?php echo esc_html(pll__(get_theme_mod('_alsalam_gallery_btn_text', 'View All'))); ?></span>
+        <span><?php echo esc_html(pll__('All Photos')); ?></span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
@@ -64,7 +64,7 @@ $gallery_query = new WP_Query($args);
                 $isPlay = ($media_type === 'video');
                 $g_cats = get_the_terms(get_the_ID(), 'gallery_cat');
                 $g_cat_name = !empty($g_cats) && !is_wp_error($g_cats) ? $g_cats[0]->name : __('Facility', 'alsalam');
-                $g_cat_name = $g_cat_name;
+                $g_cat_name = pll__($g_cat_name);
                 $image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : alsalam_img('gallery/p1.webp');
         ?>
         <a href="<?php the_permalink(); ?>" class="gallery-item block group">

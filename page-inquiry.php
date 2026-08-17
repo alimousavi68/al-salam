@@ -54,7 +54,7 @@ $selectedProduct = isset($_GET['product']) ? sanitize_text_field($_GET['product'
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
         <!-- Breadcrumbs -->
         <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-          <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Home', 'alsalam')); ?></a>
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__('Home')); ?></a>
           <span class="text-white/30 font-light">/</span>
           <span class="text-white/85"><?php echo esc_html(get_the_title()); ?></span>
         </nav>

@@ -45,19 +45,19 @@ $gallery_cats = get_terms([
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-36">
       <!-- Breadcrumbs -->
       <nav class="flex items-center justify-center gap-2 mb-4 text-xs font-semibold text-white/50 tracking-wider uppercase font-sans">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(__('Home', 'alsalam')); ?></a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-primary-light transition-colors duration-200"><?php echo esc_html(pll__('Home')); ?></a>
         <span class="text-white/30 font-light">/</span>
-        <span class="text-white/85"><?php echo esc_html(__('Gallery', 'alsalam')); ?></span>
+        <span class="text-white/85"><?php echo esc_html(pll__('Gallery')); ?></span>
       </nav>
       
       <!-- Title -->
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-heading leading-tight mb-4">
-        <?php echo wp_kses_post($hero_title); ?>
+        <?php echo wp_kses_post(pll__($hero_title)); ?>
       </h1>
       
       <!-- Subtitle -->
       <p class="max-w-2xl mx-auto text-base sm:text-lg text-white/70 font-normal leading-relaxed">
-        <?php echo esc_html($hero_subtitle); ?>
+        <?php echo esc_html(pll__($hero_subtitle)); ?>
       </p>
     </div>
   </section>
@@ -70,18 +70,18 @@ $gallery_cats = get_terms([
       <!-- Filtering Pills Bar -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
         <a href="<?php echo esc_url(get_permalink()); ?>" class="px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide border transition-all duration-300 bg-slate-900 text-white border-slate-900 shadow-lg">
-          <?php echo esc_html(__('All Photos', 'alsalam')); ?>
+          <?php echo esc_html(pll__('All Photos')); ?>
         </a>
         <?php if (!empty($gallery_cats) && !is_wp_error($gallery_cats)): ?>
           <?php foreach ($gallery_cats as $cat): ?>
             <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide border border-slate-200 text-slate-600 hover:border-slate-900 hover:text-slate-900 transition-all duration-300 bg-white">
-              <?php echo esc_html($cat->name); ?>
+              <?php echo esc_html(pll__($cat->name)); ?>
             </a>
           <?php endforeach; ?>
         <?php else: ?>
-          <span class="px-6 py-2.5 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 bg-white"><?php echo esc_html(__('R&D Center', 'alsalam')); ?></span>
-          <span class="px-6 py-2.5 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 bg-white"><?php echo esc_html(__('Quality Assurance', 'alsalam')); ?></span>
-          <span class="px-6 py-2.5 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 bg-white"><?php echo esc_html(__('Manufacturing', 'alsalam')); ?></span>
+          <span class="px-6 py-2.5 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 bg-white"><?php echo esc_html(pll__('R&D Center')); ?></span>
+          <span class="px-6 py-2.5 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 bg-white"><?php echo esc_html(pll__('Quality Assurance')); ?></span>
+          <span class="px-6 py-2.5 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 bg-white"><?php echo esc_html(pll__('Manufacturing')); ?></span>
         <?php endif; ?>
       </div>
 

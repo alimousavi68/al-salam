@@ -68,7 +68,7 @@ defined('ABSPATH') || exit;
         $resources_menu_id = get_theme_mod('_alsalam_footer_resources_menu' . $suffix) ?: get_theme_mod('_alsalam_footer_resources_menu');
         ?>
         <div class="lg:col-span-2 flex flex-col lg:col-start-6">
-            <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(pll__(get_theme_mod('_alsalam_footer_quick_title', 'Quick Access'))); ?></h3>
+            <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(pll__('Quick Access')); ?></h3>
             <?php
             if ($quick_menu_id) {
                 wp_nav_menu(array(
@@ -83,7 +83,7 @@ defined('ABSPATH') || exit;
         </div>
 
         <div class="lg:col-span-2 flex flex-col">
-            <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(pll__(get_theme_mod('_alsalam_footer_services_title', 'Services'))); ?></h3>
+            <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(pll__('Services')); ?></h3>
             <?php
             if ($services_menu_id) {
                 wp_nav_menu(array(
@@ -98,7 +98,7 @@ defined('ABSPATH') || exit;
         </div>
         
         <div class="lg:col-span-2 flex flex-col">
-            <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(pll__(get_theme_mod('_alsalam_footer_resources_title', 'Resources'))); ?></h3>
+            <h3 class="text-slate-900 font-bold text-lg mb-6"><?php echo esc_html(pll__('Resources')); ?></h3>
             <?php
             if ($resources_menu_id) {
                 wp_nav_menu(array(
@@ -136,7 +136,7 @@ defined('ABSPATH') || exit;
     <div class="relative z-10 bg-white rounded-[2rem] sm:rounded-full p-3 sm:p-2 px-6 flex flex-col sm:flex-row justify-between items-center shadow-sm max-w-7xl mx-4 lg:mx-auto gap-4 sm:gap-0">
         <?php if (get_theme_mod('_alsalam_footer_dev_credit', '1') === '1') : ?>
         <div class="flex items-center gap-1 select-none text-xs text-slate-500">
-            <span><?php echo esc_html(pll__(get_theme_mod('_alsalam_footer_dev_text', 'Designed & Developed by'))); ?></span>
+            <span><?php echo esc_html(pll__('Designed & Developed by')); ?></span>
             <a href="https://ihasht.ir/" target="_blank" class="text-[#e21b2c] hover:text-[#e21b2c] font-extrabold text-[12px] font-title transition-all duration-300 hover:-translate-y-0.5">Hasht Behesht</a>
         </div>
         <?php else : ?>
@@ -205,7 +205,7 @@ defined('ABSPATH') || exit;
                     }
                 })
                 .catch(error => {
-                    newsletterMsg.innerHTML = '<?php echo esc_js(__("An unexpected error occurred. Please try again.", 'alsalam')); ?>';
+                    newsletterMsg.innerHTML = '<?php echo esc_js(pll__("An unexpected error occurred. Please try again.")); ?>';
                     newsletterMsg.classList.remove('hidden');
                     newsletterMsg.classList.add('text-red-500');
                 })

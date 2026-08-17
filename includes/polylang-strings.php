@@ -1,86 +1,337 @@
 <?php
+/**
+ * Polylang Strings Registration
+ */
 defined('ABSPATH') || exit;
 
-/**
- * Register dynamic strings (Customizer & Metaboxes) for Polylang translation.
- * This dynamically reads the current values of Customizer settings so that if the 
- * user changes them, the new text automatically appears in Polylang String Translations!
- */
 add_action('init', 'alsalam_register_polylang_strings');
 function alsalam_register_polylang_strings() {
     if (!function_exists('pll_register_string')) return;
 
-    $dynamic_strings = [
-        // Header
-        'Header CTA Text' => get_theme_mod('_alsalam_header_cta_text', 'Request Inquiry'),
-        
-        // Footer
-        'Footer Title'    => get_theme_mod('_alsalam_footer_title', 'Excellence <br/> in Parenteral Manufacturing'),
-        'Footer Newsletter' => get_theme_mod('_alsalam_footer_newsletter', 'Enter your email address'),
-        'Footer Copyright' => get_theme_mod('_alsalam_footer_copyright', 'Copyright © [year] AL-SALAM. All rights reserved.'),
-        'Footer Quick Access' => get_theme_mod('_alsalam_footer_quick_title', 'Quick Access'),
-        'Footer Services'   => get_theme_mod('_alsalam_footer_services_title', 'Services'),
-        'Footer Resources'  => get_theme_mod('_alsalam_footer_resources_title', 'Resources'),
-        'Footer Dev Credit' => get_theme_mod('_alsalam_footer_dev_text', 'Designed & Developed by'),
-        
-        // Hero Section
-        'Hero Button 1'   => get_theme_mod('_alsalam_hero_btn1_text', 'About Us'),
-        'Hero Button 2'   => get_theme_mod('_alsalam_hero_btn2_text', 'Our Products'),
-        
-        // About Section
-        'About Badge'     => get_theme_mod('_alsalam_about_badge', 'Corporate Profile'),
-        'About Title'     => get_theme_mod('_alsalam_about_title', 'About AL-SALAM'),
-        'About Button'    => get_theme_mod('_alsalam_about_btn_text', 'Learn More'),
-        
-        // Infrastructure Section
-        'Infra Title'     => get_theme_mod('_alsalam_infra_title', 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure'),
-        'Infra Subtitle'  => get_theme_mod('_alsalam_infra_sub', 'Built on Quality. Driven by Care'),
-        
-        // Products Section
-        'Products Title'  => get_theme_mod('_alsalam_products_title', 'Reliable Sterile Solutions'),
-        'Products Sub'    => get_theme_mod('_alsalam_products_sub', 'European Standards, Iraqi Excellence'),
-        'Products Btn'    => get_theme_mod('_alsalam_products_btn_text', 'All Products'),
-        
-        // Gallery Section
-        'Gallery Badge'   => get_theme_mod('_alsalam_gallery_badge', 'AL-SALAM'),
-        'Gallery Title'   => get_theme_mod('_alsalam_gallery_title', 'Company Gallery'),
-        'Gallery Btn'     => get_theme_mod('_alsalam_gallery_btn_text', 'View All'),
-        
-        // Testimonials Section
-        'Testimonials Sub' => get_theme_mod('_alsalam_testimonials_sub', 'Trusted by health institutions'),
-        'Testimonials Title' => get_theme_mod('_alsalam_testimonials_title', 'What Our Partners Say'),
-        
-        // News Section
-        'News Sub'        => get_theme_mod('_alsalam_news_sub', 'Stay updated'),
-        'News Title'      => get_theme_mod('_alsalam_news_title', 'Latest News & Events'),
-        'News Btn'        => get_theme_mod('_alsalam_news_btn_text', 'All Updates'),
-        
-        // Single Post/Product/Gallery Globals
-        'Breadcrumb Home'    => get_theme_mod('_alsalam_breadcrumb_home', 'Home'),
-        'Breadcrumb Gallery' => get_theme_mod('_alsalam_breadcrumb_gallery', 'Gallery'),
-        'Breadcrumb Product' => get_theme_mod('_alsalam_breadcrumb_products', 'Products'),
-        'Gallery Location'   => get_theme_mod('_alsalam_gallery_location_label', 'Location:'),
-        'Gallery Photo'      => get_theme_mod('_alsalam_gallery_photo_label', 'Photographer:'),
-        'Product EU Title'   => get_theme_mod('_alsalam_product_eu_title', 'European Standards Approved'),
-        'Product EU Desc'    => get_theme_mod('_alsalam_product_eu_desc', 'Tested & validation-indexed for therapeutic hospital networks.'),
-        'Product Tab 1'      => get_theme_mod('_alsalam_product_clinical_tab', 'Clinical Overview'),
-        'Product Tab 2'      => get_theme_mod('_alsalam_product_formulation_tab', 'Product Formulation & Intent'),
-        'Product Spec'       => get_theme_mod('_alsalam_product_spec_param', 'Specification Parameter'),
-        'Product Metric'     => get_theme_mod('_alsalam_product_metric_details', 'Metric Details'),
-        'Product Pkg'        => get_theme_mod('_alsalam_product_packaging_label', 'Packaging presentation'),
-        'Product Vol'        => get_theme_mod('_alsalam_product_volume_label', 'Volume Availability'),
-        'Product Grade'      => get_theme_mod('_alsalam_product_grade_label', 'Quality Grade'),
-        'Product Shelf'      => get_theme_mod('_alsalam_product_shelf_label', 'Shelf life'),
-        'Product Shelf Val'  => get_theme_mod('_alsalam_product_shelf_val', '36 Months from packaging date'),
-        'Product Inquiry Btn'=> get_theme_mod('_alsalam_product_inquiry_btn', 'Request Commercial Inquiry'),
-        'Product Related'    => get_theme_mod('_alsalam_product_related_title', 'Related <span class="text-teal-500">Parenteral</span> Formulations'),
+    // 1. Static UI Strings
+    $static_strings = [
+        'Request Inquiry',
+        'Back to Top',
+        'All Rights Reserved.',
+        'Designed & Developed by',
+        'Read More',
+        'View All',
+        'Contact Us',
+        'Full Name',
+        'Email Address',
+        'Phone Number',
+        'Subject',
+        'Message',
+        'Send Message',
+        'Sending...',
+        'Company Name',
+        'Product of Interest',
+        'Submit Inquiry',
+        'Thank you! Your message has been sent successfully.',
+        'Something went wrong. Please try again.',
+        'All',
+        'Latest',
+        'Educational',
+        'Office',
+        'Factory',
+        'News & Events',
+        'Our Products',
+        'Our Infrastructure',
+        'What Our Partners Say',
+        'Get in touch with us for any inquiries or collaborations.',
+        'Learn More',
+        'About Us',
+        'About AL-SALAM',
+        'AL-SALAM Pharmaceutical Industry is a sterile manufacturing facility specializing in parenteral solutions, built according to European GMP standards in Iraq.',
+        'Advanced Sterile Manufacturing',
+        'Quality & Laboratory Control',
+        'We combine advanced production, strict quality control, and fully controlled cleanroom environments to ensure safe and reliable pharmaceutical products.',
+        'Corporate Video Placeholder',
+        'In production, this overlay will inject an asynchronous high-fidelity HTML5 video player stream or modern iframe embed (e.g., YouTube/Vimeo).',
+        'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure',
+        'Built on Quality. Driven by Care',
+        'Sterile Production',
+        'Manufactured under strict <strong>GMP</strong> guidelines with high sterility standards to ensure product purity.',
+        'Quality Control',
+        'Rigorous testing and analytical inspection to ensure full <strong>compliance</strong> with global pharmacopeia standards.',
+        'Facility & Utilities',
+        'State-of-the-art cleanroom facilities powered by intelligent climate control <strong>(HVAC)</strong> systems.',
+        'Storage & Packaging',
+        'Advanced packaging and validation protocols including thermal processing <strong>(autoclave)</strong> for maximum safety.',
+        'Flexible IV Bag Technology',
+        'A transversal vision with infinite solutions',
+        'Safer, Smarter <span class="text-teal-500">Infusion Solutions</span>',
+        'Advanced flexible IV bags designed to improve safety, handling, and efficiency compared to conventional glass bottles.',
+        'Enhanced Safety',
+        'Reduced risk of breakage and contamination in clinical settings.',
+        'Better Handling',
+        'Lightweight and easy to transport, optimizing logistics.',
+        'Clinical Efficiency',
+        'Streamlined design for medical staff and fast setup.',
+        'Advanced Materials',
+        'Multi-layered technology for optimal medical protection.',
+        '<span class="text-teal-500">Excellence</span> <br/>in Parenteral Manufacturing',
+        'Enter your email...',
+        'Quick Access',
+        'Services',
+        'Parenteral Mfg',
+        'Quality Control',
+        'R&D',
+        'Resources',
+        'Careers',
+        'Terms of Service',
+        'Rules & Regulations',
+        'Privacy Policy',
+        'European Standards, Iraqi Excellence',
+        'All Products',
+        'View Details',
+        'Company Gallery',
+        'All Photos',
+        'What Our Partners Say',
+        'All Comments',
+        'AL-SALAM',
+        'Home',
+        'Why Choose Us',
+        'All Rights Reserved.',
+        'About Us | AL-SALAM Pharmaceutical Industry',
+        'Learn more about AL-SALAM, a sterile manufacturing facility specializing in parenteral solutions built according to European GMP standards.',
+        'Pioneering parenteral solution manufacturing with uncompromising clinical excellence and European GMP standards.',
+        'Corporate Profile',
+        'Pioneering Parenteral Solution Manufacturing',
+        'AL-SALAM Pharmaceutical Industry stands as a beacon of clinical excellence and manufacturing innovation in Iraq. Specialized in formulation and production of critical sterile parenteral fluids, our facility was engineered from the ground up to conform with the absolute latest European GMP guidelines and global pharmacopeial benchmarks.',
+        'By combining high-level automated production processes with strict sterile cleanroom environments, AL-SALAM supplies critical hospital networks and public healthcare channels with reliable, high-purity, life-saving intravenous therapeutic systems. We commit to a process where safety margins and chemical sterility are non-negotiable.',
+        'Global Standards Alignment',
+        'Fully compliant with the latest United States and European Pharmacopeias (USP/EP).',
+        'Aseptic Automation',
+        'Continuous Blow-Fill-Seal (BFS) integration minimizing human contamination risks.',
+        'Our <span class="text-teal-500">Purpose</span> & Commitments',
+        'Our Vision',
+        'To position AL-SALAM as the absolute benchmark for sterile pharmaceutical operations within the regional healthcare ecosystem, setting new standards of clinical confidence and safety margins.',
+        'Lead through Quality',
+        'Our Mission',
+        'To manufacture life-saving parenteral therapies under strict GMP protocols, guaranteeing that each vial and infusion meets the highest safety indexes to protect the health of critical patients.',
+        'Protect & Restore Health',
+        'Our Values',
+        '<strong>Uncompromising Sterility</strong>: Cleanrooms Class A/B.',
+        '<strong>Total Integrity</strong>: Continuous compliance testing.',
+        '<strong>Technological Focus</strong>: Fully automated aseptic processing.',
+        'Safety is Our Culture',
+        'Capabilities',
+        'Our Advanced Facility Standards',
+        'AL-SALAM operations rely on dynamic architectural cleanrooms and premium sterile systems to ensure zero safety compromises.',
+        'Class A/B',
+        'Cleanroom Environment',
+        'Highly controlled, filtered air space to completely eliminate product contamination.',
+        '100%',
+        'Aseptic Processing',
+        'Fully closed sterile lines using computerized safety checks and validation.',
+        'HVAC',
+        'Climate Engineering',
+        'Intelligent temperature, humidity, and differential pressure regulation systems.',
+        'EU-GMP',
+        'Regulatory Standard',
+        'Engineered to strictly conform to European good manufacturing practice standards.',
+        'Have a business inquiry?',
+        'Submit Inquiry',
+        'Products Portfolio | AL-SALAM Pharmaceutical Industry',
+        'Our Sterile <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Portfolio</span>',
+        'Explore our range of high-quality parenteral therapies and electrolyte solutions manufactured to global regulatory standards.',
+        'Electrolyte Solutions',
+        'Sterile Fluids',
+        'Engineered for absolute chemical stability and sterility',
+        'Every parenteral product leaving the AL-SALAM cleanrooms undergoes a rigorous multi-phase validation process to ensure alignment with standard pharmacopeial indexes.',
+        'Automatic Blow-Fill-Seal (BFS) technology',
+        'Continuous end-to-end parametric monitoring',
+        'Class A terminal sterilization processes',
+        'Zero Contamination Policy',
+        'Closed-loop sterile air showers and pressurized airlocks isolate BFS lines from personnel interference.',
+        'Iraqi MOH Certified',
+        'Strict adherence to Iraqi Ministry of Health requirements alongside international pharmacopeias.',
+        'News & Events | AL-SALAM Pharmaceutical Industry',
+        'Stay updated with the latest clinical developments, corporate announcements, and educational resources from AL-SALAM.',
+        'Stay informed about our latest clinical milestones, technical advancements, and health updates.',
+        'Featured News',
+        'Featured',
+        'Read Featured Article',
+        'All Updates',
+        'Latest News',
+        'Article Details',
+        'Related News & Updates',
+        'Contact Us | AL-SALAM Pharmaceutical Industry',
+        'Get in touch with AL-SALAM. Find our facility location, phone numbers, email addresses, and send us a direct message.',
+        'Get in <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Touch</span>',
+        'Have questions about our sterile manufacturing capabilities, product distribution, or regulatory compliance? Reach out to our teams.',
+        'Our Facility',
+        'AL-SALAM Pharmaceutical Plant, Industrial Zone, Baghdad, Iraq.',
+        'Open in Maps',
+        'Call Us Direct',
+        'Our customer support and clinical representatives are available.',
+        'Email Channels',
+        'Drop us a message and our specialists will respond within 24 hours.',
+        'Shift Schedules',
+        'Our offices are active during corporate weekdays.',
+        'Sun - Thu: 8:00 AM - 4:00 PM',
+        'Closed on Friday & Saturday',
+        'Message Us',
+        'Send a Direct Message',
+        'Please complete the form below. Our corporate relations team will route your inquiry to the appropriate medical or commercial specialist.',
+        'Interactive Center',
+        'Clinical Logistics',
+        'Direct shipping corridors connecting to critical hospital supply lines.',
+        'Co-ordinates',
+        'GMP Zone',
+        'Class A Certified',
+        'Thank you! Your message has been sent successfully to the AL-SALAM relations team.',
+        'Request Inquiry | AL-SALAM Pharmaceutical Industry',
+        'Submit a formal clinical or commercial inquiry. Select products, specify packaging volumes, and upload credentials for quick onboarding.',
+        'Request <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Inquiry</span>',
+        'Submit formal product distribution requests, cleanroom API sourcing, or contract manufacturing proposals directly to our operations.',
+        '1. Business Profile',
+        '2. Clinical Inquiry',
+        'Commercial & Business Profile',
+        'Please provide credential details for clinical vetting and registration.',
+        'Company Name *',
+        'Al-Rafidain Health Distributors',
+        'Operating Country *',
+        'Iraq',
+        'Representative Name *',
+        'Dr. Ahmed Ali',
+        'Job Title / Role *',
+        'Procurement Director',
+        'Direct Phone *',
+        '+964 770 123 4567',
+        'Website URL',
+        'Proceed to Step 2',
+        'Clinical Inquiry Details',
+        'Specify your clinical requests, products of interest, and volume demands.',
+        'Inquiry Type *',
+        'Select option...',
+        'Hospital / Clinic Distribution',
+        'Contract Aseptic BFS Manufacturing',
+        'Chemical / API Sterile Sourcing',
+        'Regulatory Compliance / Dossiers',
+        'General Commercial Partnerships',
+        'Select product...',
+        'Multiple Products / General Order',
+        'Estimated Annual Volume Needs (Units)',
+        'e.g. 500,000 infusion bottles',
+        'Clinical Specs / Message *',
+        'Outline formulation requirements, special packaging specs, or delivery terms...',
+        'Back to Step 1',
+        'Submit B2B Inquiry',
+        'Please fill out all required fields marked with * on Step 1.',
+        'Thank you! Your commercial inquiry has been registered. Our procurement team will review your business credentials.',
+            'Outfit',
+        'Tajawal',
+        '#041424',
+        'State-of-the-art sterile manufacturing conforming to European GMP standards.',
+        'Safer, Smarter Infusion Solutions',
+        'Reliable Sterile Solutions',
+        '[]',
+        'Careers Intake',
+        '#12A19A',
+        '#products',
+        'Cairo',
+        'Explore our comprehensive portfolio of European GMP certified sterile infusion solutions, parenteral electrolytes, and specialized APIs.',
+        'Search Results for: %s',
+        'Previous',
+        'Next',
+        'Excellence <br/> in Parenteral Manufacturing',
+        'Fill out your credentials below. Our HR and talent acquisition team will evaluate your clinical or technical experience for relevant vacancies.',
+        'Enter your email address',
+        'AL-SALAM Pharmaceutical Industry is a sterile manufacturing facility...',
+        '1',
+        'Inter',
+        'Why Build Your Career with AL-SALAM?',
+        'https://www.youtube.com/watch?v=your-video-id',
+        'Take a look inside our sterile cleanroom operations, high-tech BFS processing systems, and microbiological laboratories.',
+        'Copyright © [year] AL-SALAM. All rights reserved.',
+        'Join a world-class team of sterile manufacturing specialists, pharmaceutical engineers, and clinical professionals dedicated to setting new benchmarks in Iraq.',
+        'Thank you! Your career application has been submitted to the AL-SALAM HR team.',
+        'Company <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Gallery</span>',
+        '#F4F7FE',
+        'Join <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Our Team</span>',
+        'We combine advanced production, strict quality control...',
+        'Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-teal-300">Products</span>',
+        'Work Culture & Growth',
+        'Submit Your Profile',
+        '#',
+        '#239BA8',
+        'video',
+        '#about',
+];
+
+    foreach ($static_strings as $str) {
+        if (!empty($str)) {
+            pll_register_string(md5($str), $str, 'AL-SALAM UI');
+        }
+    }
+
+    // 2. Dynamic Customizer Strings
+    $customizer_strings = [
+        '_alsalam_header_cta_text' => get_theme_mod('_alsalam_header_cta_text', 'Request Inquiry'),
+        '_alsalam_hero_btn1_text' => get_theme_mod('_alsalam_hero_btn1_text', 'About Us'),
+        '_alsalam_hero_btn2_text' => get_theme_mod('_alsalam_hero_btn2_text', 'Our Products'),
+        '_alsalam_about_btn_text' => get_theme_mod('_alsalam_about_btn_text', 'Learn More'),
+        '_alsalam_about_badge' => get_theme_mod('_alsalam_about_badge', 'Corporate Profile'),
+        '_alsalam_about_title' => get_theme_mod('_alsalam_about_title', 'About AL-SALAM'),
+        '_alsalam_about_desc1' => get_theme_mod('_alsalam_about_desc1', ''),
+        '_alsalam_about_desc2' => get_theme_mod('_alsalam_about_desc2', ''),
+        '_alsalam_infra_title' => get_theme_mod('_alsalam_infra_title', 'Advanced <span class="text-teal-500">Pharmaceutical</span> Infrastructure'),
+        '_alsalam_infra_sub' => get_theme_mod('_alsalam_infra_sub', 'Built on Quality. Driven by Care'),
+        '_alsalam_products_title' => get_theme_mod('_alsalam_products_title', 'Reliable Sterile Solutions'),
+        '_alsalam_products_sub' => get_theme_mod('_alsalam_products_sub', 'European Standards, Iraqi Excellence'),
+        '_alsalam_products_btn_text' => get_theme_mod('_alsalam_products_btn_text', 'All Products'),
+        '_alsalam_gallery_badge' => get_theme_mod('_alsalam_gallery_badge', 'AL-SALAM'),
+        '_alsalam_gallery_title' => get_theme_mod('_alsalam_gallery_title', 'Company Gallery'),
+        '_alsalam_gallery_btn_text' => get_theme_mod('_alsalam_gallery_btn_text', 'View All'),
+        '_alsalam_why_badge' => get_theme_mod('_alsalam_why_badge', 'Flexible IV Bag Technology'),
+        '_alsalam_why_box_title' => get_theme_mod('_alsalam_why_box_title', 'Why Choose Us'),
+        '_alsalam_why_box_sub' => get_theme_mod('_alsalam_why_box_sub', 'A transversal vision...'),
+        '_alsalam_why_title' => get_theme_mod('_alsalam_why_title', 'Safer, Smarter <span class="text-teal-500">Infusion Solutions</span>'),
+        '_alsalam_why_desc' => get_theme_mod('_alsalam_why_desc', ''),
+        '_alsalam_news_title' => get_theme_mod('_alsalam_news_title', 'News & Events'),
+        '_alsalam_news_btn_text' => get_theme_mod('_alsalam_news_btn_text', 'Read More'),
+        '_alsalam_testi_title' => get_theme_mod('_alsalam_testi_title', 'What Our Partners Say'),
+        '_alsalam_testi_btn_text' => get_theme_mod('_alsalam_testi_btn_text', 'All Comments'),
+        '_alsalam_footer_title' => get_theme_mod('_alsalam_footer_title', 'Excellence <br/> in Parenteral Manufacturing'),
+        '_alsalam_footer_newsletter' => get_theme_mod('_alsalam_footer_newsletter', 'Enter your email address'),
+        '_alsalam_footer_copyright' => get_theme_mod('_alsalam_footer_copyright', 'Copyright © ' . date('Y') . ' AL-SALAM. All rights reserved.'),
+        '_alsalam_404_title' => get_theme_mod('_alsalam_404_title', 'Page Not Found'),
+        '_alsalam_404_btn' => get_theme_mod('_alsalam_404_btn', 'Back to Home')
     ];
 
-    foreach ($dynamic_strings as $name => $string) {
+    foreach ($customizer_strings as $key => $string) {
         if (!empty($string)) {
-            // Registering the current value means when the user changes it in Customizer, 
-            // the new value becomes available in Polylang String Translations automatically!
-            pll_register_string('alsalam_mod_' . sanitize_title($name), $string, 'AL-SALAM Settings');
+            pll_register_string($key, $string, 'AL-SALAM Settings');
+        }
+    }
+
+    // 3. Dynamic JSON Customizer Arrays
+    $json_arrays = [
+        '_alsalam_hero_slides' => ['badge1', 'badge2', 'title', 'sub', 'desc'],
+        '_alsalam_features_pills' => ['text'],
+        '_alsalam_testimonials_reviews' => ['name', 'role', 'date', 'comment'],
+        '_alsalam_infrastructure_items' => ['title', 'desc'],
+        '_alsalam_about_features' => ['title'],
+        '_alsalam_why_choose_features' => ['title', 'desc']
+    ];
+
+    foreach ($json_arrays as $theme_mod => $fields) {
+        $json = get_theme_mod($theme_mod);
+        if ($json) {
+            $items = json_decode($json, true);
+            if (is_array($items)) {
+                foreach ($items as $index => $item) {
+                    foreach ($fields as $field) {
+                        if (!empty($item[$field])) {
+                            // Register with a unique name but the actual string as value
+                            $string_name = md5($item[$field]);
+                            pll_register_string($string_name, $item[$field], 'AL-SALAM Dynamic Lists');
+                        }
+                    }
+                }
+            }
         }
     }
 }

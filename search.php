@@ -14,7 +14,7 @@ get_header();
             <h1 class="text-4xl lg:text-5xl font-bold">
                 <?php
                 /* translators: %s: search query. */
-                printf(esc_html__('Search Results for: %s', 'alsalam'), '<span>' . get_search_query() . '</span>');
+                printf(esc_html(pll__('Search Results for: %s')), '<span>' . get_search_query() . '</span>');
                 ?>
             </h1>
             <div class="max-w-2xl mx-auto">
@@ -50,8 +50,8 @@ get_header();
                 <?php
                 the_posts_pagination(array(
                     'mid_size'  => 2,
-                    'prev_text' => esc_html__('Previous', 'alsalam'),
-                    'next_text' => esc_html__('Next', 'alsalam'),
+                    'prev_text' => esc_html(pll__('Previous')),
+                    'next_text' => esc_html(pll__('Next')),
                     'class'     => 'alsalam-pagination flex gap-2'
                 ));
                 ?>
