@@ -21,7 +21,7 @@ $args = array(
 );
 $products_query = new WP_Query($args);
 ?>
-<section class="products-section relative w-full py-24 overflow-hidden z-0" id="products">
+<section class="products-section relative w-full py-12 lg:py-24 overflow-hidden z-0" id="products">
   <!-- The Background Band — hidden on mobile, visible on lg+ -->
   <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 start-0 w-full h-[293px] bg-[#E5EEF4] -z-10 overflow-hidden">
     <!-- Left Background Pattern (Enlarged) -->
@@ -45,7 +45,7 @@ $products_query = new WP_Query($args);
         <?php echo esc_html($subtitle); ?>
       </p>
       
-      <a href="<?php echo esc_url($btn_link); ?>" class="inline-flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-teal-700 active:scale-95 text-white font-medium rounded-full shadow-lg transition-all duration-300 group focus:outline-none min-w-[200px] h-[55px] font-sans self-start gsap-fade-up">
+      <a href="<?php echo esc_url($btn_link); ?>" class="inline-flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-teal-700 active:scale-95 text-white font-medium rounded-full shadow-lg transition-all duration-300 group focus:outline-none min-w-[200px] h-[55px] font-sans self-center sm:self-start gsap-fade-up">
         <span class="text-base font-semibold tracking-wide"><?php echo esc_html($btn_text); ?></span>
         <svg class="w-4 h-4 transition-transform duration-300 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />

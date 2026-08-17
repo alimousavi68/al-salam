@@ -42,10 +42,10 @@ if (!is_array($items) || empty($items)) {
 }
 $total_items = count($items);
 ?>
-<section id="infrastructure" class="py-20 px-4 max-w-7xl mx-auto">
+<section id="infrastructure" class="py-10 sm:py-20 px-4 max-w-7xl mx-auto">
     
-    <header class="flex flex-col items-center text-center mb-12 gsap-fade-up">
-        <h2 class="text-slate-900 text-4xl font-extrabold tracking-tight">
+    <header class="flex flex-col items-center text-center mb-8 sm:mb-12 gsap-fade-up">
+        <h2 class="text-slate-900 text-2xl sm:text-4xl font-extrabold tracking-tight">
             <?php echo wp_kses_post(pll__($title)); ?>
         </h2>
         <div class="flex items-center gap-2 mt-4">
@@ -61,7 +61,7 @@ $total_items = count($items);
         </div>
     </header>
 
-    <div class="bg-[#041424] rounded-[30px] relative overflow-hidden py-16 px-8 lg:px-12 shadow-2xl">
+    <div class="bg-[#041424] rounded-[30px] relative overflow-hidden py-10 sm:py-16 px-5 sm:px-8 lg:px-12 shadow-2xl">
         <div class="absolute top-0 end-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#239BA8] opacity-50 blur-[60px] rounded-full pointer-events-none z-0" aria-hidden="true"></div>
         <div class="absolute bottom-0 start-0 translate-y-1/4 -translate-x-1/4 w-64 h-64 bg-[#239BA8] opacity-50 blur-[60px] rounded-full pointer-events-none z-0" aria-hidden="true"></div>
         

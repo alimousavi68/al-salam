@@ -8,10 +8,10 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_testi_enable', '1') !== '1') return; ?>
-<section class="w-full mt-16 sm:mt-20 overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto px-4">
-        <div class="flex flex-col lg:flex-row w-full lg:max-h-[420px] lg:h-[420px] relative shadow-sm">
-            <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-8 z-10">
+<section class="w-full mt-10 sm:mt-16 overflow-hidden">
+    <div class="w-full max-w-7xl mx-auto px-0 sm:px-4">
+        <div class="flex flex-col lg:flex-row w-full lg:max-h-[420px] lg:h-[420px] relative shadow-sm overflow-hidden">
+            <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-10 sm:py-8 z-10">
                 <div class="absolute inset-y-0 end-0 w-full lg:w-[50vw] bg-[#239BA8] -z-10"></div>
                 
                 <header class="flex items-center gap-3 mb-8 text-white gsap-fade-up">
@@ -38,7 +38,7 @@ defined('ABSPATH') || exit;
                                 if (empty($review['name'])) continue;
                             ?>
                             <div class="swiper-slide pt-4 pb-6">
-                                <article class="bg-[#F8FAFC] rounded-[2rem] p-8 relative w-[88%] mx-auto shadow-xl shadow-black/5">
+                                <article class="bg-[#F8FAFC] rounded-[2rem] p-6 sm:p-8 relative w-full sm:w-[88%] mx-auto">
                                     <div class="absolute -top-2 end-6 ltr:translate-x-[20%] rtl:-translate-x-[20%] z-20 bg-black/30 backdrop-blur-md rounded-full px-5 py-2 flex items-center gap-2.5 shadow-lg">
                                         <span class="text-white text-base font-bold">(<?php echo esc_html($review['rating'] ?? '5.0'); ?>)</span>
                                         <div class="flex gap-1">
@@ -77,12 +77,12 @@ defined('ABSPATH') || exit;
                         <div class="comment-pagination flex justify-center mt-2 relative z-10"></div>
                     </div>
 
-                    <button class="comment-prev absolute top-[45%] -translate-y-1/2 start-0 lg:-start-6 z-20 text-white font-bold p-3 hover:bg-white/10 backdrop-blur-sm rounded-full transition-all focus:outline-none flex items-center justify-center">
+                    <button class="comment-prev absolute top-[45%] -translate-y-1/2 start-2 lg:-start-6 z-20 text-white p-2.5 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none flex items-center justify-center shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 rtl:rotate-180">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <button class="comment-next absolute top-[45%] -translate-y-1/2 end-0 lg:-end-6 z-20 text-white font-bold p-3 hover:bg-white/10 backdrop-blur-sm rounded-full transition-all focus:outline-none flex items-center justify-center">
+                    <button class="comment-next absolute top-[45%] -translate-y-1/2 end-2 lg:-end-6 z-20 text-white p-2.5 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none flex items-center justify-center shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 rtl:rotate-180">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
@@ -90,8 +90,8 @@ defined('ABSPATH') || exit;
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 relative h-[280px] sm:h-[350px] lg:h-auto z-20">
-                <a href="<?php echo esc_url(get_theme_mod('_alsalam_testi_btn_link', '#')); ?>" class="peer absolute bottom-12 start-0 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-30 bg-[#239BA8] text-white px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg hover:bg-teal-600 transition-colors cursor-pointer whitespace-nowrap">
+            <div class="w-full lg:w-1/2 relative h-[220px] sm:h-[300px] lg:h-auto z-20">
+                <a href="<?php echo esc_url(get_theme_mod('_alsalam_testi_btn_link', '#')); ?>" class="peer absolute bottom-8 sm:bottom-12 start-0 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-30 bg-[#239BA8] text-white px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg hover:bg-teal-600 transition-colors cursor-pointer whitespace-nowrap">
                     <span class="font-medium font-heading"><?php echo esc_html(pll__(get_theme_mod('_alsalam_testi_btn_text', 'All Comments'))); ?></span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -99,6 +99,8 @@ defined('ABSPATH') || exit;
                 </a>
 
                 <div class="absolute inset-y-0 start-0 w-full lg:w-[50vw] bg-slate-100 -z-10 overflow-hidden [&>img]:transition-transform [&>img]:duration-700 peer-hover:[&>img]:scale-110">
+                    <!-- Gradient overlay for better button readability -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#239BA8]/30 z-10 pointer-events-none"></div>
                     <img src="<?php echo esc_url(get_theme_mod('_alsalam_testi_image', alsalam_img('testominals.webp'))); ?>" class="testi-bg-parallax w-full h-full object-cover" alt="Doctor Client" loading="lazy">
                 </div>
             </div>

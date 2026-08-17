@@ -29,7 +29,7 @@ defined('ABSPATH') || exit;
             }
 
             for ($i = 0; $i < 2; $i++) {
-                echo '<div class="flex shrink-0 animate-marquee items-center justify-around gap-12 pe-12 group-hover:[animation-play-state:paused]" ' . ($i === 1 ? 'aria-hidden="true"' : '') . '>';
+                echo '<div class="flex shrink-0 animate-marquee items-center justify-around gap-8 sm:gap-12 pe-8 sm:pe-12 group-hover:[animation-play-state:paused]" ' . ($i === 1 ? 'aria-hidden="true"' : '') . '>';
                 foreach ($pills as $pill) {
                     echo '<article class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-full pe-6 ps-2 py-2 cursor-pointer hover:bg-white/10 transition-colors shrink-0">';
                     

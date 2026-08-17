@@ -12,6 +12,52 @@
   --font-heading: 'Outfit', sans-serif;
 }
 
+/* ─── Mobile Menu ─────────────────────────────────────────────── */
+/* Outer container: ensure full height in all display modes */
+#mobile-menu {
+  min-height: 100svh;
+  min-height: 100vh;
+}
+
+/* Mobile nav links: large, readable, 44px tap targets */
+#mobile-menu nav ul li a,
+#mobile-menu nav ul li a:visited {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, background-color 0.2s;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+#mobile-menu nav ul li a:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,0.06);
+}
+
+#mobile-menu nav ul li.current-menu-item > a {
+  color: #5eead4;  /* teal-300 */
+  background: rgba(94,234,212,0.08);
+}
+
+/* Remove default ul margin/padding from wp_nav_menu */
+#mobile-menu nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+
+
 body {
   font-family: var(--font-sans);
   background-color: #F4F7FE;

@@ -142,11 +142,17 @@ defined('ABSPATH') || exit;
   <div id="mobile-menu"
     class="hidden fixed inset-0 bg-[#041424]/98 backdrop-blur-3xl z-[100] flex-col justify-between p-8 transition-all duration-300 opacity-0 scale-95 pointer-events-none">
     
-    <!-- Top: Logo + Close Button -->
-    <div class="flex items-center justify-between w-full">
-      <img src="<?php echo esc_url(get_theme_mod('_alsalam_header_logo', alsalam_img('logo (2).png'))); ?>"
+  <!-- ═══════════════════════════
+       Inner flex wrapper — always flex-col, fills full screen
+       (outer div only controls display:block vs display:none via JS hidden class)
+  ═══════════════════════════ -->
+  <div class="flex flex-col h-full p-7 sm:p-9">
+
+    <!-- ── Top: Logo + Close ── -->
+    <div class="flex items-center justify-between w-full shrink-0">
+      <img src="<?php echo esc_url(get_theme_mod('_alsalam_header_logo', alsalam_img('logo (2).png')));?>"
            alt="<?php bloginfo('name'); ?>"
-           style="width: <?php echo esc_attr(get_theme_mod('_alsalam_header_logo_width', 150)); ?>px;"
+           style="width:<?php echo esc_attr(get_theme_mod('_alsalam_header_logo_width', 150));?>px;"
            class="h-auto object-contain">
       <button id="mobile-menu-close" type="button"
         class="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 text-white hover:text-primary-light hover:border-primary-light focus:outline-none transition-all duration-200"
@@ -157,34 +163,34 @@ defined('ABSPATH') || exit;
       </button>
     </div>
 
-    <!-- Center: Navigation Links -->
-    <nav class="flex flex-col gap-6 text-center my-auto">
+    <!-- ── Center: Nav Links — flex-grow fills remaining space ── -->
+    <nav class="flex-1 flex flex-col items-center justify-center py-6">
       <?php
       wp_nav_menu(array(
           'theme_location' => $menu_location,
           'container'      => false,
-          'menu_class'     => 'flex flex-col gap-6 text-center my-auto',
+          'menu_class'     => 'flex flex-col items-center gap-1 w-full',
           'fallback_cb'    => false,
       ));
       ?>
     </nav>
 
-    <!-- Bottom: Language Switcher Pills + CTA -->
-    <div class="flex flex-col gap-4 w-full">
+    <!-- ── Separator ── -->
+    <div class="w-full h-px bg-white/10 mb-5 shrink-0"></div>
 
-      <!-- ─── Language Switcher Pill Row (Mobile Menu) ─── -->
+    <!-- ── Bottom: Language + CTA ── -->
+    <div class="flex flex-col gap-3 w-full shrink-0">
+
       <?php if (get_theme_mod('_alsalam_header_lang_switcher', '1') === '1' && function_exists('pll_the_languages')) :
           $languages_mob = pll_the_languages(array('raw' => 1));
       ?>
       <div class="flex items-center justify-center gap-3">
-        <!-- Globe icon + label -->
         <span class="flex items-center gap-1.5 text-white/40 text-xs font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-4 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
           </svg>
           <?php esc_html_e('Language', 'alsalam'); ?>
         </span>
-        <!-- Language pills -->
         <div class="flex items-center gap-2">
           <?php foreach ($languages_mob as $lang_item) :
             $is_active = $lang_item['current_lang'];
@@ -199,9 +205,8 @@ defined('ABSPATH') || exit;
       </div>
       <?php endif; ?>
 
-      <!-- Full-width CTA -->
       <a href="<?php echo esc_url(alsalam_get_cta_url()); ?>"
-         class="flex w-full items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-primary/20 transition-all duration-200">
+         class="flex w-full items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-base font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-primary/20 transition-all duration-200 min-h-[50px]">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 shrink-0">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
@@ -210,6 +215,8 @@ defined('ABSPATH') || exit;
 
     </div><!-- /Bottom -->
 
-  </div><!-- /Mobile Menu -->
+  </div><!-- /Inner flex wrapper -->
+
+</div><!-- /Mobile Menu -->
 
 </header>

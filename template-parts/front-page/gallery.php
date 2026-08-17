@@ -56,7 +56,7 @@ $gallery_query = new WP_Query($args);
       </div>
 
       <!-- Mobile: horizontal scroll, sm+: accordion -->
-      <div id="gallery-accordion" class="flex w-full h-[200px] sm:h-[340px] lg:h-[420px] gap-[10px] sm:gap-[20px] overflow-x-auto sm:overflow-hidden scroll-smooth snap-x snap-mandatory sm:snap-none"
+      <div id="gallery-accordion" class="flex w-full h-[260px] sm:h-[340px] lg:h-[420px] gap-[10px] sm:gap-[20px] overflow-x-auto sm:overflow-hidden scroll-smooth snap-x snap-mandatory sm:snap-none"
            style="scrollbar-width: none; -ms-overflow-style: none;">
 
         <?php 

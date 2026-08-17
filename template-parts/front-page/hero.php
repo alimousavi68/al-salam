@@ -57,10 +57,10 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
       <div class="relative z-10 flex flex-col flex-grow justify-between">
         
         <!-- HERO BODY -->
-        <div class="flex-grow flex items-center px-5 sm:px-12 md:px-20 lg:ps-32 lg:pe-24 pt-24 sm:pt-32 lg:pt-36 pb-14 sm:pb-16 lg:pb-20 w-full">
+        <div class="flex-grow flex items-center px-5 sm:px-12 md:px-20 lg:ps-32 lg:pe-24 pt-24 sm:pt-32 lg:pt-36 pb-6 sm:pb-14 lg:pb-20 w-full">
           <div class="w-full flex flex-col justify-center">
 
-            <div class="relative w-full max-w-3xl min-h-[260px] sm:min-h-[300px] md:min-h-[350px] flex flex-col justify-center text-start">
+            <div class="relative w-full max-w-3xl min-h-[220px] sm:min-h-[280px] md:min-h-[350px] flex flex-col justify-center text-start">
 
               <div id="hero-slider" class="relative w-full">
                 <?php foreach ($heroSlides as $index => $slide): ?>

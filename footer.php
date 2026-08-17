@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
     <div style="position: absolute; width: 134.17px; height: 375.09px; left: -75px; bottom: -50px; background: #239BA8; filter: blur(119.9px); border-radius: 273px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
     <div style="position: absolute; width: 183.58px; height: 538.95px; right: -50px; top: -100px; background: #239BA8; filter: blur(151.9px); border-radius: 92.8206px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 mb-12">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 mb-12">
         <!-- Col 1: Branding & Newsletter -->
         <div class="lg:col-span-4 flex flex-col">
             <h2 class="text-3xl font-extrabold mb-8 leading-tight">

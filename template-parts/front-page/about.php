@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 <section id="about" class="relative py-16 lg:py-24">
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        <div class="grid grid-cols-1 items-center lg:grid-cols-2 gap-y-16 sm:gap-y-20 lg:gap-y-0">
+        <div class="grid grid-cols-1 items-center lg:grid-cols-2 gap-y-8 sm:gap-y-12 lg:gap-y-0">
             
             <!-- Left Column (Visuals) -->
             <div class="relative w-full max-w-xl mx-auto lg:max-w-none flex justify-center lg:justify-start pt-8 sm:pt-10 lg:pt-0">

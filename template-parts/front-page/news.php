@@ -120,17 +120,17 @@ if ($educational_query->have_posts()) {
       <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_news_title', 'News & Events'))); ?>
     </h2>
 
-    <div class="flex items-center bg-white rounded-full p-1 shadow-sm border border-slate-100" id="news-tab-wrapper">
-      <button onclick="switchNewsTab('latest')" id="tab-latest" class="px-6 py-2 bg-teal-500 text-white font-medium rounded-full cursor-pointer shadow-md transition-all duration-300">
+    <div class="flex items-center bg-white rounded-full p-1 shadow-sm border border-slate-100 shrink-0" id="news-tab-wrapper">
+      <button onclick="switchNewsTab('latest')" id="tab-latest" class="px-4 sm:px-6 py-2 bg-teal-500 text-white font-medium rounded-full cursor-pointer shadow-md transition-all duration-300 whitespace-nowrap text-sm sm:text-base">
         <?php echo esc_html(pll__(get_theme_mod('_alsalam_news_tab1_label', 'Latest'))); ?>
       </button>
-      <button onclick="switchNewsTab('educational')" id="tab-educational" class="px-6 py-2 text-teal-600 font-medium rounded-full cursor-pointer transition-all duration-300 hover:text-teal-700">
+      <button onclick="switchNewsTab('educational')" id="tab-educational" class="px-4 sm:px-6 py-2 text-teal-600 font-medium rounded-full cursor-pointer transition-all duration-300 hover:text-teal-700 whitespace-nowrap text-sm sm:text-base">
         <?php echo esc_html(pll__(get_theme_mod('_alsalam_news_tab2_label', 'Educational'))); ?>
       </button>
     </div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 news-swiper-container gsap-fade-up">
+  <div class="relative max-w-7xl mx-auto px-2 sm:px-4 py-3 news-swiper-container gsap-fade-up">
     <button class="news-prev news-nav-btn absolute start-4 md:start-8 top-[42%] -translate-y-1/2 focus:outline-none" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -147,7 +147,7 @@ if ($educational_query->have_posts()) {
         
         <?php foreach ($swiper_slides as $item): ?>
         <div class="swiper-slide" data-category="<?php echo esc_attr($item['category']); ?>">
-          <article class="bg-white rounded-[30px] p-6 flex flex-col relative transition-shadow duration-500 w-full h-[540px] max-w-[344px] mx-auto border border-slate-100">
+          <article class="bg-white rounded-[30px] p-5 sm:p-6 flex flex-col relative transition-shadow duration-500 w-full h-[540px] max-w-[344px] mx-auto border border-slate-100 shadow-none sm:shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
             <div class="relative w-full h-[300px] max-w-[296px] rounded-[30px] ltr:rounded-br-none rtl:rounded-bl-none overflow-hidden mb-6">
               <img src="<?php echo esc_url($item['image']); ?>" class="w-full h-full object-cover" alt="<?php echo esc_attr($item['title']); ?>" loading="lazy" />
               
