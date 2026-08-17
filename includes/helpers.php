@@ -80,7 +80,7 @@ if (!function_exists('alsalam_page_url')) {
         $clean_slug = trim($slug, '/');
         
         // 1. Try get_page_by_path
-        $page = get_page_by_path($clean_slug);
+        $page = get_page_by_path($clean_slug); 
         
         // 2. Fallback: Search by page template (e.g. page-inquiry.php -> inquiry)
         if (!$page) {
