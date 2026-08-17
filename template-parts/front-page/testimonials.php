@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
     <div class="w-full max-w-7xl mx-auto px-4">
         <div class="flex flex-col lg:flex-row w-full lg:max-h-[420px] lg:h-[420px] relative shadow-sm">
             <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-8 z-10">
-                <div class="absolute inset-y-0 end-[-1rem] lg:end-0 w-[100vw] lg:w-[50vw] bg-[#239BA8] -z-10"></div>
+                <div class="absolute inset-y-0 end-0 w-full lg:w-[50vw] bg-[#239BA8] -z-10"></div>
                 
                 <header class="flex items-center gap-3 mb-8 text-white gsap-fade-up">
                     <img src="<?php echo esc_url(alsalam_img('chats-text.svg')); ?>" alt="Customer Comments" class="w-10 h-10 drop-shadow-sm" loading="lazy">
@@ -98,7 +98,7 @@ defined('ABSPATH') || exit;
                     </svg>
                 </a>
 
-                <div class="absolute inset-y-0 start-[-1rem] lg:start-0 w-[100vw] lg:w-[50vw] bg-slate-100 -z-10 overflow-hidden [&>img]:transition-transform [&>img]:duration-700 peer-hover:[&>img]:scale-110">
+                <div class="absolute inset-y-0 start-0 w-full lg:w-[50vw] bg-slate-100 -z-10 overflow-hidden [&>img]:transition-transform [&>img]:duration-700 peer-hover:[&>img]:scale-110">
                     <img src="<?php echo esc_url(get_theme_mod('_alsalam_testi_image', alsalam_img('testominals.webp'))); ?>" class="testi-bg-parallax w-full h-full object-cover" alt="Doctor Client" loading="lazy">
                 </div>
             </div>

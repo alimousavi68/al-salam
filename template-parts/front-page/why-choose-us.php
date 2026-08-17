@@ -8,11 +8,11 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_why_enable', '1') !== '1') return; ?>
-<section class="py-20">
+<section class="py-20 pt-28 lg:pt-20">
     <div class="max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            <div class="relative w-full h-full lg:pe-8 group mt-14 sm:mt-16 lg:mt-0">
+            <div class="relative w-full h-full lg:pe-8 group lg:mt-0">
                 <div class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-teal-100/50 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
                 <div class="relative w-full h-[400px] sm:h-[480px] lg:h-full min-h-[350px] rounded-[2rem] overflow-hidden bg-background-page isolate">
@@ -31,7 +31,8 @@ defined('ABSPATH') || exit;
                     </svg>
                 </div>
 
-                <div class="absolute -top-[70px] sm:-top-[90px] lg:-top-[13%] start-0 lg:-start-[12%] z-20 max-w-[90%] lg:max-w-[85%] flex flex-col items-start gap-3 lg:gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
+                <!-- Title Card: RELATIVE on mobile (in-flow), ABSOLUTE on lg+ (floating) -->
+                <div class="relative lg:absolute lg:-top-[13%] lg:-start-[12%] z-20 mb-4 lg:mb-0 max-w-full lg:max-w-[85%] flex flex-col items-start gap-2 lg:gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
                     <span class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-50 to-white border border-teal-100 text-teal-800 rounded-full px-4 py-1.5 text-sm font-bold shadow-md">
                         <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
                         <?php echo esc_html(pll__(get_theme_mod('_alsalam_why_badge_floating', 'Flexible IV Bag Technology'))); ?>

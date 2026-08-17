@@ -110,13 +110,13 @@ if ($educational_query->have_posts()) {
 }
 ?>
 <section class="relative w-full pb-24 overflow-hidden bg-transparent z-0">
-  <div class="absolute top-0 start-0 w-full h-[385px] bg-[#E5EFF2] -z-10"></div>
+  <div class="absolute top-0 start-0 w-full h-[220px] sm:h-[300px] lg:h-[385px] bg-[#E5EFF2] -z-10"></div>
 
   <img src="<?php echo esc_url(alsalam_img('news-bg-pattern-top-left.png')); ?>" class="absolute top-0 left-0 -z-10 max-h-[300px] md:max-h-[400px] object-contain opacity-95 pointer-events-none" alt="" loading="lazy" />
   <img src="<?php echo esc_url(alsalam_img('news-bg-pattern-bootom-right.png')); ?>" class="absolute bottom-0 right-0 -z-10 max-h-[300px] md:max-h-[400px] object-contain opacity-95 pointer-events-none" alt="" loading="lazy" />
 
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 gsap-fade-up">
-    <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
       <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_news_title', 'News & Events'))); ?>
     </h2>
 
@@ -142,7 +142,7 @@ if ($educational_query->have_posts()) {
       </svg>
     </button>
 
-    <div class="swiper news-swiper w-full max-w-[344px] md:max-w-[768px] lg:max-w-[1092px] mx-auto h-[600px]">
+    <div class="swiper news-swiper w-full max-w-[320px] sm:max-w-[344px] md:max-w-[768px] lg:max-w-[1092px] mx-auto h-[600px]">
       <div class="swiper-wrapper">
         
         <?php foreach ($swiper_slides as $item): ?>

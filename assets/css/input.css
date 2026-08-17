@@ -83,10 +83,10 @@ h6 {
 
 /* Slides are positioned relatively and visibility is managed dynamically via JS classes */
 
-/* The slider container needs relative + min-height so it doesn't collapse */
+/* #hero-slider min-height per breakpoint */
 #hero-slider {
   position: relative;
-  min-height: 220px;
+  min-height: 200px;
 }
 
 @media (min-width: 640px) {
@@ -179,11 +179,12 @@ h6 {
   }
 }
 
+/* hero-subtitle: smaller on mobile so it doesn't push desc off screen */
 .hero-subtitle {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 22px;
   color: #FFFFFF;
 }
 

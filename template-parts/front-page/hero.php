@@ -85,12 +85,12 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
 
               <!-- CTA Buttons Group -->
               <div class="flex flex-wrap items-center gap-4 mt-2">
-                <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn1_link', '#about')); ?>" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; line-height: 20px; color: #041424;" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 active:bg-slate-200 px-6 py-2.5 rounded-full shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white">
+                <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn1_link', '#about')); ?>" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; line-height: 20px; color: #041424;" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 active:bg-slate-200 min-h-[44px] px-6 py-2.5 rounded-full shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white">
                   <?php echo esc_html(pll__(get_theme_mod('_alsalam_hero_btn1_text', 'About Us'))); ?>
                 </a>
                 
                 <div class="flex items-center gap-2.5 group cursor-pointer focus-within:ring-2 focus-within:ring-primary-light rounded-full">
-                  <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn2_link', '#products')); ?>" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; line-height: 20px;" class="inline-flex items-center justify-center border border-white/30 text-white px-5 py-2.5 rounded-full group-hover:bg-white/10 group-hover:border-white transition-all duration-200 focus:outline-none">
+                  <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn2_link', '#products')); ?>" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; line-height: 20px;" class="inline-flex items-center justify-center border border-white/30 text-white min-h-[44px] px-5 py-2.5 rounded-full group-hover:bg-white/10 group-hover:border-white transition-all duration-200 focus:outline-none">
                     <?php echo esc_html(pll__(get_theme_mod('_alsalam_hero_btn2_text', 'Our Products'))); ?>
                   </a>
                   <a href="<?php echo esc_url(get_theme_mod('_alsalam_hero_btn2_link', '#products')); ?>" 

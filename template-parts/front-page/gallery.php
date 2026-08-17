@@ -16,7 +16,7 @@ $gallery_query = new WP_Query($args);
 ?>
 
 <section class="relative w-full px-4 mb-24 z-10">
-  <div class="bg-[#0a1120] rounded-[1.5rem] sm:rounded-[2.5rem] relative overflow-hidden w-full max-w-[90rem] min-h-[500px] sm:min-h-[600px] lg:h-[720px] mx-auto py-10 sm:py-16 px-4 sm:px-12 lg:px-20 shadow-2xl">
+  <div class="bg-[#0a1120] rounded-[1.5rem] sm:rounded-[2.5rem] relative overflow-hidden w-full max-w-[90rem] min-h-[460px] sm:min-h-[600px] lg:h-[720px] mx-auto py-8 sm:py-16 px-4 sm:px-12 lg:px-20 shadow-2xl">
 
     <svg class="absolute inset-0 w-full h-full opacity-5 pointer-events-none stroke-teal-500/30" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
       <defs>
@@ -43,19 +43,21 @@ $gallery_query = new WP_Query($args);
 
     <div class="relative w-full pb-8 gsap-fade-up">
 
-      <div class="gallery-nav-btn gallery-prev" id="gallery-prev" role="button" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
+      <div class="gallery-nav-btn gallery-prev hidden sm:flex" id="gallery-prev" role="button" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </div>
 
-      <div class="gallery-nav-btn gallery-next" id="gallery-next" role="button" aria-label="<?php esc_attr_e('Next slide', 'alsalam'); ?>">
+      <div class="gallery-nav-btn gallery-next hidden sm:flex" id="gallery-next" role="button" aria-label="<?php esc_attr_e('Next slide', 'alsalam'); ?>">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </div>
 
-      <div id="gallery-accordion" class="flex w-full h-[240px] sm:h-[340px] lg:h-[420px] gap-[12px] sm:gap-[20px] overflow-hidden">
+      <!-- Mobile: horizontal scroll, sm+: accordion -->
+      <div id="gallery-accordion" class="flex w-full h-[200px] sm:h-[340px] lg:h-[420px] gap-[10px] sm:gap-[20px] overflow-x-auto sm:overflow-hidden scroll-smooth snap-x snap-mandatory sm:snap-none"
+           style="scrollbar-width: none; -ms-overflow-style: none;">
 
         <?php 
         if ($gallery_query->have_posts()): 

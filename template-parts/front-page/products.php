@@ -22,8 +22,8 @@ $args = array(
 $products_query = new WP_Query($args);
 ?>
 <section class="products-section relative w-full py-24 overflow-hidden z-0" id="products">
-  <!-- The Background Band (Set to exactly 293px height) -->
-  <div class="absolute top-1/2 -translate-y-1/2 start-0 w-full h-[293px] bg-[#E5EEF4] -z-10 flex items-center justify-between overflow-hidden">
+  <!-- The Background Band — hidden on mobile, visible on lg+ -->
+  <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 start-0 w-full h-[293px] bg-[#E5EEF4] -z-10 overflow-hidden">
     <!-- Left Background Pattern (Enlarged) -->
     <img src="<?php echo esc_url(alsalam_img('bg-pattern-left.svg')); ?>" class="h-[150%] max-w-none object-contain opacity-90 ltr:block rtl:hidden" alt="" loading="lazy" />
     <img src="<?php echo esc_url(alsalam_img('bg-pattern-right.svg')); ?>" class="h-[150%] max-w-none object-contain opacity-90 rtl:block ltr:hidden" alt="" loading="lazy" />
@@ -37,7 +37,7 @@ $products_query = new WP_Query($args);
   <div class="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 lg:h-[560px]">
     <!-- Left Column (Width: lg:w-1/3 - Max 300px width on large screens) -->
     <div class="w-full lg:w-1/3 lg:max-w-[300px] text-start flex flex-col justify-center">
-      <h2 class="pt-[25px] text-[40px] font-extrabold tracking-tight leading-tight font-heading gsap-fade-up">
+      <h2 class="pt-[25px] text-[30px] sm:text-[36px] lg:text-[40px] font-extrabold tracking-tight leading-tight font-heading gsap-fade-up">
         <?php echo wp_kses_post($title); ?>
       </h2>
       

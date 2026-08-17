@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_marquee_enable', '1') !== '1') return; ?>
 <section class="w-full gsap-fade-up">
-    <div class="bg-[#0a1120] relative w-full py-6 shadow-sm flex justify-center">
+    <div class="bg-[#0a1120] relative w-full py-4 sm:py-6 shadow-sm flex justify-center">
         <div class="w-full max-w-7xl px-4 overflow-hidden">
             <div class="flex w-full group">
             <?php

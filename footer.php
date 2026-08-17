@@ -6,13 +6,13 @@
  */
 defined('ABSPATH') || exit;
 ?>
-<footer class="relative w-full bg-[#EAF3F5] pt-20 pb-8 overflow-hidden z-0 mt-auto">
+<footer class="relative w-full bg-[#EAF3F5] pt-16 sm:pt-20 pb-8 overflow-hidden z-0 mt-auto">
     <!-- Background Patterns -->
-    <div class="absolute bottom-0 start-0 opacity-100 w-[450px] pointer-events-none">
-        <img src="<?php echo esc_url(alsalam_img('bottom-left.svg')); ?>" alt="Pattern" class="w-full h-auto object-cover opacity-90" style="filter: brightness(0) invert(1);" />
+    <div class="absolute bottom-0 start-0 opacity-100 w-[200px] sm:w-[300px] lg:w-[450px] pointer-events-none">
+        <img src="<?php echo esc_url(alsalam_img('bottom-left.svg')); ?>" alt="" class="w-full h-auto object-cover opacity-90" style="filter: brightness(0) invert(1);" />
     </div>
-    <div class="absolute top-0 end-0 opacity-100 w-80 pointer-events-none">
-        <img src="<?php echo esc_url(alsalam_img('top-right-bg.svg')); ?>" alt="Pattern" class="w-full h-auto object-cover opacity-90" style="filter: brightness(0) invert(1);" />
+    <div class="absolute top-0 end-0 opacity-100 w-[120px] sm:w-[180px] lg:w-80 pointer-events-none">
+        <img src="<?php echo esc_url(alsalam_img('top-right-bg.svg')); ?>" alt="" class="w-full h-auto object-cover opacity-90" style="filter: brightness(0) invert(1);" />
     </div>
     <!-- Decorative Blurs -->
     <div style="position: absolute; width: 134.17px; height: 375.09px; left: -75px; bottom: -50px; background: #239BA8; filter: blur(119.9px); border-radius: 273px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
