@@ -25,11 +25,11 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
 }
 ?>
 <!-- Hero Section -->
-<section id="home" class="relative bg-background-page pt-4 pb-4 sm:pt-4 sm:pb-6 lg:pt-4 lg:pb-8">
-  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+<section id="home" class="relative bg-background-page pt-3 pb-3 sm:pt-4 sm:pb-6 lg:pt-4 lg:pb-8">
+  <div class="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8">
     
     <!-- Hero Wrapper: Large rounded card -->
-    <div id="hero-wrapper" class="hero-container relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] min-h-[800px] flex flex-col justify-between shadow-2xl">
+    <div id="hero-wrapper" class="hero-container relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] min-h-[620px] sm:min-h-[700px] lg:min-h-[800px] flex flex-col justify-between shadow-2xl">
 
       <!-- Background Layers -->
       <?php if (get_theme_mod('_alsalam_hero_bg_type', 'video') === 'video') : ?>
@@ -57,10 +57,10 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
       <div class="relative z-10 flex flex-col flex-grow justify-between">
         
         <!-- HERO BODY -->
-        <div class="flex-grow flex items-center px-6 sm:px-12 md:px-20 lg:ps-32 lg:pe-24 pt-36 pb-20 w-full">
+        <div class="flex-grow flex items-center px-5 sm:px-12 md:px-20 lg:ps-32 lg:pe-24 pt-24 sm:pt-32 lg:pt-36 pb-14 sm:pb-16 lg:pb-20 w-full">
           <div class="w-full flex flex-col justify-center">
 
-            <div class="relative w-full max-w-3xl min-h-[320px] md:min-h-[350px] flex flex-col justify-center text-start">
+            <div class="relative w-full max-w-3xl min-h-[260px] sm:min-h-[300px] md:min-h-[350px] flex flex-col justify-center text-start">
 
               <div id="hero-slider" class="relative w-full">
                 <?php foreach ($heroSlides as $index => $slide): ?>

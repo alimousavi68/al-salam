@@ -8,10 +8,10 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_testi_enable', '1') !== '1') return; ?>
-<section class="w-full mt-20 overflow-hidden">
+<section class="w-full mt-16 sm:mt-20 overflow-hidden">
     <div class="w-full max-w-7xl mx-auto px-4">
         <div class="flex flex-col lg:flex-row w-full lg:max-h-[420px] lg:h-[420px] relative shadow-sm">
-            <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-8 lg:px-16 py-8 z-10">
+            <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-8 z-10">
                 <div class="absolute inset-y-0 end-[-1rem] lg:end-0 w-[100vw] lg:w-[50vw] bg-[#239BA8] -z-10"></div>
                 
                 <header class="flex items-center gap-3 mb-8 text-white gsap-fade-up">
@@ -90,7 +90,7 @@ defined('ABSPATH') || exit;
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 relative h-[400px] lg:h-auto z-20">
+            <div class="w-full lg:w-1/2 relative h-[280px] sm:h-[350px] lg:h-auto z-20">
                 <a href="<?php echo esc_url(get_theme_mod('_alsalam_testi_btn_link', '#')); ?>" class="peer absolute bottom-12 start-0 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-30 bg-[#239BA8] text-white px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg hover:bg-teal-600 transition-colors cursor-pointer whitespace-nowrap">
                     <span class="font-medium font-heading"><?php echo esc_html(pll__(get_theme_mod('_alsalam_testi_btn_text', 'All Comments'))); ?></span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">

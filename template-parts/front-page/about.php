@@ -8,23 +8,23 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_about_enable', '1') !== '1') return; ?>
-<section id="about" class="relative overflow-hidden py-20 lg:py-24">
+<section id="about" class="relative overflow-hidden py-16 lg:py-24">
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        <div class="grid grid-cols-1 items-center lg:grid-cols-2">
+        <div class="grid grid-cols-1 items-center lg:grid-cols-2 gap-y-16 sm:gap-y-20 lg:gap-y-0">
             
             <!-- Left Column (Visuals) -->
-            <div class="relative w-full max-w-xl mx-auto lg:max-w-none flex justify-center lg:justify-start">
-                <div class="relative group w-[432px] h-[437px]">
+            <div class="relative w-full max-w-xl mx-auto lg:max-w-none flex justify-center lg:justify-start pt-8 sm:pt-10 lg:pt-0">
+            <div class="relative group w-full max-w-[432px] h-[340px] sm:h-[437px] mx-auto">
                     <img 
                         src="<?php echo esc_url(get_theme_mod('_alsalam_about_deco', alsalam_img('image-icon.png'))); ?>" 
                         alt="" 
-                        class="absolute top-[-62px] left-[-56px] w-[192px] h-[217px] z-20 pointer-events-none transform transition-transform duration-500 group-hover:scale-105"
+                        class="absolute top-[-30px] left-[-20px] sm:top-[-62px] sm:left-[-56px] w-[120px] h-[135px] sm:w-[192px] sm:h-[217px] z-20 pointer-events-none transform transition-transform duration-500 group-hover:scale-105"
                     />
 
                     <div class="absolute -inset-4 rounded-[3rem] bg-gradient-to-tr from-primary/10 to-transparent blur-2xl opacity-75 transition duration-500 group-hover:scale-105"></div>
                     
-                    <div class="relative w-[432px] h-[437px] overflow-hidden rounded-[50px] shadow-2xl border border-slate-100 bg-slate-100 z-10">
+                    <div class="relative w-full h-[340px] sm:h-[437px] overflow-hidden rounded-[50px] shadow-2xl border border-slate-100 bg-slate-100 z-10">
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/50 via-primary/10 to-transparent pointer-events-none z-10 mix-blend-normal"></div>
                         
                         <img 
@@ -37,7 +37,7 @@ defined('ABSPATH') || exit;
 
                     <a 
                         href="<?php echo esc_url(get_theme_mod('_alsalam_about_btn_link', '#')); ?>" 
-                        class="absolute bottom-[25px] end-[-54px] flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-primary active:scale-95 text-white font-medium rounded-full shadow-2xl transition-all duration-300 group/btn focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-20 font-sans min-w-[223px] min-h-[65px]"
+                        class="absolute bottom-[-10px] sm:bottom-[25px] end-0 sm:end-[-54px] flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-primary active:scale-95 text-white font-medium rounded-full shadow-2xl transition-all duration-300 group/btn focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-20 font-sans min-w-[180px] sm:min-w-[223px] min-h-[55px] sm:min-h-[65px]"
                         aria-label="<?php esc_attr_e('Learn More', 'alsalam'); ?>"
                     >
                         <span class="text-base font-semibold tracking-wide"><?php echo esc_html(pll__(get_theme_mod('_alsalam_about_btn_text', 'Learn More'))); ?></span>

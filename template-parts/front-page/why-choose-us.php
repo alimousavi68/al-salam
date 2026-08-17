@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
     <div class="max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            <div class="relative w-full h-full lg:pe-8 group">
+            <div class="relative w-full h-full lg:pe-8 group mt-14 sm:mt-16 lg:mt-0">
                 <div class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-teal-100/50 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
                 <div class="relative w-full h-[400px] sm:h-[480px] lg:h-full min-h-[350px] rounded-[2rem] overflow-hidden bg-background-page isolate">
@@ -31,14 +31,14 @@ defined('ABSPATH') || exit;
                     </svg>
                 </div>
 
-                <div class="absolute -top-[13%] -start-[12%] z-20 max-w-[85%] flex flex-col items-start gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
+                <div class="absolute -top-[70px] sm:-top-[90px] lg:-top-[13%] start-0 lg:-start-[12%] z-20 max-w-[90%] lg:max-w-[85%] flex flex-col items-start gap-3 lg:gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
                     <span class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-50 to-white border border-teal-100 text-teal-800 rounded-full px-4 py-1.5 text-sm font-bold shadow-md">
                         <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
                         <?php echo esc_html(pll__(get_theme_mod('_alsalam_why_badge_floating', 'Flexible IV Bag Technology'))); ?>
                     </span>
 
                     <div class="p-4">
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 tracking-tight font-heading">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-1 sm:mb-2 tracking-tight font-heading">
                             <?php echo esc_html(pll__(get_theme_mod('_alsalam_why_badge_title', 'Why Choose Us'))); ?>
                         </h2>
                         <p class="text-slate-500 text-base font-medium leading-relaxed font-sans">
@@ -47,7 +47,7 @@ defined('ABSPATH') || exit;
                     </div>
                 </div>
 
-                <div class="absolute top-[-20px] end-[60px] rtl:end-[30px] translate-x-1/4 -translate-y-1/4 z-30 transition-transform duration-700 hover:rotate-12 hover:scale-110">
+                <div class="absolute top-[-20px] end-[20px] sm:end-[60px] lg:end-[60px] rtl:end-[10px] sm:rtl:end-[30px] translate-x-1/4 -translate-y-1/4 z-30 transition-transform duration-700 hover:rotate-12 hover:scale-110 w-12 h-12 sm:w-auto sm:h-auto">
                     <img src="<?php echo esc_url(get_theme_mod('_alsalam_why_img_deco', alsalam_img('question_mark_sign_blue_01 copy 1 1.svg'))); ?>" 
                         alt="Question Mark" 
                         class="w-full h-full object-contain drop-shadow-[0_15px_25px_rgba(20,184,166,0.4)]" loading="lazy" />

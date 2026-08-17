@@ -16,7 +16,7 @@ $gallery_query = new WP_Query($args);
 ?>
 
 <section class="relative w-full px-4 mb-24 z-10">
-  <div class="bg-[#0a1120] rounded-[2.5rem] relative overflow-hidden w-full max-w-[90rem] h-[720px] mx-auto py-16 px-6 sm:px-12 lg:px-20 shadow-2xl">
+  <div class="bg-[#0a1120] rounded-[1.5rem] sm:rounded-[2.5rem] relative overflow-hidden w-full max-w-[90rem] min-h-[500px] sm:min-h-[600px] lg:h-[720px] mx-auto py-10 sm:py-16 px-4 sm:px-12 lg:px-20 shadow-2xl">
 
     <svg class="absolute inset-0 w-full h-full opacity-5 pointer-events-none stroke-teal-500/30" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
       <defs>
@@ -28,7 +28,7 @@ $gallery_query = new WP_Query($args);
       <rect width="100%" height="100%" fill="url(#gallery-grid)" />
     </svg>
 
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-16 gap-6 relative z-10 gsap-fade-up">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-16 gap-4 relative z-10 gsap-fade-up">
       <div class="space-y-2">
         <span class="text-teal-500 text-xl md:text-2xl font-bold tracking-wider block font-heading uppercase"><?php echo esc_html(pll__('AL-SALAM')); ?></span>
         <h2 class="text-white text-3xl md:text-5xl font-extrabold tracking-tight font-heading"><?php echo esc_html(pll__('Company Gallery')); ?></h2>
@@ -55,7 +55,7 @@ $gallery_query = new WP_Query($args);
         </svg>
       </div>
 
-      <div id="gallery-accordion" class="flex w-full h-[340px] sm:h-[420px] gap-[20px] overflow-hidden">
+      <div id="gallery-accordion" class="flex w-full h-[240px] sm:h-[340px] lg:h-[420px] gap-[12px] sm:gap-[20px] overflow-hidden">
 
         <?php 
         if ($gallery_query->have_posts()): 
