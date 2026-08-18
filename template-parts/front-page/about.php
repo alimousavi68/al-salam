@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
             <div class="relative w-full max-w-xl mx-auto lg:max-w-none flex justify-center lg:justify-start pt-8 sm:pt-10 lg:pt-0">
             <div class="relative group w-full max-w-[380px] sm:max-w-[432px] h-[320px] sm:h-[437px] mx-auto">
                     <img 
-                        src="<?php echo esc_url(get_theme_mod('_alsalam_about_deco', alsalam_img('image-icon.png'))); ?>" 
+                        src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_about_deco', alsalam_img('image-icon.png')))); ?>" 
                         alt="" 
                         class="absolute top-[-30px] left-[-20px] sm:top-[-62px] sm:left-[-56px] w-[135px] h-[150px] sm:w-[192px] sm:h-[217px] z-20 pointer-events-none transform transition-transform duration-500 group-hover:scale-105"
                     />
@@ -28,7 +28,7 @@ defined('ABSPATH') || exit;
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/50 via-primary/10 to-transparent pointer-events-none z-10 mix-blend-normal"></div>
                         
                         <img 
-                            src="<?php echo esc_url(get_theme_mod('_alsalam_about_img', alsalam_img('about-bg.jpg'))); ?>" 
+                            src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_about_img', alsalam_img('about-bg.jpg')))); ?>" 
                             alt="<?php esc_attr_e('AL-SALAM Sterile Manufacturing Facility', 'alsalam'); ?>" 
                             loading="lazy" 
                             class="about-img-parallax h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

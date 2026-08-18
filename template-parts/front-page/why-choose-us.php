@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
                 <div class="hidden sm:block absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-teal-100/50 to-transparent rounded-full blur-xl -z-10 pointer-events-none"></div>
 
                 <div class="relative w-full h-[400px] sm:h-[480px] lg:h-full min-h-[350px] rounded-[2rem] overflow-hidden bg-background-page isolate">
-                    <img src="<?php echo esc_url(get_theme_mod('_alsalam_why_img', alsalam_img('Why Choose Us.jpg'))); ?>" 
+                    <img src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_why_img', alsalam_img('Why Choose Us.jpg')))); ?>" 
                         alt="<?php esc_attr_e('Why Choose Us', 'alsalam'); ?>" 
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]" loading="lazy" />
                     
@@ -49,7 +49,7 @@ defined('ABSPATH') || exit;
                 </div>
 
                 <div class="why-question-icon-wrap absolute top-[-20px] end-[20px] sm:end-[60px] lg:end-[60px] rtl:end-[10px] sm:rtl:end-[30px] translate-x-1/4 -translate-y-1/4 z-30 transition-transform duration-700 hover:rotate-12 hover:scale-110 w-16 h-16 sm:w-auto sm:h-auto">
-                    <img src="<?php echo esc_url(get_theme_mod('_alsalam_why_img_deco', alsalam_img('question_mark_sign_blue_01 copy 1 1.svg'))); ?>" 
+                    <img src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_why_img_deco', alsalam_img('question_mark_sign_blue_01 copy 1 1.svg')))); ?>" 
                         alt="Question Mark" 
                         class="w-full h-full object-contain drop-shadow-[0_15px_25px_rgba(20,184,166,0.4)]" loading="lazy" />
                 </div>
@@ -83,10 +83,11 @@ defined('ABSPATH') || exit;
 
                     foreach ($features as $feature) :
                         if (empty($feature['title'])) continue;
+                        $icon_url = !empty($feature['icon']) ? alsalam_fix_asset_url($feature['icon']) : '';
                     ?>
                     <li class="why-stagger-item flex items-center gap-4 bg-white rounded-full py-1.5 ps-3 pe-4 shadow-md shadow-slate-200/50 transition-transform duration-300 hover:-translate-y-1 cursor-default border border-slate-100">
-                        <?php if (!empty($feature['icon'])) : ?>
-                        <img src="<?php echo esc_url($feature['icon']); ?>" alt="" class="w-8 h-8 shrink-0" loading="lazy">
+                        <?php if (!empty($icon_url)) : ?>
+                        <img src="<?php echo esc_url($icon_url); ?>" alt="" class="w-8 h-8 shrink-0" loading="lazy">
                         <?php endif; ?>
                         <article class="flex flex-col">
                             <h3 class="text-slate-800 font-bold text-base font-heading"><?php echo esc_html(pll__($feature['title'])); ?></h3>

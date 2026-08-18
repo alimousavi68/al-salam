@@ -54,9 +54,9 @@ defined('ABSPATH') || exit;
                                         </div>
                                     </div>
 
-                                    <div class="flex items-center">
+                                     <div class="flex items-center">
                                         <?php 
-                                        $avatar = !empty($review['avatar']) ? $review['avatar'] : alsalam_img('avatar-man.jpg');
+                                        $avatar = !empty($review['avatar']) ? alsalam_fix_asset_url($review['avatar']) : alsalam_img('avatar-man.jpg');
                                         ?>
                                         <img src="<?php echo esc_url($avatar); ?>" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-white shadow-sm object-cover" loading="lazy">
                                         <div class="ms-4 flex flex-col">
@@ -120,7 +120,7 @@ defined('ABSPATH') || exit;
                 <div class="absolute inset-y-0 start-0 w-full lg:w-[50vw] bg-slate-100 -z-10 overflow-hidden [&>img]:transition-transform [&>img]:duration-700 peer-hover:[&>img]:scale-110">
                     <!-- Gradient overlay for better button readability -->
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#239BA8]/30 z-10 pointer-events-none"></div>
-                    <img src="<?php echo esc_url(get_theme_mod('_alsalam_testi_image', alsalam_img('testominals.webp'))); ?>" class="testi-bg-parallax w-full h-full object-cover" alt="Doctor Client" loading="lazy">
+                    <img src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_testi_image', alsalam_img('testominals.webp')))); ?>" class="testi-bg-parallax w-full h-full object-cover" alt="Doctor Client" loading="lazy">
                 </div>
             </div>
         </div>

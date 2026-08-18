@@ -65,7 +65,7 @@ $total_items = count($items);
         <div class="hidden sm:block absolute top-0 end-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#239BA8] opacity-50 blur-[60px] rounded-full pointer-events-none z-0" aria-hidden="true"></div>
         <div class="hidden sm:block absolute bottom-0 start-0 translate-y-1/4 -translate-x-1/4 w-64 h-64 bg-[#239BA8] opacity-50 blur-[60px] rounded-full pointer-events-none z-0" aria-hidden="true"></div>
         
-        <img src="<?php echo esc_url(get_theme_mod('_alsalam_infra_mask_fixed', alsalam_img('Mask group.svg'))); ?>" class="infra-bg-parallax absolute inset-0 w-full h-full object-cover pointer-events-none opacity-100 z-0" alt="" aria-hidden="true" loading="lazy" />
+        <img src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_infra_mask_fixed', alsalam_img('Mask group.svg')))); ?>" class="infra-bg-parallax absolute inset-0 w-full h-full object-cover pointer-events-none opacity-100 z-0" alt="" aria-hidden="true" loading="lazy" />
 
         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 relative z-10" role="list">
             

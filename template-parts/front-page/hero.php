@@ -37,7 +37,7 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
         <source src="<?php echo esc_url(get_theme_mod('_alsalam_hero_bg_video', ALSALAM_URI . '/assets/video/HomePageVideo.mp4')); ?>" type="video/mp4">
       </video>
       <?php else : ?>
-      <img src="<?php echo esc_url(get_theme_mod('_alsalam_hero_bg_image', alsalam_img('about-bg.jpg'))); ?>" class="absolute inset-0 w-full h-full object-cover z-0 select-none pointer-events-none" alt="" />
+      <img src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_hero_bg_image', alsalam_img('about-bg.jpg')))); ?>" class="absolute inset-0 w-full h-full object-cover z-0 select-none pointer-events-none" alt="" />
       <?php endif; ?>
 
       <!-- Teal/Slate overlay with glassmorphism -->
@@ -46,11 +46,11 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
 
       <!-- Fixed Absolute Decoration Images on Overlay -->
       <?php if ($deco_tr = get_theme_mod('_alsalam_hero_deco_tr', alsalam_img('top-right-bg.png'))) : ?>
-      <img src="<?php echo esc_url($deco_tr); ?>" alt="" class="hero-deco-top absolute top-0 end-0 w-auto h-auto max-w-[60%] lg:max-w-[50%] object-contain pointer-events-none z-[3] rtl:-scale-x-100" role="presentation">
+      <img src="<?php echo esc_url(alsalam_fix_asset_url($deco_tr)); ?>" alt="" class="hero-deco-top absolute top-0 end-0 w-auto h-auto max-w-[60%] lg:max-w-[50%] object-contain pointer-events-none z-[3] rtl:-scale-x-100" role="presentation">
       <?php endif; ?>
       
       <?php if ($deco_bl = get_theme_mod('_alsalam_hero_deco_bl', alsalam_img('bottom-left.png'))) : ?>
-      <img src="<?php echo esc_url($deco_bl); ?>" alt="" class="hero-deco-bottom absolute bottom-0 start-0 w-auto h-auto max-w-[60%] lg:max-w-[50%] object-contain pointer-events-none z-[3] rtl:-scale-x-100" role="presentation">
+      <img src="<?php echo esc_url(alsalam_fix_asset_url($deco_bl)); ?>" alt="" class="hero-deco-bottom absolute bottom-0 start-0 w-auto h-auto max-w-[60%] lg:max-w-[50%] object-contain pointer-events-none z-[3] rtl:-scale-x-100" role="presentation">
       <?php endif; ?>
 
       <!-- Content -->

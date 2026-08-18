@@ -11,6 +11,9 @@ defined('ABSPATH') || exit;
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php if (!has_site_icon()) : ?>
+    <link rel="icon" href="<?php echo esc_url(alsalam_img('logo (2).png')); ?>" type="image/png">
+    <?php endif; ?>
     <?php wp_head(); ?>
     <style>
         :root {
@@ -38,7 +41,7 @@ defined('ABSPATH') || exit;
     <div class="flex items-center gap-[26px]">
       <!-- Logo -->
       <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2 group focus:outline-none" aria-label="<?php bloginfo('name'); ?>">
-        <img src="<?php echo esc_url(get_theme_mod('_alsalam_header_logo', alsalam_img('logo (2).png'))); ?>" 
+        <img src="<?php echo esc_url(alsalam_fix_asset_url(get_theme_mod('_alsalam_header_logo', alsalam_img('logo (2).png')))); ?>" 
              alt="<?php bloginfo('name'); ?>" 
              style="width: clamp(100px, 28vw, <?php echo esc_attr(get_theme_mod('_alsalam_header_logo_width', 150)); ?>px);"
              class="h-auto object-contain transition-all duration-200 group-hover:scale-105">

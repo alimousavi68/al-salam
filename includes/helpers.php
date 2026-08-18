@@ -22,7 +22,39 @@ if (!function_exists('pll_e')) {
  * Get image URI from assets
  */
 function alsalam_img($filename) {
-    return ALSALAM_URI . '/assets/images/' . $filename;
+    return ALSALAM_URI . '/assets/images/' . ltrim($filename, '/');
+}
+
+/**
+ * Fix asset URL to prevent localhost/old domain 404s/connection refused errors
+ * when loading image paths from theme mods or DB settings on production server.
+ */
+if (!function_exists('alsalam_fix_asset_url')) {
+    function alsalam_fix_asset_url($url) {
+        if (empty($url)) return '';
+
+        // If it's a relative path or just a filename (e.g. "medal-star.svg")
+        if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
+            $filename = basename($url);
+            if (file_exists(ALSALAM_DIR . '/assets/images/' . $filename)) {
+                return alsalam_img($filename);
+            }
+            return site_url('/' . ltrim($url, '/'));
+        }
+
+        // If URL contains localhost, 127.0.0.1 or old theme assets path
+        if (strpos($url, 'localhost') !== false || strpos($url, '127.0.0.1') !== false || strpos($url, '/assets/images/') !== false || strpos($url, '/alsalam_original_theme/') !== false) {
+            $filename = basename(parse_url($url, PHP_URL_PATH));
+            if (!empty($filename) && file_exists(ALSALAM_DIR . '/assets/images/' . $filename)) {
+                return alsalam_img($filename);
+            }
+            // Replace domain part with current site URL
+            $path = parse_url($url, PHP_URL_PATH);
+            return site_url($path);
+        }
+
+        return $url;
+    }
 }
 
 /**
