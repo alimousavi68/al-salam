@@ -54,7 +54,7 @@ defined('ABSPATH') || exit;
                                         </div>
                                     </div>
 
-                                     <div class="flex items-center">
+                                     <div class="flex items-center"> 
                                         <?php 
                                         $avatar = !empty($review['avatar']) ? alsalam_fix_asset_url($review['avatar']) : alsalam_img('avatar-man.jpg');
                                         ?>
