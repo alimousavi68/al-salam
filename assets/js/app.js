@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mobile Language Panel Logic
         // ==========================================
         const langPanelToggle = document.getElementById('mobile-lang-toggle');
-        const langPanelClose  = document.getElementById('mobile-lang-panel-close');
-        const langPanel       = document.getElementById('mobile-lang-panel');
+        const langPanelClose = document.getElementById('mobile-lang-panel-close');
+        const langPanel = document.getElementById('mobile-lang-panel');
 
         function openLangPanel() {
             if (!langPanel) return;
