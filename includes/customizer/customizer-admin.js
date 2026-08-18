@@ -74,10 +74,12 @@
                         itemHtml += '<textarea data-field="' + fieldId + '" rows="4"></textarea>';
                     } else if (field.type === 'image' || field.type === 'svg') {
                         itemHtml += '<div class="image-uploader">';
-                        itemHtml += '<input type="hidden" data-field="' + fieldId + '" value="" />';
-                        itemHtml += '<img src="" class="image-preview" style="display:none;" />';
+                        itemHtml += '<img src="" class="image-preview" style="display:none; max-width:100%; height:auto; margin-bottom:6px; border-radius:6px; border:1px solid #ccc;" />';
+                        itemHtml += '<div style="display:flex; gap:6px; margin-bottom:6px;">';
                         itemHtml += '<button type="button" class="button alsalam-upload-button">Select Image</button>';
                         itemHtml += '<button type="button" class="button alsalam-remove-button" style="display:none;">Remove</button>';
+                        itemHtml += '</div>';
+                        itemHtml += '<input type="text" class="widefat image-url-input" data-field="' + fieldId + '" value="" placeholder="Image URL" style="font-size:11px; font-family:monospace;" />';
                         itemHtml += '</div>';
                     }
                     itemHtml += '</label></div>';
@@ -93,7 +95,7 @@
                 e.preventDefault();
                 var $button = $(this);
                 var $wrapper = $button.closest('.image-uploader');
-                var $input = $wrapper.find('input[type="hidden"]');
+                var $input = $wrapper.find('.image-url-input');
                 var $preview = $wrapper.find('.image-preview');
                 var $removeBtn = $wrapper.find('.alsalam-remove-button');
 
@@ -114,9 +116,26 @@
             $itemsContainer.on('click', '.alsalam-remove-button', function(e) {
                 e.preventDefault();
                 var $wrapper = $(this).closest('.image-uploader');
-                $wrapper.find('input[type="hidden"]').val('').trigger('change');
+                $wrapper.find('.image-url-input').val('').trigger('change');
                 $wrapper.find('.image-preview').attr('src', '').hide();
                 $(this).hide();
+                updateRepeaterValue();
+            });
+
+            // Sync image preview when manual URL input changes
+            $itemsContainer.on('input change', '.image-url-input', function() {
+                var url = $(this).val();
+                var $wrapper = $(this).closest('.image-uploader');
+                var $preview = $wrapper.find('.image-preview');
+                var $removeBtn = $wrapper.find('.alsalam-remove-button');
+                
+                if (url) {
+                    $preview.attr('src', url).show();
+                    $removeBtn.show();
+                } else {
+                    $preview.attr('src', '').hide();
+                    $removeBtn.hide();
+                }
                 updateRepeaterValue();
             });
 

@@ -33,6 +33,14 @@ if (!function_exists('alsalam_fix_asset_url')) {
     function alsalam_fix_asset_url($url) {
         if (empty($url)) return '';
 
+        $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+        $is_localhost = (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false);
+
+        // On local development environments, return URL as-is without modification
+        if ($is_localhost && (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0)) {
+            return $url;
+        }
+
         // If it's a relative path or just a filename (e.g. "medal-star.svg")
         if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
             $filename = basename($url);
@@ -42,13 +50,12 @@ if (!function_exists('alsalam_fix_asset_url')) {
             return site_url('/' . ltrim($url, '/'));
         }
 
-        // If URL contains localhost, 127.0.0.1 or old theme assets path
-        if (strpos($url, 'localhost') !== false || strpos($url, '127.0.0.1') !== false || strpos($url, '/assets/images/') !== false || strpos($url, '/alsalam_original_theme/') !== false) {
+        // On production: fix leftover localhost or 127.0.0.1 URLs from DB
+        if (strpos($url, 'localhost') !== false || strpos($url, '127.0.0.1') !== false || strpos($url, '/alsalam_original_theme/') !== false) {
             $filename = basename(parse_url($url, PHP_URL_PATH));
             if (!empty($filename) && file_exists(ALSALAM_DIR . '/assets/images/' . $filename)) {
                 return alsalam_img($filename);
             }
-            // Replace domain part with current site URL
             $path = parse_url($url, PHP_URL_PATH);
             return site_url($path);
         }

@@ -101,10 +101,12 @@ class Alsalam_Repeater_Control extends WP_Customize_Control {
                                             <textarea data-field="<?php echo esc_attr($field_id); ?>" rows="4"><?php echo esc_textarea($current_value); ?></textarea>
                                         <?php elseif ($field['type'] === 'image' || $field['type'] === 'svg') : ?>
                                             <div class="image-uploader">
-                                                <input type="hidden" data-field="<?php echo esc_attr($field_id); ?>" value="<?php echo esc_attr($current_value); ?>" />
-                                                <img src="<?php echo esc_url($current_value); ?>" class="image-preview" style="<?php echo empty($current_value) ? 'display:none;' : ''; ?>" />
-                                                <button type="button" class="button alsalam-upload-button"><?php esc_html_e('Select Image', 'alsalam'); ?></button>
-                                                <button type="button" class="button alsalam-remove-button" style="<?php echo empty($current_value) ? 'display:none;' : ''; ?>"><?php esc_html_e('Remove', 'alsalam'); ?></button>
+                                                <img src="<?php echo esc_url($current_value); ?>" class="image-preview" style="<?php echo empty($current_value) ? 'display:none;' : 'max-width:100%; height:auto; margin-bottom:6px; display:block; border-radius:6px; border:1px solid #ccc;'; ?>" />
+                                                <div style="display:flex; gap:6px; margin-bottom:6px;">
+                                                    <button type="button" class="button alsalam-upload-button"><?php esc_html_e('Select Image', 'alsalam'); ?></button>
+                                                    <button type="button" class="button alsalam-remove-button" style="<?php echo empty($current_value) ? 'display:none;' : ''; ?>"><?php esc_html_e('Remove', 'alsalam'); ?></button>
+                                                </div>
+                                                <input type="text" class="widefat image-url-input" data-field="<?php echo esc_attr($field_id); ?>" value="<?php echo esc_attr($current_value); ?>" placeholder="<?php esc_attr_e('Image URL', 'alsalam'); ?>" style="font-size:11px; font-family:monospace;" />
                                             </div>
                                         <?php endif; ?>
                                     </label>
