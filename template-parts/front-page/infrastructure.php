@@ -42,7 +42,7 @@ if (!is_array($items) || empty($items)) {
 }
 $total_items = count($items);
 ?>
-<section id="infrastructure" class="py-10 sm:py-20 px-4 max-w-7xl mx-auto">
+<section id="infrastructure" class="py-4 sm:py-20 px-4 max-w-7xl mx-auto">
     
     <header class="flex flex-col items-center text-center mb-8 sm:mb-12 gsap-fade-up">
         <h2 class="text-slate-900 text-3xl sm:text-4xl font-extrabold tracking-tight font-heading">
@@ -90,7 +90,7 @@ $total_items = count($items);
                         ?>
                     </span>
                 </div>
-                <h3 class="text-white text-xl font-bold mb-3"><?php echo esc_html(pll__($item['title'])); ?></h3>
+                <h3 class="text-white text-xl font-bold mb-3 min-h-[3.5rem] flex items-center justify-center"><?php echo esc_html(pll__($item['title'])); ?></h3>
                 <p class="text-white/80 text-sm leading-relaxed max-w-xs">
                     <?php echo wp_kses_post(pll__($item['desc'])); ?>
                 </p>

@@ -86,20 +86,20 @@ $products_query = new WP_Query($args);
               <!-- Features / Tags Layout -->
               <div class="w-full flex flex-col gap-2.5 mb-6">
                 <!-- Tag 1 -->
-                <div class="flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-slate-100/80 shadow-sm justify-center">
+                <div class="flex items-center gap-2 px-3 py-2 h-[38px] bg-white rounded-full border border-slate-100/80 shadow-sm justify-center">
                   <img src="<?php echo esc_url(alsalam_img('papers-text (1).svg')); ?>" class="w-4 h-4 opacity-80" alt="" loading="lazy" />
-                  <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($tag1); ?></span>
+                  <span class="text-xs font-semibold text-slate-600 truncate max-w-full"><?php echo esc_html($tag1); ?></span>
                 </div>
                 
                 <!-- Tag 2 & 3 -->
-                <div class="grid grid-cols-2 gap-2.5">
-                  <div class="flex items-center gap-2 px-2.5 py-2 bg-white rounded-full border border-slate-100/80 shadow-sm justify-center">
-                    <img src="<?php echo esc_url(alsalam_img('test-tube-alt (1).svg')); ?>" class="w-4 h-4 opacity-80" alt="" loading="lazy" />
-                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($tag2); ?></span>
+                <div class="grid grid-cols-2 gap-2.5 items-stretch">
+                  <div class="flex items-center gap-2 px-2.5 py-2 h-[38px] bg-white rounded-full border border-slate-100/80 shadow-sm justify-center overflow-hidden">
+                    <img src="<?php echo esc_url(alsalam_img('test-tube-alt (1).svg')); ?>" class="w-4 h-4 opacity-80 shrink-0" alt="" loading="lazy" />
+                    <span class="text-xs font-semibold text-slate-600 truncate"><?php echo esc_html($tag2); ?></span>
                   </div>
-                  <div class="flex items-center gap-2 px-2.5 py-2 bg-white rounded-full border border-slate-100/80 shadow-sm justify-center">
-                    <img src="<?php echo esc_url(alsalam_img('award-star.png')); ?>" class="w-4 h-4 object-contain" alt="" loading="lazy" />
-                    <span class="text-xs font-semibold text-slate-600"><?php echo esc_html($tag3); ?></span>
+                  <div class="flex items-center gap-2 px-2.5 py-2 h-[38px] bg-white rounded-full border border-slate-100/80 shadow-sm justify-center overflow-hidden">
+                    <img src="<?php echo esc_url(alsalam_img('award-star.png')); ?>" class="w-4 h-4 object-contain shrink-0" alt="" loading="lazy" />
+                    <span class="text-xs font-semibold text-slate-600 truncate"><?php echo esc_html($tag3); ?></span>
                   </div>
                 </div>
               </div>

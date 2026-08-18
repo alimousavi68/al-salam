@@ -109,7 +109,7 @@ if ($educational_query->have_posts()) {
     wp_reset_postdata();
 }
 ?>
-<section class="relative w-full pb-24 overflow-hidden bg-transparent z-0">
+<section class="relative w-full pb-8 sm:pb-24 overflow-hidden bg-transparent z-0">
   <div class="absolute top-0 start-0 w-full h-[220px] sm:h-[300px] lg:h-[385px] bg-[#E5EFF2] -z-10"></div>
 
   <img src="<?php echo esc_url(alsalam_img('news-bg-pattern-top-left.png')); ?>" class="absolute top-0 left-0 -z-10 max-h-[300px] md:max-h-[400px] object-contain opacity-95 pointer-events-none" alt="" loading="lazy" />

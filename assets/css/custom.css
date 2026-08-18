@@ -194,8 +194,36 @@
 }
 
 @media (max-width: 639px) {
+  /* Convert accordion to horizontal scroll snap for mobile */
+  .gallery-item {
+    flex: 0 0 85%;
+    min-width: 85%;
+    opacity: 1;
+    box-shadow: none;
+    scroll-snap-align: center;
+  }
+  .gallery-item:hover {
+    opacity: 1;
+    box-shadow: none;
+  }
   .gallery-item.active {
-    flex: 3;
+    flex: 0 0 85%;
+    opacity: 1;
+  }
+  .gallery-slide-overlay {
+    opacity: 1;
+    visibility: visible;
+    background: linear-gradient(to top, rgba(10, 17, 32, 0.96) 0%, rgba(10, 17, 32, 0.45) 55%, transparent 100%);
+  }
+  .gallery-slide-info {
+    transform: translateY(0);
+  }
+  .gallery-play-wrapper {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .gallery-item img {
+    transform: none !important;
   }
 }
 

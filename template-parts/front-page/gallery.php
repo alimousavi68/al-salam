@@ -87,7 +87,7 @@ $gallery_query = new WP_Query($args);
           <div class="gallery-slide-overlay">
             <div class="gallery-slide-info">
               <span class="text-teal-400 text-xs font-semibold uppercase tracking-wider"><?php echo esc_html($g_cat_name); ?></span>
-              <h3 class="text-white text-lg sm:text-xl font-bold mt-1 group-hover:text-teal-300 transition-colors duration-300 whitespace-nowrap overflow-hidden text-ellipsis"><?php the_title(); ?></h3>
+              <h3 class="text-white text-lg sm:text-xl font-bold mt-1 group-hover:text-teal-300 transition-colors duration-300"><?php the_title(); ?></h3>
             </div>
           </div>
         </a>

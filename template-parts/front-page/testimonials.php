@@ -8,7 +8,7 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_testi_enable', '1') !== '1') return; ?>
-<section class="w-full mt-10 sm:mt-16 overflow-hidden" style="overflow-x:hidden;">
+<section class="w-full mt-4 sm:mt-16 overflow-hidden" style="overflow-x:hidden;">
     <div class="w-full max-w-7xl mx-auto px-0 sm:px-4">
         <div class="flex flex-col lg:flex-row w-full lg:max-h-[420px] lg:h-[420px] relative shadow-sm overflow-hidden">
             <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-10 sm:py-8 z-10">
