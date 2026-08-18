@@ -8,7 +8,7 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_about_enable', '1') !== '1') return; ?>
-<section id="about" class="relative py-10 sm:py-16 lg:py-24">
+<section id="about" class="relative py-8 sm:py-16 lg:py-24">
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 items-center lg:grid-cols-2 gap-y-8 sm:gap-y-12 lg:gap-y-0">

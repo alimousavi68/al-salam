@@ -29,7 +29,7 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
   <div class="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8">
     
     <!-- Hero Wrapper: Large rounded card -->
-    <div id="hero-wrapper" class="hero-container relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] h-[97vh] sm:h-auto sm:min-h-[700px] lg:min-h-[800px] flex flex-col justify-between shadow-2xl">
+    <div id="hero-wrapper" class="hero-container relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] min-h-[620px] sm:min-h-[700px] lg:min-h-[800px] flex flex-col justify-between shadow-2xl" style="min-height: 97dvh;">
 
       <!-- Background Layers -->
       <?php if (get_theme_mod('_alsalam_hero_bg_type', 'video') === 'video') : ?>
@@ -139,7 +139,7 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
 
       <!-- Play Video Button -->
       <?php if (get_theme_mod('_alsalam_hero_video_modal_enable', '1') === '1') : ?>
-      <div class="absolute bottom-5 end-5 sm:bottom-12 sm:end-12 z-20">
+      <div class="absolute bottom-8 end-8 sm:bottom-12 sm:end-12 z-30">
         <button id="play-video-btn" 
                 type="button" 
                 class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/10 hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95 focus:outline-none transition-all duration-300"
