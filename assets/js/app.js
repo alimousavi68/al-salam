@@ -36,6 +36,49 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn.addEventListener('click', closeMenu);
         }
 
+        // ==========================================
+        // Mobile Language Panel Logic
+        // ==========================================
+        const langPanelToggle = document.getElementById('mobile-lang-toggle');
+        const langPanelClose  = document.getElementById('mobile-lang-panel-close');
+        const langPanel       = document.getElementById('mobile-lang-panel');
+
+        function openLangPanel() {
+            if (!langPanel) return;
+            langPanel.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                langPanel.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                langPanel.classList.add('opacity-100', 'scale-100');
+            }, 20);
+            if (langPanelToggle) langPanelToggle.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeLangPanel() {
+            if (!langPanel) return;
+            langPanel.classList.remove('opacity-100', 'scale-100');
+            langPanel.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                langPanel.classList.add('hidden');
+            }, 300);
+            if (langPanelToggle) langPanelToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        if (langPanelToggle && langPanel) {
+            langPanelToggle.addEventListener('click', openLangPanel);
+        }
+        if (langPanelClose) {
+            langPanelClose.addEventListener('click', closeLangPanel);
+        }
+
+        // Close lang panel on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLangPanel();
+            }
+        });
+
         // Active State Management for Navigation
         const navLinks = document.querySelectorAll('[data-nav-link]');
         const mobileLinks = document.querySelectorAll('[data-nav-link-mobile]');

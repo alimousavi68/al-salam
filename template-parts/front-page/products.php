@@ -21,7 +21,7 @@ $args = array(
 );
 $products_query = new WP_Query($args);
 ?>
-<section class="products-section relative w-full py-12 lg:py-24 overflow-hidden z-0" id="products">
+<section class="products-section relative w-full py-12 lg:py-24 z-0" id="products" style="overflow:visible;">
   <!-- The Background Band — hidden on mobile, visible on lg+ -->
   <div class="hidden lg:block absolute top-1/2 -translate-y-1/2 start-0 w-full h-[293px] bg-[#E5EEF4] -z-10 overflow-hidden">
     <!-- Left Background Pattern (Enlarged) -->
@@ -36,7 +36,7 @@ $products_query = new WP_Query($args);
   <!-- Main Grid -->
   <div class="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 lg:h-[560px]">
     <!-- Left Column (Width: lg:w-1/3 - Max 300px width on large screens) -->
-    <div class="w-full lg:w-1/3 lg:max-w-[300px] text-start flex flex-col justify-center">
+    <div class="w-full lg:w-1/3 lg:max-w-[300px] text-center sm:text-start flex flex-col justify-center items-center sm:items-start">
       <h2 class="pt-[25px] text-[30px] sm:text-[36px] lg:text-[40px] font-extrabold tracking-tight leading-tight font-heading gsap-fade-up">
         <?php echo wp_kses_post($title); ?>
       </h2>
@@ -55,6 +55,7 @@ $products_query = new WP_Query($args);
 
     <!-- Right Column (Swiper Carousel - Width: lg:w-2/3) -->
     <div class="w-full lg:w-2/3 h-full overflow-hidden flex flex-col justify-center">
+      <!-- Mobile prev/next nav: displayed below the card, above dots -->
       <div class="swiper swiper-container-products relative h-full pb-14">
         <div class="swiper-wrapper flex items-stretch h-full">
           
@@ -71,8 +72,8 @@ $products_query = new WP_Query($args);
           <!-- Swiper Slide Card -->
           <div class="swiper-slide swiper-slide-product lg:!h-[465px] p-6 border border-slate-100 rounded-[2rem] flex flex-col justify-between items-center text-center">
             <div class="w-full flex flex-col items-center">
-              <!-- Frame for Product Image -->
-              <div class="w-40 h-[137px] rounded-t-[100px] rounded-b-[20px] bg-slate-100/50 flex items-center justify-center mb-6 overflow-hidden relative">
+              <!-- Frame for Product Image (Enlarged on mobile) -->
+              <div class="w-48 sm:w-40 h-[165px] sm:h-[137px] rounded-t-[100px] rounded-b-[20px] bg-slate-100/50 flex items-center justify-center mb-6 overflow-hidden relative">
                 <img src="<?php echo esc_url($image_url); ?>" class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-500 rounded-none" alt="<?php the_title_attribute(); ?>" loading="lazy" />
               </div>
               
@@ -120,8 +121,22 @@ $products_query = new WP_Query($args);
 
         </div>
 
-        <!-- Swiper Pagination (positioned below cards inside pb-14 padding) -->
-        <div class="swiper-pagination !bottom-1"></div>
+        <!-- Swiper Controls & Pagination Row -->
+        <div class="flex items-center justify-center gap-4 mt-6 pt-2 relative z-10 products-controls-row">
+          <button class="custom-prev w-10 h-10 rounded-full bg-white border border-slate-200 text-teal-600 shadow-sm flex items-center justify-center hover:bg-teal-50 shrink-0 transition-all active:scale-95 focus:outline-none" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <div class="swiper-pagination !static !w-auto flex items-center justify-center"></div>
+
+          <button class="custom-next w-10 h-10 rounded-full bg-white border border-slate-200 text-teal-600 shadow-sm flex items-center justify-center hover:bg-teal-50 shrink-0 transition-all active:scale-95 focus:outline-none" aria-label="<?php esc_attr_e('Next slide', 'alsalam'); ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>

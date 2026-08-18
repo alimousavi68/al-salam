@@ -424,7 +424,7 @@ html[dir="rtl"] button {
    GSAP Initial States (FOUC Prevention)
    ======================================== */
 .gsap-reveal, .gsap-fade-up, .gsap-zoom-in, .gsap-stagger-item, .infra-stagger-item, .why-stagger-item {
-  visibility: hidden;
+  visibility: visible;
 }
 
 /* ========================================
@@ -496,3 +496,190 @@ html[dir="rtl"] button {
 .cta-banner-gradient {
   background: linear-gradient(135deg, #014581 0%, #239BA8 100%) !important;
 }
+
+/* ========================================
+   RTL Horizontal Scroll Fix (Arabic)
+   ======================================== */
+/* Prevent any absolute/fixed element from causing horizontal overflow */
+html[dir="rtl"] body,
+html[dir="rtl"] .site-wrapper,
+html[dir="rtl"] main {
+  overflow-x: hidden;
+}
+
+/* Fix the "All Comments" button that overflows in RTL on mobile */
+@media (max-width: 1023px) {
+  html[dir="rtl"] .comment-section-cta-btn {
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    /* Center it horizontally within its parent */
+    position: relative !important;
+    bottom: auto !important;
+    display: inline-flex;
+    margin: 0 auto;
+  }
+}
+
+/* ========================================
+   Mobile-Only Section Fixes (max-width: 639px)
+   ======================================== */
+@media (max-width: 639px) {
+
+  /* ── Infrastructure: 2×2 Grid Layout ───────────────── */
+  #infrastructure .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem 1rem !important;
+  }
+
+  /* Shrink icon box slightly so 2 columns fit comfortably */
+  #infrastructure .infra-stagger-item .w-24 {
+    width: 5rem !important;   /* 80px instead of 96px */
+    height: 5rem !important;
+  }
+
+  #infrastructure .infra-stagger-item .w-16 {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+
+  /* Tighter text inside 2-column grid */
+  #infrastructure .infra-stagger-item h3 {
+    font-size: 0.95rem !important;
+  }
+
+  #infrastructure .infra-stagger-item p {
+    font-size: 0.75rem !important;
+  }
+
+  /* ── Products Section: overflow fix for button/pagination visibility ── */
+
+  /* Make the "All Products" button fully visible (unclip) */
+  .products-section {
+    overflow: visible !important;
+  }
+
+  .products-section > .max-w-7xl {
+    overflow: visible !important;
+  }
+
+  /* Products swiper: ensure pagination is not clipped */
+  .swiper-container-products {
+    overflow: visible !important;
+    padding-bottom: 4.5rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  /* Products nav buttons: position below the card without overlap */
+  /* Swiper prev/next are handled by JS; add spacing via padding */
+  .products-section .swiper-button-prev,
+  .products-section .swiper-button-next {
+    top: auto !important;
+    bottom: 0.5rem !important;
+  }
+
+  /* Ensure dots pagination is not clipped on mobile */
+  .products-section .swiper-pagination {
+    bottom: 0.75rem !important;
+    position: relative !important;
+  }
+
+  /* ── Why Choose Us: Question Icon Bigger + Shift Right ── */
+  /* Move icon to the right and double its size */
+  .why-question-icon-wrap {
+    right: 10px !important;
+    left: auto !important;
+    inset-inline-end: 10px !important;
+    width: 6rem !important;   /* ≈2× the original w-16 */
+    height: 6rem !important;
+  }
+
+  html[dir="rtl"] .why-question-icon-wrap {
+    right: auto !important;
+    left: 10px !important;
+    inset-inline-end: 10px !important;
+  }
+
+  /* ── Why Choose Us: Header Section White Card Overlap ── */
+  .why-header-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    text-align: center !important;
+    align-items: center !important;
+    margin-top: -3rem !important;  /* 50% overlap onto image above */
+    position: relative;
+    z-index: 20;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-inline: 0.75rem;
+  }
+
+  /* ── News Section: Larger Cards, Edge-to-Edge, No Shadow ── */
+  .news-swiper-container {
+    padding-inline: 0.25rem !important;
+  }
+
+  .news-swiper {
+    max-width: calc(100vw - 1rem) !important;
+    width: calc(100vw - 1rem) !important;
+    padding-bottom: 70px !important;
+  }
+
+  .news-swiper .swiper-slide {
+    max-width: calc(100vw - 2rem) !important;
+    width: calc(100vw - 2rem) !important;
+  }
+
+  /* Remove all shadows from news cards on mobile */
+  .news-swiper .swiper-slide article,
+  .news-swiper .swiper-slide-active article {
+    box-shadow: none !important;
+  }
+
+  /* Increase dot spacing for news pagination */
+  .news-swiper-container .swiper-pagination {
+    gap: 12px !important;
+  }
+
+  /* News nav buttons: push them below the card content area */
+  .news-prev,
+  .news-next {
+    top: auto !important;
+    bottom: 8px !important;
+    transform: none !important;
+  }
+
+  .news-prev {
+    start: 50% !important;
+    left: calc(50% - 56px) !important;
+  }
+
+  .news-next {
+    end: 50% !important;
+    right: calc(50% - 56px) !important;
+  }
+
+  /* ── Testimonials: Align Prev/Next with Dot Pagination ── */
+  /* Position nav buttons in the same row as the pagination dots */
+  .comment-swiper .comment-prev,
+  .comment-swiper .comment-next {
+    top: auto !important;
+    transform: none !important;
+    /* Will be repositioned below the slide, aligned with pagination */
+    bottom: 0 !important;
+    position: absolute !important;
+  }
+
+  .comment-prev {
+    inset-inline-start: 0 !important;
+  }
+
+  .comment-next {
+    inset-inline-end: 0 !important;
+  }
+
+  /* ── Gallery: Remove extra bottom margin on mobile ──── */
+  /* Handled via Tailwind mb-6 sm:mb-24 class on the section directly */
+
+}
+/* END @media max-width: 639px */

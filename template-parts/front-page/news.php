@@ -116,7 +116,7 @@ if ($educational_query->have_posts()) {
   <img src="<?php echo esc_url(alsalam_img('news-bg-pattern-bootom-right.png')); ?>" class="absolute bottom-0 right-0 -z-10 max-h-[300px] md:max-h-[400px] object-contain opacity-95 pointer-events-none" alt="" loading="lazy" />
 
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10 gsap-fade-up">
-    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
+    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-heading">
       <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_news_title', 'News & Events'))); ?>
     </h2>
 
@@ -131,18 +131,19 @@ if ($educational_query->have_posts()) {
   </div>
 
   <div class="relative max-w-7xl mx-auto px-2 sm:px-4 py-3 news-swiper-container gsap-fade-up">
-    <button class="news-prev news-nav-btn absolute start-4 md:start-8 top-[42%] -translate-y-1/2 focus:outline-none" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
+    <!-- Desktop-only absolute nav buttons (hidden on mobile) -->
+    <button class="news-prev news-nav-btn hidden sm:flex absolute start-4 md:start-8 top-[42%] -translate-y-1/2 focus:outline-none" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
-    <button class="news-next news-nav-btn absolute end-4 md:end-8 top-[42%] -translate-y-1/2 focus:outline-none" aria-label="<?php esc_attr_e('Next slide', 'alsalam'); ?>">
+    <button class="news-next news-nav-btn hidden sm:flex absolute end-4 md:end-8 top-[42%] -translate-y-1/2 focus:outline-none" aria-label="<?php esc_attr_e('Next slide', 'alsalam'); ?>">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
       </svg>
     </button>
 
-    <div class="swiper news-swiper w-full max-w-[320px] sm:max-w-[344px] md:max-w-[768px] lg:max-w-[1092px] mx-auto h-[600px]">
+    <div class="swiper news-swiper w-full max-w-[94vw] sm:max-w-[344px] md:max-w-[768px] lg:max-w-[1092px] mx-auto h-[560px] sm:h-[600px]">
       <div class="swiper-wrapper">
         
         <?php foreach ($swiper_slides as $item): ?>
@@ -185,6 +186,20 @@ if ($educational_query->have_posts()) {
       </div>
 
       <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Mobile-only nav row: prev | dots | next — OUTSIDE the fixed-height swiper div to prevent crop -->
+    <div class="flex items-center justify-center gap-6 mt-4 sm:hidden news-mobile-nav-row">
+      <button class="news-prev news-nav-btn shrink-0" aria-label="<?php esc_attr_e('Previous slide', 'alsalam'); ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button class="news-next news-nav-btn shrink-0" aria-label="<?php esc_attr_e('Next slide', 'alsalam'); ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </div>
   </div>
 </section>

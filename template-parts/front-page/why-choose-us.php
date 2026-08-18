@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             <div class="relative w-full h-full lg:pe-8 group lg:mt-0">
-                <div class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-teal-100/50 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
+                <div class="hidden sm:block absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-teal-100/50 to-transparent rounded-full blur-xl -z-10 pointer-events-none"></div>
 
                 <div class="relative w-full h-[400px] sm:h-[480px] lg:h-full min-h-[350px] rounded-[2rem] overflow-hidden bg-background-page isolate">
                     <img src="<?php echo esc_url(get_theme_mod('_alsalam_why_img', alsalam_img('Why Choose Us.jpg'))); ?>" 
@@ -32,23 +32,23 @@ defined('ABSPATH') || exit;
                 </div>
 
                 <!-- Title Card: RELATIVE on mobile (in-flow), ABSOLUTE on lg+ (floating) -->
-                <div class="relative lg:absolute lg:-top-[13%] lg:-start-[12%] z-20 mt-5 mb-2 lg:mt-0 lg:mb-0 max-w-full lg:max-w-[85%] flex flex-col items-start gap-3 lg:gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
+                <div class="why-header-card relative lg:absolute lg:-top-[13%] lg:-start-[12%] z-20 mt-5 mb-2 lg:mt-0 lg:mb-0 max-w-full lg:max-w-[85%] flex flex-col items-start gap-3 lg:gap-4 transition-transform duration-500 hover:-translate-y-1 gsap-fade-up">
                     <span class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-50 to-white border border-teal-100 text-teal-800 rounded-full px-4 py-1.5 text-sm font-bold shadow-md">
                         <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
                         <?php echo esc_html(pll__(get_theme_mod('_alsalam_why_badge_floating', 'Flexible IV Bag Technology'))); ?>
                     </span>
 
                     <div class="pt-1 pb-0">
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-1 sm:mb-2 tracking-tight font-heading">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-1 sm:mb-2 tracking-tight font-heading">
                             <?php echo esc_html(pll__(get_theme_mod('_alsalam_why_badge_title', 'Why Choose Us'))); ?>
                         </h2>
-                        <p class="text-slate-500 text-base font-medium leading-relaxed font-sans">
+                        <p class="text-slate-500 text-base font-normal leading-relaxed font-sans">
                             <?php echo esc_html(pll__(get_theme_mod('_alsalam_why_badge_desc', 'A transversal vision with infinite solutions'))); ?>
                         </p>
                     </div>
                 </div>
 
-                <div class="absolute top-[-20px] end-[20px] sm:end-[60px] lg:end-[60px] rtl:end-[10px] sm:rtl:end-[30px] translate-x-1/4 -translate-y-1/4 z-30 transition-transform duration-700 hover:rotate-12 hover:scale-110 w-16 h-16 sm:w-auto sm:h-auto">
+                <div class="why-question-icon-wrap absolute top-[-20px] end-[20px] sm:end-[60px] lg:end-[60px] rtl:end-[10px] sm:rtl:end-[30px] translate-x-1/4 -translate-y-1/4 z-30 transition-transform duration-700 hover:rotate-12 hover:scale-110 w-16 h-16 sm:w-auto sm:h-auto">
                     <img src="<?php echo esc_url(get_theme_mod('_alsalam_why_img_deco', alsalam_img('question_mark_sign_blue_01 copy 1 1.svg'))); ?>" 
                         alt="Question Mark" 
                         class="w-full h-full object-contain drop-shadow-[0_15px_25px_rgba(20,184,166,0.4)]" loading="lazy" />
@@ -57,10 +57,10 @@ defined('ABSPATH') || exit;
 
             <div class="text-start">
                 <header class="mb-4 gsap-fade-up">
-                    <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight font-heading">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight font-heading">
                         <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_why_title', 'Safer, Smarter Infusion Solutions'))); ?>
                     </h2>
-                    <p class="text-lg text-slate-500 font-sans">
+                    <p class="text-slate-500 text-base font-normal font-sans leading-relaxed">
                         <?php echo wp_kses_post(pll__(get_theme_mod('_alsalam_why_desc', 'Advanced flexible IV bags designed to improve safety, handling, and efficiency compared to conventional glass bottles.'))); ?>
                     </p>
                 </header>

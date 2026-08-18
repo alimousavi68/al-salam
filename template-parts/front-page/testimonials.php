@@ -8,7 +8,7 @@
 defined('ABSPATH') || exit;
 ?>
 <?php if (get_theme_mod('_alsalam_testi_enable', '1') !== '1') return; ?>
-<section class="w-full mt-10 sm:mt-16 overflow-hidden">
+<section class="w-full mt-10 sm:mt-16 overflow-hidden" style="overflow-x:hidden;">
     <div class="w-full max-w-7xl mx-auto px-0 sm:px-4">
         <div class="flex flex-col lg:flex-row w-full lg:max-h-[420px] lg:h-[420px] relative shadow-sm overflow-hidden">
             <div class="w-full lg:w-1/2 relative flex flex-col justify-center px-5 sm:px-8 lg:px-16 py-10 sm:py-8 z-10">
@@ -74,15 +74,29 @@ defined('ABSPATH') || exit;
                             <?php endforeach; ?>
                         </div>
                         
-                        <div class="comment-pagination flex justify-center mt-2 relative z-10"></div>
+                        <!-- On mobile: pagination + nav buttons are in the same flex row -->
+                        <div class="flex items-center justify-center gap-3 mt-2 relative z-10">
+                            <button class="comment-prev text-white p-2 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none flex items-center justify-center shadow-md shrink-0 sm:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 rtl:rotate-180">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                </svg>
+                            </button>
+                            <div class="comment-pagination flex justify-center relative z-10"></div>
+                            <button class="comment-next text-white p-2 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none flex items-center justify-center shadow-md shrink-0 sm:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 rtl:rotate-180">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
-                    <button class="comment-prev absolute top-[45%] -translate-y-1/2 start-2 lg:-start-6 z-20 text-white p-2.5 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none flex items-center justify-center shadow-md">
+                    <!-- Desktop-only prev/next (hidden on mobile, shown sm+) -->
+                    <button class="comment-prev hidden sm:flex absolute top-[45%] -translate-y-1/2 start-2 lg:-start-6 z-20 text-white p-2.5 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none items-center justify-center shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 rtl:rotate-180">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <button class="comment-next absolute top-[45%] -translate-y-1/2 end-2 lg:-end-6 z-20 text-white p-2.5 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none flex items-center justify-center shadow-md">
+                    <button class="comment-next hidden sm:flex absolute top-[45%] -translate-y-1/2 end-2 lg:-end-6 z-20 text-white p-2.5 bg-[#239BA8] hover:bg-teal-600 rounded-full transition-all focus:outline-none items-center justify-center shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 rtl:rotate-180">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
@@ -90,8 +104,13 @@ defined('ABSPATH') || exit;
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 relative h-[220px] sm:h-[300px] lg:h-auto z-20">
-                <a href="<?php echo esc_url(get_theme_mod('_alsalam_testi_btn_link', '#')); ?>" class="peer absolute bottom-8 sm:bottom-12 start-0 ltr:-translate-x-1/2 rtl:translate-x-1/2 z-30 bg-[#239BA8] text-white px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg hover:bg-teal-600 transition-colors cursor-pointer whitespace-nowrap">
+            <div class="w-full lg:w-1/2 relative h-[220px] sm:h-[300px] lg:h-auto z-20" style="overflow:hidden;">
+                <!-- 
+                  RTL FIX: Replaced rtl:translate-x-1/2 (which caused horizontal overflow)
+                  with a safe RTL-aware positioning using inset-inline-start + a controlled translate.
+                  On mobile (< 1024px) the button is centered; on lg+ it floats between columns.
+                -->
+                <a href="<?php echo esc_url(get_theme_mod('_alsalam_testi_btn_link', '#')); ?>" class="peer absolute bottom-8 sm:bottom-12 start-0 lg:-translate-x-1/2 z-30 bg-[#239BA8] text-white px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg hover:bg-teal-600 transition-colors cursor-pointer whitespace-nowrap">
                     <span class="font-medium font-heading"><?php echo esc_html(pll__(get_theme_mod('_alsalam_testi_btn_text', 'All Comments'))); ?></span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

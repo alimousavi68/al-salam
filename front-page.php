@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: Front Page
  * The template for displaying the front page
  *
  * @package alsalam

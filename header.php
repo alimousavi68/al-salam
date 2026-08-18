@@ -31,7 +31,7 @@ defined('ABSPATH') || exit;
 <body <?php body_class('bg-background-page text-text-primary min-h-screen flex flex-col font-sans selection:bg-primary selection:text-white'); ?>>
 <?php wp_body_open(); ?>
 
-<header id="main-header" class="w-full max-w-[1440px] mx-auto px-3 sm:px-8 md:px-12 lg:px-16 absolute top-6 sm:top-8 lg:top-[64px] start-0 end-0 z-20 h-[60px] sm:h-20 flex items-center">
+<header id="main-header" class="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 absolute top-6 sm:top-8 lg:top-[64px] start-0 end-0 z-20 h-[60px] sm:h-20 flex items-center">
   <div class="flex items-center justify-between w-full h-full rounded-[20px] sm:rounded-[30px] bg-white/10 backdrop-blur-lg border border-white/20 px-4 sm:px-6 py-2 transition-all duration-200 hover:bg-white/15">
     
     <!-- Left/Start Side: Logo & Navigation Group -->
@@ -123,6 +123,17 @@ defined('ABSPATH') || exit;
         <span><?php echo esc_html(pll__(get_theme_mod('_alsalam_header_cta_text', 'Request Inquiry'))); ?></span>
       </a>
 
+      <?php if (get_theme_mod('_alsalam_header_lang_switcher', '1') === '1' && function_exists('pll_the_languages')) : ?>
+      <!-- ─── Mobile Language Button: MOBILE ONLY (< md) ─── -->
+      <button id="mobile-lang-toggle" type="button"
+        class="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/25 bg-white/10 text-white hover:bg-white/20 hover:border-white/40 focus:outline-none transition-all duration-200"
+        aria-label="<?php esc_attr_e('Select language', 'alsalam'); ?>" aria-expanded="false" aria-controls="mobile-lang-panel">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+        </svg>
+      </button>
+      <?php endif; ?>
+
       <!-- ─── Hamburger: MOBILE ONLY (< md) ─── styled as rounded pill button -->
       <button id="mobile-menu-toggle" type="button"
         class="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/25 bg-white/10 text-white hover:bg-white/20 hover:border-white/40 focus:outline-none transition-all duration-200"
@@ -140,7 +151,7 @@ defined('ABSPATH') || exit;
        Fullscreen Mobile Navigation Drawer
   ═══════════════════════════════════════════ -->
   <div id="mobile-menu"
-    class="hidden fixed inset-0 bg-[#041424]/98 backdrop-blur-3xl z-[100] flex-col justify-between p-8 transition-all duration-300 opacity-0 scale-95 pointer-events-none">
+    class="hidden fixed inset-0 bg-[#041424] z-[100] flex-col justify-between transition-all duration-300 opacity-0 scale-95 pointer-events-none">
     
   <!-- ═══════════════════════════
        Inner flex wrapper — always flex-col, fills full screen
@@ -218,5 +229,60 @@ defined('ABSPATH') || exit;
   </div><!-- /Inner flex wrapper -->
 
 </div><!-- /Mobile Menu -->
+
+<?php if (get_theme_mod('_alsalam_header_lang_switcher', '1') === '1' && function_exists('pll_the_languages')) :
+    $languages_panel = pll_the_languages(array('raw' => 1));
+?>
+<!-- ═══════════════════════════════════════════
+     Mobile Language Panel — Full-Screen Glassmorphism
+═══════════════════════════════════════════ -->
+<div id="mobile-lang-panel"
+  class="hidden fixed inset-0 z-[110] flex-col justify-center items-center transition-all duration-300 opacity-0 scale-95 pointer-events-none"
+  style="background: rgba(4, 20, 36, 0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);">
+
+  <!-- Close Button -->
+  <button id="mobile-lang-panel-close" type="button"
+    class="absolute top-6 end-6 flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 text-white hover:text-primary-light hover:border-primary-light focus:outline-none transition-all duration-200"
+    aria-label="<?php esc_attr_e('Close language selector', 'alsalam'); ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Panel Content -->
+  <div class="flex flex-col items-center gap-8 px-8">
+
+    <!-- Globe Icon + Title -->
+    <div class="flex flex-col items-center gap-3">
+      <div class="w-16 h-16 rounded-full border border-white/20 bg-white/8 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary-light" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+        </svg>
+      </div>
+      <span class="text-white/50 text-sm font-medium tracking-widest uppercase"><?php esc_html_e('Select Language', 'alsalam'); ?></span>
+    </div>
+
+    <!-- Language Options -->
+    <div class="flex flex-col gap-3 w-full max-w-[260px]">
+      <?php foreach ($languages_panel as $lang_panel) :
+        $is_active = $lang_panel['current_lang'];
+      ?>
+      <a href="<?php echo esc_url($lang_panel['url']); ?>"
+         class="lang-panel-btn flex items-center justify-between px-6 py-4 rounded-2xl font-semibold text-base transition-all duration-200 <?php echo $is_active ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'border border-white/15 text-white/70 hover:text-white hover:border-white/35 hover:bg-white/8'; ?>"
+         data-lang-btn="<?php echo esc_attr($lang_panel['slug']); ?>">
+        <span><?php echo esc_html($lang_panel['name']); ?></span>
+        <span class="text-xs font-bold opacity-60"><?php echo esc_html(strtoupper($lang_panel['slug'])); ?></span>
+        <?php if ($is_active) : ?>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 shrink-0 text-white" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+        <?php endif; ?>
+      </a>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
+</div><!-- /Mobile Language Panel -->
+<?php endif; ?>
 
 </header>

@@ -15,7 +15,7 @@ $args = [
 $gallery_query = new WP_Query($args);
 ?>
 
-<section class="relative w-full px-4 mb-24 z-10">
+<section class="relative w-full px-4 mb-6 sm:mb-24 z-10" id="gallery-section">
   <div class="bg-[#0a1120] rounded-[1.5rem] sm:rounded-[2.5rem] relative overflow-hidden w-full max-w-[90rem] min-h-[460px] sm:min-h-[600px] lg:h-[720px] mx-auto py-8 sm:py-16 px-4 sm:px-12 lg:px-20 shadow-2xl">
 
     <svg class="absolute inset-0 w-full h-full opacity-5 pointer-events-none stroke-teal-500/30" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -28,12 +28,12 @@ $gallery_query = new WP_Query($args);
       <rect width="100%" height="100%" fill="url(#gallery-grid)" />
     </svg>
 
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-16 gap-4 relative z-10 gsap-fade-up">
-      <div class="space-y-2">
+    <div class="flex flex-col sm:flex-row justify-between items-center sm:items-end mb-8 sm:mb-16 gap-4 relative z-10 gsap-fade-up text-center sm:text-start">
+      <div class="space-y-2 w-full text-center sm:text-start">
         <span class="text-teal-500 text-xl md:text-2xl font-bold tracking-wider block font-heading uppercase"><?php echo esc_html(pll__('AL-SALAM')); ?></span>
         <h2 class="text-white text-3xl md:text-5xl font-extrabold tracking-tight font-heading"><?php echo esc_html(pll__('Company Gallery')); ?></h2>
       </div>
-      <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_gallery') ?: home_url('/gallery')); ?>" class="bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-7 py-3 rounded-full flex items-center gap-2.5 transition-all duration-300 shadow-lg shadow-teal-500/20 group">
+      <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_gallery') ?: home_url('/gallery')); ?>" class="hidden sm:flex bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-7 py-3 rounded-full items-center gap-2.5 transition-all duration-300 shadow-lg shadow-teal-500/20 group shrink-0">
         <span><?php echo esc_html(pll__('All Photos')); ?></span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -97,6 +97,16 @@ $gallery_query = new WP_Query($args);
         endif; 
         ?>
 
+      </div>
+
+      <!-- Mobile-only "All Photos" button displayed directly below slider -->
+      <div class="flex justify-center mt-6 sm:hidden relative z-10">
+        <a href="<?php echo esc_url(get_post_type_archive_link('alsalam_gallery') ?: home_url('/gallery')); ?>" class="bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-7 py-3 rounded-full flex items-center gap-2.5 transition-all duration-300 shadow-lg shadow-teal-500/20 group">
+          <span><?php echo esc_html(pll__('All Photos')); ?></span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:-scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
 

@@ -43,3 +43,33 @@ if (!function_exists('alsalam_setup')) :
     }
 endif;
 add_action('after_setup_theme', 'alsalam_setup');
+
+/**
+ * Force front-page.php template for Polylang front page translations
+ */
+function alsalam_front_page_template_redirect($template) {
+    if (is_front_page()) {
+        $front_page_template = get_template_directory() . '/front-page.php';
+        if (file_exists($front_page_template)) {
+            return $front_page_template;
+        }
+    }
+    if (is_page()) {
+        $front_id = get_option('page_on_front');
+        $current_id = get_queried_object_id();
+
+        if ($front_id && $current_id) {
+            if ($front_id == $current_id) {
+                return get_template_directory() . '/front-page.php';
+            }
+            if (function_exists('pll_get_post_translations')) {
+                $translations = pll_get_post_translations($front_id);
+                if (is_array($translations) && in_array($current_id, $translations)) {
+                    return get_template_directory() . '/front-page.php';
+                }
+            }
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'alsalam_front_page_template_redirect', 99);

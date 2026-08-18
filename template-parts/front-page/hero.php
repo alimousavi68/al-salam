@@ -64,7 +64,7 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
 
               <div id="hero-slider" class="relative w-full">
                 <?php foreach ($heroSlides as $index => $slide): ?>
-                  <article class="hero-slide duration-700 ease-out transition-all transform opacity-0 translate-y-4 hidden" data-slide-index="<?php echo esc_attr($index); ?>">
+                  <article class="hero-slide duration-700 ease-out transition-all transform <?php echo $index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 hidden'; ?>" data-slide-index="<?php echo esc_attr($index); ?>">
                     <header class="inline-flex items-center gap-2 border border-white/20 rounded-full p-1 pe-4 bg-white/5 backdrop-blur-sm self-start mb-6" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: 18px;">
                       <span class="bg-[#041424] text-primary-light px-3 py-0.5 rounded-full text-xs font-bold"><?php echo esc_html(pll__($slide['badge1'] ?? 'AL-SALAM')); ?></span>
                       <span class="text-white/90"><?php echo esc_html(pll__($slide['badge2'] ?? '')); ?></span>

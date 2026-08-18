@@ -15,16 +15,16 @@ defined('ABSPATH') || exit;
             
             <!-- Left Column (Visuals) -->
             <div class="relative w-full max-w-xl mx-auto lg:max-w-none flex justify-center lg:justify-start pt-8 sm:pt-10 lg:pt-0">
-            <div class="relative group w-full max-w-[432px] h-[340px] sm:h-[437px] mx-auto">
+            <div class="relative group w-full max-w-[380px] sm:max-w-[432px] h-[320px] sm:h-[437px] mx-auto">
                     <img 
                         src="<?php echo esc_url(get_theme_mod('_alsalam_about_deco', alsalam_img('image-icon.png'))); ?>" 
                         alt="" 
-                        class="absolute top-[-30px] left-[-20px] sm:top-[-62px] sm:left-[-56px] w-[120px] h-[135px] sm:w-[192px] sm:h-[217px] z-20 pointer-events-none transform transition-transform duration-500 group-hover:scale-105"
+                        class="absolute top-[-30px] left-[-20px] sm:top-[-62px] sm:left-[-56px] w-[135px] h-[150px] sm:w-[192px] sm:h-[217px] z-20 pointer-events-none transform transition-transform duration-500 group-hover:scale-105"
                     />
 
                     <div class="absolute -inset-4 rounded-[3rem] bg-gradient-to-tr from-primary/10 to-transparent blur-2xl opacity-75 transition duration-500 group-hover:scale-105"></div>
                     
-                    <div class="relative w-full h-[340px] sm:h-[437px] overflow-hidden rounded-[50px] shadow-2xl border border-slate-100 bg-slate-100 z-10">
+                    <div class="relative w-full h-[320px] sm:h-[437px] overflow-hidden rounded-[50px] shadow-md sm:shadow-2xl border border-slate-100 bg-slate-100 z-10">
                         <div class="absolute inset-0 bg-gradient-to-br from-primary/50 via-primary/10 to-transparent pointer-events-none z-10 mix-blend-normal"></div>
                         
                         <img 
@@ -37,10 +37,10 @@ defined('ABSPATH') || exit;
 
                     <a 
                         href="<?php echo esc_url(get_theme_mod('_alsalam_about_btn_link', '#')); ?>" 
-                        class="absolute bottom-[-10px] sm:bottom-[25px] end-0 sm:end-[-54px] flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-primary active:scale-95 text-white font-medium rounded-full shadow-2xl transition-all duration-300 group/btn focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-20 font-sans min-w-[180px] sm:min-w-[223px] min-h-[55px] sm:min-h-[65px]"
+                        class="absolute bottom-[-10px] sm:bottom-[25px] end-0 sm:end-[-54px] flex items-center justify-center gap-3 bg-[#071D2C] hover:bg-primary active:scale-95 text-white font-medium rounded-full shadow-2xl transition-all duration-300 group/btn focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-20 font-sans min-w-[160px] sm:min-w-[223px] min-h-[48px] sm:min-h-[65px]"
                         aria-label="<?php esc_attr_e('Learn More', 'alsalam'); ?>"
                     >
-                        <span class="text-base font-semibold tracking-wide"><?php echo esc_html(pll__(get_theme_mod('_alsalam_about_btn_text', 'Learn More'))); ?></span>
+                        <span class="text-sm sm:text-base font-semibold tracking-wide"><?php echo esc_html(pll__(get_theme_mod('_alsalam_about_btn_text', 'Learn More'))); ?></span>
                         <svg 
                             class="w-4 h-4 transition-transform duration-300 ltr:group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 rtl:rotate-180" 
                             fill="none" 
@@ -56,8 +56,8 @@ defined('ABSPATH') || exit;
             </div>
 
             <!-- Right Column -->
-            <div class="flex flex-col text-start">
-                <div class="self-start mb-4 gsap-fade-up">
+            <div class="flex flex-col text-center sm:text-start max-w-[380px] sm:max-w-none mx-auto sm:mx-0 w-full">
+                <div class="self-center sm:self-start mb-4 gsap-fade-up">
                     <span class="inline-block rounded-full bg-[#E5F0F6] px-4 py-1.5 text-sm font-semibold tracking-wide text-slate-800 font-sans">
                         <?php echo esc_html(pll__(get_theme_mod('_alsalam_about_badge', 'Corporate Profile'))); ?>
                     </span>

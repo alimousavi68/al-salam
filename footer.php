@@ -14,9 +14,9 @@ defined('ABSPATH') || exit;
     <div class="absolute top-0 end-0 opacity-100 w-[120px] sm:w-[180px] lg:w-80 pointer-events-none">
         <img src="<?php echo esc_url(alsalam_img('top-right-bg.svg')); ?>" alt="" class="w-full h-auto object-cover opacity-90" style="filter: brightness(0) invert(1);" />
     </div>
-    <!-- Decorative Blurs -->
-    <div style="position: absolute; width: 134.17px; height: 375.09px; left: -75px; bottom: -50px; background: #239BA8; filter: blur(119.9px); border-radius: 273px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
-    <div style="position: absolute; width: 183.58px; height: 538.95px; right: -50px; top: -100px; background: #239BA8; filter: blur(151.9px); border-radius: 92.8206px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
+    <!-- Decorative Blurs (Desktop only to prevent mobile GPU compositing white screen) -->
+    <div class="hidden sm:block" style="position: absolute; width: 134.17px; height: 375.09px; left: -75px; bottom: -50px; background: #239BA8; filter: blur(60px); border-radius: 273px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
+    <div class="hidden sm:block" style="position: absolute; width: 183.58px; height: 538.95px; right: -50px; top: -100px; background: #239BA8; filter: blur(60px); border-radius: 92.8206px; transform: matrix(0.95, -0.31, 0.37, 0.93, 0, 0); pointer-events: none;"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 mb-12">
         <!-- Col 1: Branding & Newsletter -->
