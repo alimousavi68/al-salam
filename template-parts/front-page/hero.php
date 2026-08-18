@@ -29,7 +29,7 @@ if (!is_array($heroSlides) || empty($heroSlides)) {
   <div class="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8">
     
     <!-- Hero Wrapper: Large rounded card -->
-    <div id="hero-wrapper" class="hero-container relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] min-h-[85dvh] sm:min-h-[700px] lg:min-h-[800px] flex flex-col justify-between shadow-2xl">
+    <div id="hero-wrapper" class="hero-container relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] h-[97vh] sm:h-auto sm:min-h-[700px] lg:min-h-[800px] flex flex-col justify-between shadow-2xl">
 
       <!-- Background Layers -->
       <?php if (get_theme_mod('_alsalam_hero_bg_type', 'video') === 'video') : ?>

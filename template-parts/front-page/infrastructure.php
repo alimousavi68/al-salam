@@ -42,7 +42,7 @@ if (!is_array($items) || empty($items)) {
 }
 $total_items = count($items);
 ?>
-<section id="infrastructure" class="py-4 sm:py-20 px-4 max-w-7xl mx-auto">
+<section id="infrastructure" class="pt-8 pb-4 sm:py-20 px-4 max-w-7xl mx-auto">
     
     <header class="flex flex-col items-center text-center mb-8 sm:mb-12 gsap-fade-up">
         <h2 class="text-slate-900 text-3xl sm:text-4xl font-extrabold tracking-tight font-heading">
